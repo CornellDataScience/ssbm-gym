@@ -3,8 +3,10 @@ import torch.nn as nn
 from torch.distributions import Categorical
 from statistics import mean, stdev
 import time
+import pandas as pd
 
 def train(params, net, optimizer, env):
+    df = pd.DataFrame(columns = ["time", "reward_mean", "reward_std"])
     print("Resetting envs")
     obs = env.reset()
     print("Envs resetted")
@@ -14,7 +16,7 @@ def train(params, net, optimizer, env):
     while total_steps < params.total_steps:
         print("Total steps:", total_steps)
         # print("Gathering rollouts")
-        steps, obs = gather_rollout(params, net, env, obs)
+        steps, obs, _ = gather_rollout(params, net, env, obs)
         total_steps += params.num_workers * len(steps)
         final_obs = torch.tensor(obs)
         _, final_values = net(final_obs)
@@ -26,14 +28,16 @@ def train(params, net, optimizer, env):
         update_network(params, net, optimizer, actions, logps, values, returns, advantages)
 
         if total_steps > n_save:
+            _, _, to_print = gather_rollout(params, net, env, obs, prnt=True)
+            df = df.append(to_print, ignore_index = True)
             save_model(net, optimizer, "checkpoints/" + str(total_steps) + ".ckpt")
             n_save += 250000
-
+            df.to_csv('checkpoints/reward_'+str(n_save)+'.csv')
 
     env.close()
 
 
-def gather_rollout(params, net, env, obs):
+def gather_rollout(params, net, env, obs, prnt = False):
     steps = []
     ep_rewards = [0.] * params.num_workers
     t = time.time()
@@ -50,8 +54,11 @@ def gather_rollout(params, net, env, obs):
         rewards = torch.tensor(rewards).float().unsqueeze(1)
         steps.append((rewards, actions, logps, values))
 
-    print(round(time.time() - t, 3), round(mean(ep_rewards), 3), round(stdev(ep_rewards), 3))
-    return steps, obs
+    if prnt:
+        to_print = {"time": round(time.time() - t, 3), "reward_mean": round(mean(ep_rewards), 3), "reward_std":round(stdev(ep_rewards), 3)}
+        return steps, obs, to_print
+        print(to_print)
+    return steps, obs, None
 
 
 def process_rollout(params, steps):

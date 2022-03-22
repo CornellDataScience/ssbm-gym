@@ -77,6 +77,7 @@ This compiles and links the headless version of Dolphin use for training an agen
 2. `make`
 3. `ln -s $PWD/Binaries/dolphin-emu {ssbm_gym directory}/dolphin-exe/`
 
+conda activate smash
 
 ## TODO
 
