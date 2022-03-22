@@ -80,11 +80,9 @@ This compiles and links the headless version of Dolphin use for training an agen
 
 ## TODO
 
-- [x] Credit all the people that made this possible
-- [x] Document all the options
-- [x] Make and test build instruction for other OS
 - [ ] Clean most of the code to make it as simple as possible (since the basis of this work is vladfi1/phillip, there is still a lot of stuff that is not used and can be removed)
 - [x] Make an example for self-play environment
+- [ ] Since issues are 1. Trajectories widely different in large state space making sample the inefficient on-policy alg dog water 2. noisy samples (improved w/ advantage to normalize) 3. sparse rewards. We want to try batch norm or dropout to regularize the network so easier to train
 
 ## Issues
 
