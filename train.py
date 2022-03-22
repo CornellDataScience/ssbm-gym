@@ -9,7 +9,8 @@ def train(params, net, optimizer, env):
     obs = env.reset()
     print("Envs resetted")
     total_steps = 0
-    n_save = 50000
+    # n_save = 50000
+    n_save = 100
     while total_steps < params.total_steps:
         print("Total steps:", total_steps)
         # print("Gathering rollouts")
