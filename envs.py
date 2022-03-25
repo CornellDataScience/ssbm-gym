@@ -1,6 +1,8 @@
 from ssbm_gym.ssbm_env import BaseEnv, isDying
 from copy import deepcopy
 
+opponent_pid = 1
+
 def make_env(frame_limit, options):
     def _init():
         env = GoHighEnv(frame_limit=frame_limit, options=options)
@@ -40,15 +42,16 @@ class GoHighEnv(BaseEnv):
     def compute_reward(self):
         r = 0.0
         if self.prev_obs is not None:
-            # This is necesarry because the character might be dying during multiple frames
+            # This is necessary because the character might be dying during multiple frames
             if not isDying(self.prev_obs.players[self.pid]) and \
                isDying(self.obs.players[self.pid]):
                 r -= 1.0
             
-        #     # We give a reward of -0.01 for every percent taken. The max() ensures that not reward is given when a character dies
-        #     r -= 0.01 * max(0, self.obs.players[self.pid].percent - self.prev_obs.players[self.pid].percent)
+            # We give a reward of -0.01 for every percent taken and +0.01 for damage dealt. 
+            # The max() ensures that not reward is given when a character dies
+            r += -0.01 * max(0, self.obs.players[self.pid].percent - self.prev_obs.players[self.pid].percent) + 0.01 * self.obs.players[opponent_pid].percent
 
-        r += self.obs.players[0].y / 50 / 60
+        # r += self.obs.players[0].y / 50 / 60
         return r
 
     def step(self, action):
@@ -70,24 +73,24 @@ class MinimalEmbedPlayer():
         self.n = 3
 
     def __call__(self, player_state):
-        # percent = player_state.percent/100.0
-        # facing = player_state.facing
+        percent = player_state.percent/100.0
+        facing = player_state.facing
         x = player_state.x/10.0
         y = player_state.y/10.0
-        # invulnerable = 1.0 if player_state.invulnerable else 0
-        # hitlag_frames_left = player_state.hitlag_frames_left/10.0
-        # hitstun_frames_left = player_state.hitstun_frames_left/10.0
-        # shield_size = player_state.shield_size/100.0
+        invulnerable = 1.0 if player_state.invulnerable else 0
+        hitlag_frames_left = player_state.hitlag_frames_left/10.0
+        hitstun_frames_left = player_state.hitstun_frames_left/10.0
+        shield_size = player_state.shield_size/100.0
         in_air = 1.0 if player_state.in_air else 0.0
 
         return [
-                # percent,
-                # facing,
+                percent,
+                facing,
                 x, y,
-                # invulnerable,
-                # hitlag_frames_left,
-                # hitstun_frames_left,
-                # shield_size,
+                invulnerable,
+                hitlag_frames_left,
+                hitstun_frames_left,
+                shield_size,
                 in_air
             ]
 
@@ -99,9 +102,9 @@ class MinimalEmbedGame():
 
     def __call__(self, game_state):
         player0 = self.embed_player(game_state.players[0])
-        # player1 = self.embed_player(game_state.players[1])
+        player1 = self.embed_player(game_state.players[1])
 
-        return player0  # + player1  # concatenates lists
+        return player0  + player1  # concatenates lists
 
 
 import multiprocessing
