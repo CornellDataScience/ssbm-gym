@@ -1,0 +1,21 @@
+Resetting envs
+Envs resetted
+Total steps: 0
+Traceback (most recent call last):
+  File "main.py", line 41, in <module>
+    train(args, net, optimizer, env)
+  File "/home/smash_ai/ssbm-gym/train.py", line 19, in train
+    steps, obs, _ = gather_rollout(params, net, env, obs)
+  File "/home/smash_ai/ssbm-gym/train.py", line 46, in gather_rollout
+    logps, values = net(obs)
+  File "/home/smash_ai/anaconda3/envs/smash/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/smash_ai/ssbm-gym/a2c_model.py", line 13, in forward
+    x = self.fc(x)
+  File "/home/smash_ai/anaconda3/envs/smash/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/smash_ai/anaconda3/envs/smash/lib/python3.7/site-packages/torch/nn/modules/linear.py", line 96, in forward
+    return F.linear(input, self.weight, self.bias)
+  File "/home/smash_ai/anaconda3/envs/smash/lib/python3.7/site-packages/torch/nn/functional.py", line 1847, in linear
+    return torch._C._nn.linear(input, weight, bias)
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (4x18 and 3x256)
