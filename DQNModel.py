@@ -13,7 +13,9 @@ class Actor(nn.Module):
         x = self.fc(x)
         x, val = self.value(x, return_features=True)
         # get Q values
-        logp = torch.log_softmax(self.policy(x), -1)
+        # argmax over the end values -> action
+        # other probability pick uniformaly at random
+        logp = torch.log_max(self.policy(x), -1)
         return logp, val
 
 
