@@ -4,6 +4,7 @@ import os
 from envs import GoHighEnv
 import atexit
 import platform
+import random
 
 checkpoint = torch.load(os.path.join("checkpoints", "agent.ckpt"))
 
@@ -31,8 +32,15 @@ with torch.no_grad():
         logps = net(obs)
         # argmax here 
         # actions = Categorical(logits=logps).sample().numpy()
-        
-        actions = torch.argmax(logps)
+        epsilon = .2
+
+        generate = random.randrange(0, 100)
+        if (generate < 1 - epsilon * 100):
+            actions = torch.argmax(logps) 
+        else: 
+            # change this to be random later
+            actions = torch.argmax(logps)
+
         obs, reward, done, infos = env.step(actions)
         if done:
             break

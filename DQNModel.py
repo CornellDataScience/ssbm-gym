@@ -13,12 +13,9 @@ class Actor(nn.Module):
     def forward(self, x):
         x = self.fc(x)
         x, val = self.value(x, return_features=True)
-        # get Q values
         logp = self.policy(x)
         return logp
 
-
-# 
 class ResidualBlock(nn.Module):
     
     def __init__(self, data_dim, hidden_dim):
