@@ -29,7 +29,9 @@ class GoHighEnv(BaseEnv):
 
     def compute_reward(self):
         r = 0.0
-        r += self.obs.players[0].y / 50 / 60  # The higher the character, the highest the reward!
+         # can change reward function
+        r += -0.01 * max(0, self.obs.players[self.pid].percent - self.prev_obs.players[self.pid].percent) + 0.01 * self.obs.players[opponent_pid].percent
+       
         
         if self.prev_obs is not None:
             # This is necesarry because the character might be dying during multiple frames
