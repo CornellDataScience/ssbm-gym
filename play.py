@@ -28,8 +28,11 @@ obs = env.reset()
 with torch.no_grad():
     while True:
         obs = torch.tensor(obs)
-        logps, _ = net(obs)
-        actions = Categorical(logits=logps).sample().numpy()
+        logps = net(obs)
+        # argmax here 
+        # actions = Categorical(logits=logps).sample().numpy()
+        
+        actions = torch.argmax(logps)
         obs, reward, done, infos = env.step(actions)
         if done:
             break

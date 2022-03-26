@@ -6,17 +6,16 @@ class Actor(nn.Module):
     def __init__(self, obs_dim, action_dim, hidden_dim = 256):
         super(Actor, self).__init__()
         self.fc = nn.Linear(obs_dim, hidden_dim)
-        self.value = ResNet(hidden_dim, 1, 2, output_dim=1)
+        # self.value = ResNet(hidden_dim, 1, 2, output_dim=1)
         self.policy = nn.Linear(hidden_dim, action_dim)
+
 
     def forward(self, x):
         x = self.fc(x)
         x, val = self.value(x, return_features=True)
         # get Q values
-        # argmax over the end values -> action
-        # other probability pick uniformaly at random
-        logp = torch.log_max(self.policy(x), -1)
-        return logp, val
+        logp = self.policy(x)
+        return logp
 
 
 # 
