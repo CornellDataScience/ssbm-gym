@@ -13,6 +13,7 @@ def oneHot(x, n):
 
 class EmbedPlayer():
     def __init__(self, flat=True):
+        self.n = 12
         self.flat = flat
 
     def __repr__(self):
@@ -75,6 +76,7 @@ class EmbedGame():
     def __init__(self, flat=True):
         self.flat = flat
         self.embed_player = EmbedPlayer(self.flat)
+        self.n = self.embed_player.n
 
     def __repr__(self):
         s = ''
@@ -87,16 +89,17 @@ class EmbedGame():
     def __call__(self, game_state):
         player0 = self.embed_player(game_state.players[0])
         player1 = self.embed_player(game_state.players[1])
-        stage = oneHot(game_state.stage, numStages)
+        # stage = oneHot(game_state.stage, numStages)
 
         data = {
             'player0': player0,
             'player1': player1,
-            'stage': stage,
+            # 'stage': stage,
         }
 
         if self.flat:
-            return list(data.values())
+            return player0 + player1 # + stage
+            # return list(data.values())
         else:
             return data
 

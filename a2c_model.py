@@ -5,7 +5,8 @@ import torch.nn as nn
 class Actor(nn.Module):
     def __init__(self, obs_dim, action_dim, hidden_dim = 256):
         super(Actor, self).__init__()
-        self.fc = nn.Linear(obs_dim, hidden_dim)
+        # self.fc = nn.Linear(obs_dim, hidden_dim)
+        self.fc = nn.Linear(obs_dim * 2, hidden_dim)
         self.value = ResNet(hidden_dim, 1, 2, output_dim=1)
         self.policy = nn.Linear(hidden_dim, action_dim)
 

@@ -4,6 +4,7 @@ from torch.distributions import Categorical
 from statistics import mean, stdev
 import time
 import pandas as pd
+import numpy as np
 
 def train(params, net, optimizer, env):
     df = pd.DataFrame(columns = ["time", "reward_mean", "reward_std"])
