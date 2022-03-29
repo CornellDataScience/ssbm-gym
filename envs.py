@@ -70,28 +70,28 @@ class GoHighEnv(BaseEnv):
 
 class MinimalEmbedPlayer():
     def __init__(self):
-        self.n = 3
+        self.n = 18
 
     def __call__(self, player_state):
-        # percent = player_state.percent/100.0
-        # facing = player_state.facing
+        percent = player_state.percent/100.0
+        facing = player_state.facing
         x = player_state.x/10.0
         y = player_state.y/10.0
-        # invulnerable = 1.0 if player_state.invulnerable else 0
-        # hitlag_frames_left = player_state.hitlag_frames_left/10.0
-        # hitstun_frames_left = player_state.hitstun_frames_left/10.0
-        # shield_size = player_state.shield_size/100.0
-        # in_air = 1.0 if player_state.in_air else 0.0
+        invulnerable = 1.0 if player_state.invulnerable else 0
+        hitlag_frames_left = player_state.hitlag_frames_left/10.0
+        hitstun_frames_left = player_state.hitstun_frames_left/10.0
+        shield_size = player_state.shield_size/100.0
+        in_air = 1.0 if player_state.in_air else 0.0
 
         return [
-                # percent,
-                # facing,
+                percent,
+                facing,
                 x, y,
-                # invulnerable,
-                # hitlag_frames_left,
-                # hitstun_frames_left,
-                # shield_size,
-                # in_air
+                invulnerable,
+                hitlag_frames_left,
+                hitstun_frames_left,
+                shield_size,
+                in_air
             ]
 
 
@@ -104,7 +104,7 @@ class MinimalEmbedGame():
         player0 = self.embed_player(game_state.players[0])
         player1 = self.embed_player(game_state.players[1])
 
-        return player0  + player1  # concatenates lists
+        return player0 + player1  # concatenates lists
 
 
 import multiprocessing
