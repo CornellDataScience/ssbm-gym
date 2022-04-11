@@ -19,13 +19,13 @@ def train(params, net, optimizer, env):
         steps, obs, _ = gather_rollout(params, net, env, obs)
         total_steps += params.num_workers * len(steps)
         final_obs = torch.tensor(obs)
-        _, final_values = net(final_obs)
-        steps.append((None, None, None, final_values))
+        _, = net(final_obs)
+        steps.append((None, None, None))
         # print("Processing rollouts")
-        actions, logps, values, returns, advantages = process_rollout(params, steps)
+        actions, logps, returns, advantages = process_rollout(params, steps)
 
         # print("Updating network")
-        update_network(params, net, optimizer, actions, logps, values, returns, advantages)
+        update_network(params, net, optimizer, actions, logps, returns, advantages)
 
         if total_steps > n_save:
             _, _, to_print = gather_rollout(params, net, env, obs, prnt=True)
@@ -43,8 +43,17 @@ def gather_rollout(params, net, env, obs, prnt = False):
     t = time.time()
     for _ in range(params.rollout_steps):
         obs = torch.tensor(obs)
-        logps, values = net(obs)
-        actions = Categorical(logits=logps).sample()
+        logps = net(obs)
+        # epsilon argmax
+        generate = random.random())
+        # filler epsilon 
+        epsilon = 0
+        # need to get epsilon from somewhere
+        if (generate < 1 - epsilon):
+            actions = torch.argmax(logps) 
+        else: 
+            # change this to be random later
+            actions = torch.argmax(logps)
 
         obs, rewards, dones, _ = env.step(actions.numpy())
 
@@ -52,7 +61,7 @@ def gather_rollout(params, net, env, obs, prnt = False):
             ep_rewards[i] += rewards[i]
         
         rewards = torch.tensor(rewards).float().unsqueeze(1)
-        steps.append((rewards, actions, logps, values))
+        steps.append((rewards, actions, logps))
 
     if prnt:
         to_print = {"time": round(time.time() - t, 3), "reward_mean": round(mean(ep_rewards), 3), "reward_std":round(stdev(ep_rewards), 3)}
@@ -86,15 +95,15 @@ def process_rollout(params, steps):
     return map(lambda x: torch.cat(x, 0), zip(*out))
 
 
-def update_network(params, net, optimizer, actions, logps, values, returns, advantages):
+def update_network(params, net, optimizer, actions, logps, returns, advantages):
     # calculate action probabilities
     log_action_probs = logps.gather(1, actions.unsqueeze(-1))
     probs = logps.exp()
     policy_loss = (-log_action_probs * advantages).sum()
-    value_loss = (.5 * (values - returns) ** 2.).sum()
+    # value_loss = (.5 * (values - returns) ** 2.).sum()
     entropy_loss = (logps * probs).sum()
 
-    loss = policy_loss + value_loss * params.value_coeff + entropy_loss * params.entropy_coeff
+    loss = policy_loss + entropy_loss * params.entropy_coeff
     loss.backward()
 
     nn.utils.clip_grad_norm_(net.parameters(), params.grad_norm_limit)

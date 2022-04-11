@@ -34,8 +34,8 @@ with torch.no_grad():
         # actions = Categorical(logits=logps).sample().numpy()
         epsilon = .2
 
-        generate = random.randrange(0, 100)
-        if (generate < 1 - epsilon * 100):
+        generate = random.random())
+        if (generate < 1 - epsilon):
             actions = torch.argmax(logps) 
         else: 
             # change this to be random later

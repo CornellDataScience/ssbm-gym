@@ -70,7 +70,7 @@ class GoHighEnv(BaseEnv):
 
 class MinimalEmbedPlayer():
     def __init__(self):
-        self.n = 3
+        self.n = 4
 
     def __call__(self, player_state):
         # percent = player_state.percent/100.0
@@ -178,7 +178,7 @@ class SubprocVecEnv():
             process.start()
             self.processes.append(process)
             work_remote.close()
-
+        
         self.remotes[0].send(('get_spaces', None))
         self.observation_space, self.action_space = self.remotes[0].recv()
 

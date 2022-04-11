@@ -8,7 +8,7 @@ class Actor(nn.Module):
         self.fc = nn.Linear(obs_dim, hidden_dim)
         # self.value = ResNet(hidden_dim, 1, 2, output_dim=1)
         self.policy = nn.Linear(hidden_dim, action_dim)
-
+        
 
     def forward(self, x):
         x = self.fc(x)
