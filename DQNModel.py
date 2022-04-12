@@ -12,9 +12,11 @@ class Actor(nn.Module):
 
     def forward(self, x):
         x = self.fc(x)
-     #    x, val = self.value(x, return_features=True)
-        logp = self.policy(x)
-        return logp
+        # x, val = self.value(x, return_features=True)
+
+        # return qvals here
+        qVal = self.policy(x)
+        return qVal
 
 class ResidualBlock(nn.Module):
     

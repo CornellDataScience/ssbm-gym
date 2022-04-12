@@ -34,8 +34,9 @@ options = dict(
 
 if __name__ == "__main__":
     env = GoHighEnvVec(args.num_workers, args.total_steps, options)
-
+    print("Action space " + str(env.action_space.n))
     net = Actor(env.observation_space.n, env.action_space.n)
+    target_net = Actor(env.observation_space.n, env.action_space.n)
     optimizer = optim.Adam(net.parameters(), lr=args.lr)
 
-    train(args, net, optimizer, env)
+    train(args, net, target_net, optimizer, env)
