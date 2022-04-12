@@ -95,7 +95,14 @@ def update_network(params, net, optimizer, actions, logps, values, returns, adva
     # calculate action probabilities
     log_action_probs = logps.gather(1, actions.unsqueeze(-1))
     probs = logps.exp()
-    policy_loss = (-log_action_probs * advantages).sum()
+    # PPO loss from https://openai.com/blog/openai-baselines-ppo/
+
+    ratios = torch.exp(logps[-1] - logps)
+    surr1 = ratios * advantages
+    surr2 = torch.clamp(ratios, 1 - params.epsilon, 1 + params.epsilon) * advantages
+
+    policy_loss = (-torch.min(surr1, surr2)).mean()
+    # policy_loss = (-log_action_probs * advantages).sum()
     value_loss = (.5 * (values - returns) ** 2.).sum()
     entropy_loss = (logps * probs).sum()
 

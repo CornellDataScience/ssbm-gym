@@ -14,6 +14,7 @@ parser.add_argument('--total-steps', type=int, default=int(4e7), help='total num
 parser.add_argument('--lr', type=float, default=3e-4, help='learning rate')
 parser.add_argument('--gamma', type=float, default=0.99, help='gamma parameter for GAE')
 parser.add_argument('--lambd', type=float, default=1.00, help='lambda parameter for GAE')
+parser.add_argument('--epsilon', type=float, default=0.10, help='epsilon parameter for PPO')
 parser.add_argument('--value_coeff', type=float, default=0.5, help='value loss coeffecient')
 parser.add_argument('--entropy_coeff', type=float, default=0.01, help='entropy loss coeffecient')
 parser.add_argument('--grad_norm_limit', type=float, default=40., help='gradient norm clipping threshold')
