@@ -4,6 +4,7 @@ import torch.nn as nn
 
 class Actor(nn.Module):
     def __init__(self, obs_dim, action_dim, hidden_dim = 256):
+        """initializes embedding, value network (ResNet, state -> value), and policy network (state -> action) """
         super(Actor, self).__init__()
         # self.fc = nn.Linear(obs_dim, hidden_dim)
         self.fc = nn.Linear(obs_dim * 2, hidden_dim)
@@ -11,6 +12,7 @@ class Actor(nn.Module):
         self.policy = nn.Linear(hidden_dim, action_dim)
 
     def forward(self, x):
+        """ given obs, returns action_probability, estimated_value. Actions are from x |> embedding |> value_network |> policy_network. Estimated_value from x |> embedding |> value_network. """
         x = self.fc(x)
         x, val = self.value(x, return_features=True)
         logp = torch.log_softmax(self.policy(x), -1)

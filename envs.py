@@ -23,6 +23,7 @@ class GoHighEnv(BaseEnv):
 
     @property
     def action_space(self):
+        """ [self.action_space] sets self._action_space to be MinimalActionSpace() from ssbm_gym.spaces then returns it """
         if self._action_space is not None:
             return self._action_space
         else:
@@ -32,6 +33,7 @@ class GoHighEnv(BaseEnv):
 
     @property
     def observation_space(self):
+        """ currently, observation calls MinimalEmbedGame() """
         if self._observation_space is not None:
             return self._observation_space
         else:
@@ -42,6 +44,7 @@ class GoHighEnv(BaseEnv):
         return self._embed_obs(obs)
 
     def compute_reward(self):
+        """ [env.compute_reward] """
         r = 0.0
         if self.prev_obs is not None:
             # This is necesarry because the character might be dying during multiple frames
@@ -56,6 +59,7 @@ class GoHighEnv(BaseEnv):
         return r
 
     def step(self, action):
+        """ [step action] performs [action] then returns the embedded observation, reward, whether_is_terminal, and a dict of frames """
         if self.obs is not None:
             self.prev_obs = deepcopy(self.obs)
         

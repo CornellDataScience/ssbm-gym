@@ -39,6 +39,7 @@ def train(params, net, optimizer, env):
 
 
 def gather_rollout(params, net, env, obs, prnt = False):
+    """ Obs |> net -> action, values. Action |> env.step -> (reward, taken action (sampled from action_probs), action_probs, values ), obs"""
     steps = []
     ep_rewards = [0.] * params.num_workers
     t = time.time()
