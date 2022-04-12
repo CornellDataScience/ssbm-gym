@@ -2,7 +2,7 @@ import argparse
 import torch
 import torch.optim as optim
 
-from a2c_model import Actor
+from ppo_model import Actor
 from envs import GoHighEnvVec
 from train import train
 

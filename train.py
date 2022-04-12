@@ -11,6 +11,7 @@ def train(params, net, optimizer, env):
     obs = env.reset()
     total_steps = 0
     n_save = 50000
+    start_time = time.time()
 
     while total_steps < params.total_steps:
         print("Total steps:", total_steps)
@@ -33,6 +34,8 @@ def train(params, net, optimizer, env):
 
         if total_steps > n_save:
             _, _, to_print = gather_rollout(params, net, env, obs, prnt=True)
+            to_print["time"] = to_print["time"] - start_time
+            print(to_print)
             df = df.append(to_print, ignore_index = True)
             save_model(net, optimizer, "checkpoints/" + str(total_steps) + ".ckpt")
             n_save += 250000
@@ -45,11 +48,11 @@ def gather_rollout(params, net, env, obs, prnt = False):
     """ Obs |> net -> action, values. Action |> env.step -> (reward, taken action (sampled from action_probs), action_probs, values ), obs"""
     steps = []
     ep_rewards = [0.] * params.num_workers
-    t = time.time()
+
     for _ in range(params.rollout_steps):
         obs = torch.tensor(obs)
         logps, values = net(obs)
-        actions = Categorical(logits=logps).sample()
+        actions = Categorical(logits=logps).sample() # 1 for each worker
 
         obs, rewards, dones, _ = env.step(actions.numpy())
 
@@ -60,9 +63,9 @@ def gather_rollout(params, net, env, obs, prnt = False):
         steps.append((rewards, actions, logps, values))
 
     if prnt:
-        to_print = {"time": round(time.time() - t, 3), "reward_mean": round(mean(ep_rewards), 3), "reward_std":round(stdev(ep_rewards), 3)}
+        to_print = {"time": time.time(), "reward_mean": round(mean(ep_rewards), 3), "reward_std":round(stdev(ep_rewards), 3)}
         return steps, obs, to_print
-        print(to_print)
+
     return steps, obs, None
 
 
