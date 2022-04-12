@@ -8,24 +8,27 @@ import numpy as np
 
 def train(params, net, optimizer, env):
     df = pd.DataFrame(columns = ["time", "reward_mean", "reward_std"])
-    print("Resetting envs")
     obs = env.reset()
-    print("Envs resetted")
     total_steps = 0
-    # n_save = 50000
-    n_save = 100
+    n_save = 50000
+
     while total_steps < params.total_steps:
         print("Total steps:", total_steps)
-        # print("Gathering rollouts")
+
+        # Gathering rollouts: for 600 steps, run the network in the environment without updating network
         steps, obs, _ = gather_rollout(params, net, env, obs)
         total_steps += params.num_workers * len(steps)
         final_obs = torch.tensor(obs)
         _, final_values = net(final_obs)
+
+        # Append final values to steps without explicitly updating the resulting rewards, actions, logps
         steps.append((None, None, None, final_values))
-        # print("Processing rollouts")
+        
+        # Processing rollouts, get advantages
         actions, logps, values, returns, advantages = process_rollout(params, steps)
 
-        # print("Updating network")
+        # Update network with process rollout results 
+        # gradient ascent on advantage * policy gradient
         update_network(params, net, optimizer, actions, logps, values, returns, advantages)
 
         if total_steps > n_save:
@@ -77,11 +80,11 @@ def process_rollout(params, steps):
         rewards, actions, logps, values = steps[t]
         _, _, _, next_values = steps[t + 1]
 
-        returns = rewards + returns * params.gamma
+        returns = rewards + returns * params.gamma # discounted rewards
 
-        deltas = rewards + next_values.data * params.gamma - values.data
-        advantages = advantages * params.gamma * params.lambd + deltas
-
+        deltas = rewards + next_values.data * params.gamma - values.data # reward + discounted difference of estimated value
+        advantages = advantages * params.gamma * params.lambd + deltas # extended advantage estimator, see https://towardsdatascience.com/generalized-advantage-estimate-maths-and-code-b5d5bd3ce737
+ 
         out[t] = actions, logps, values, returns, advantages
 
     # return data as batched Tensors, Variables
