@@ -7,6 +7,7 @@ import pandas as pd
 import random
 from buffer import ReplayBuffer
 
+
 def train(params, net, target_net, optimizer, env):
     target_net.load_state_dict(net.state_dict())
     target_net.eval()
@@ -17,11 +18,13 @@ def train(params, net, target_net, optimizer, env):
     total_steps = 0
     buffer = ReplayBuffer(maxsize=1000000)
     # n_save = 50000
-    n_save = 100
+    n_save = 50000
+    epsilon = 0.99
+    runsum = 0
     while total_steps < params.total_steps:
-        print("Total steps:", total_steps)
+        # print("Total steps:", total_steps)
         # print("Gathering rollouts")
-        steps, new_obs, _ = gather_rollout(params, net, env, obs)
+        steps, new_obs, _ = gather_rollout(params, net, env, obs, epsilon)
         rewards, actions, logps = steps[0]
         # rewards = torch.tensor([rewards])
         obs = torch.tensor(obs)
@@ -43,13 +46,22 @@ def train(params, net, target_net, optimizer, env):
         # sample from buffer
         # use sample to update
         # print("Updating network")
-        update_network(params, net, target_net, optimizer, buffer)
-        if (total_steps+1)% 30 == 0:
+        
+        loss = update_network(params, net, target_net, optimizer, buffer)
+        runsum += loss
+
+        
+        if (total_steps+1)% 10000 == 0:
             target_net.load_state_dict(net.state_dict())
+        if (total_steps) % 10000 == 0:
+         #   print(runsum / 10000) 
+            runsum = 0
+        if (total_steps % 10000 == 0 and epsilon > 0.01):
+            epsilon -= .01
 
         # reward + predicted for next step * gamma 
         if total_steps > n_save:
-            _, _, to_print = gather_rollout(params, net, env, obs, prnt=True)
+            _, _, to_print = gather_rollout(params, net, env, obs, epsilon, prnt=True)
             df = df.append(to_print, ignore_index = True)
             save_model(net, optimizer, "checkpoints/" + str(total_steps) + ".ckpt")
             n_save += 250000
@@ -58,7 +70,7 @@ def train(params, net, target_net, optimizer, env):
     env.close()
 
 
-def gather_rollout(params, net, env, obs, prnt = False):
+def gather_rollout(params, net, env, obs, epsilon, prnt = False):
     steps = []
     ep_rewards = [0.] * params.num_workers
     t = time.time()
@@ -68,7 +80,7 @@ def gather_rollout(params, net, env, obs, prnt = False):
         # epsilon argmax
         generate = random.random()
         # filler epsilon 
-        epsilon = 0
+        
         # need to get epsilon from somewhere
        # actions = Categorical(logits=logps).sample()
        # print(actions)
@@ -78,15 +90,18 @@ def gather_rollout(params, net, env, obs, prnt = False):
         if (generate < 1 - epsilon):
             actions = torch.argmax(logps, dim = 1) 
         else: 
-            # change this to be random later
-            actions = torch.argmax(logps, dim = 1)
-        print(actions)
+            actions = torch.randint(0, 9, size = (4,))
+
+        # print(actions)
         obs, rewards, dones, _ = env.step(actions.numpy())
+        
 
         for i, done in enumerate(dones):
             ep_rewards[i] += rewards[i]
         
         rewards = torch.tensor(rewards).float().unsqueeze(1)
+        # if (generate < 1 - epsilon):
+        #    print(rewards)
         steps.append((rewards, actions, logps))
         obs = torch.tensor(obs)
       
@@ -94,7 +109,7 @@ def gather_rollout(params, net, env, obs, prnt = False):
     if prnt:
         to_print = {"time": round(time.time() - t, 3), "reward_mean": round(mean(ep_rewards), 3), "reward_std":round(stdev(ep_rewards), 3)}
         return steps, obs, to_print
-        print(to_print)
+        
     return steps, obs, None
 
 
@@ -144,7 +159,7 @@ def update_network(params, net, target_net, optimizer, buffer):
     #change batch size later as needed
     sample = buffer.sample(100)
     qVals = net((sample[0]))
-    print(qVals.shape)
+    # print(qVals.shape)
     actions = sample[1].unsqueeze(1)
     qVals = torch.gather(qVals, dim = 2, index = actions)
 
@@ -156,9 +171,11 @@ def update_network(params, net, target_net, optimizer, buffer):
     optimizer.zero_grad()
     loss = torch.nn.MSELoss()(qVals, targetVals+sample[2])
     
+    
     # gradient descent update 
     loss.backward()
     optimizer.step()
+    return loss
 
 
 

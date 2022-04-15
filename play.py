@@ -32,14 +32,14 @@ with torch.no_grad():
         logps = net(obs)
         # argmax here 
         # actions = Categorical(logits=logps).sample().numpy()
-        epsilon = .2
+        epsilon = .99
 
         generate = random.random())
         if (generate < 1 - epsilon):
             actions = torch.argmax(logps) 
         else: 
             # change this to be random later
-            actions = torch.argmax(logps)
+            actions = torch.randint(0, 9, size = (4,))
 
         obs, reward, done, infos = env.step(actions)
         if done:
