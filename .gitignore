@@ -108,3 +108,6 @@ venv.bak/
 dolphin-exe/*
 ISOs/*
 !*/.gitkeep
+
+# ignore checkpints
+checkpoints
