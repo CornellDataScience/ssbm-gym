@@ -13,7 +13,8 @@ def train(params, net, optimizer, env):
     n_save = 50000
     start_time = time.time()
 
-    while total_steps < params.total_steps:
+    # while total_steps < params.total_steps:
+    while True:
         print("Total steps:", total_steps)
 
         # Gathering rollouts: for 600 steps, run the network in the environment without updating network
