@@ -29,7 +29,7 @@ options = dict(
     char1='fox',
     char2='fox',
     cpu2=9,
-    stage='battlefield',
+    stage='final_destination',
 )
 
 
