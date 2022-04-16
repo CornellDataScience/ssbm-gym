@@ -268,7 +268,7 @@ custom_controllers = itertools.chain(
 )
 custom_controllers = [SimpleController.init(*args) for args in custom_controllers]
 custom_controllers.append(repeat_controller)
-
+"""
 # allows fox, sheik, samus, etc to short hop with act_every=3
 short_hop = SimpleController.init(button=SimpleButton.Y, duration=2)
 short_hop_chain = [short_hop, SimpleController.neutral]
@@ -277,6 +277,7 @@ short_hop_chain = [short_hop, SimpleController.neutral]
 jc_chain = [SimpleController.init(button=SimpleButton.Y, duration=1), SimpleController.init(button=SimpleButton.Z)]
 
 # better sh that also allows jc grab and upsmash at act_every 3
+
 sh2_chain = [
   SimpleController.init(duration=2),
   SimpleController.init(button=SimpleButton.Y),
@@ -290,17 +291,22 @@ fox_wd_chain_left = [
 wd_left = SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-7/8 * math.pi))
 wd_right = SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-1/8 * math.pi))
 wd_both = [wd_left, wd_right]
+"""
 
 actionTypes = dict(
   old = ActionSet(old_controllers),
   cardinal = ActionSet(cardinal_controllers),
   diagonal = ActionSet(diagonal_controllers),
   custom = ActionSet(custom_controllers),
-  short_hop_test = ActionSet([SimpleController.neutral] * 10 + [short_hop_chain]),
+  #short_hop_test = ActionSet([SimpleController.neutral] * 10 + [short_hop_chain]),
+  short_hop_test = ActionSet([SimpleController.neutral] * 10 ),
   # short_hop = ActionSet(custom_controllers + [short_hop]),
-  custom_sh_jc = ActionSet(custom_controllers + [short_hop_chain, jc_chain]),
-  fox_wd_test = ActionSet([SimpleController.neutral] * 10 + [fox_wd_chain_left]),
-  custom_sh2_wd = ActionSet(custom_controllers + [sh2_chain] + wd_both),
+  #custom_sh_jc = ActionSet(custom_controllers + [short_hop_chain, jc_chain]),
+  #fox_wd_test = ActionSet([SimpleController.neutral] * 10 + [fox_wd_chain_left]),
+  #custom_sh2_wd = ActionSet(custom_controllers + [sh2_chain] + wd_both),
+  custom_sh_jc = ActionSet(custom_controllers ),
+  fox_wd_test = ActionSet([SimpleController.neutral]),
+  custom_sh2_wd = ActionSet(custom_controllers),
 )
 
 @pretty_struct
