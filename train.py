@@ -9,6 +9,7 @@ from buffer import ReplayBuffer
 
 
 def train(params, net, target_net, optimizer, env):
+  
     target_net.load_state_dict(net.state_dict())
     target_net.eval()
     df = pd.DataFrame(columns = ["time", "reward_mean", "reward_std"])
@@ -26,13 +27,19 @@ def train(params, net, target_net, optimizer, env):
         # print("Gathering rollouts")
         steps, new_obs, _ = gather_rollout(params, net, env, obs, epsilon)
         rewards, actions, logps = steps[0]
+        #print("after")
+        #print(rewards.shape)
         # rewards = torch.tensor([rewards])
         obs = torch.tensor(obs)
+        #obs = obs.clone().detach()
         actions = torch.tensor(actions)
-       #  rewards = torch.tensor(rewards)
+        # print(actions.shape)
+        #actions = actions.clone().detach()
+        # sourceTensor.clone().detach()
+       # rewards = torch.tensor(rewards)
         buffer.add_experience(obs, actions, rewards, new_obs)
         total_steps += params.num_workers * len(steps)
-
+        if len(buffer) >= 100:
         # print("Processing rollouts")
         # make a replay buffer
         # actions, logps, returns, advantages = process_rollout(params, steps)
@@ -46,26 +53,25 @@ def train(params, net, target_net, optimizer, env):
         # sample from buffer
         # use sample to update
         # print("Updating network")
-        
-        loss = update_network(params, net, target_net, optimizer, buffer)
-        runsum += loss
+            loss = update_network(params, net, target_net, optimizer, buffer)
+            runsum += loss
 
-        
-        if (total_steps+1)% 10000 == 0:
-            target_net.load_state_dict(net.state_dict())
-        if (total_steps) % 10000 == 0:
-         #   print(runsum / 10000) 
-            runsum = 0
-        if (total_steps % 10000 == 0 and epsilon > 0.01):
-            epsilon -= .01
+            if (total_steps+1)% 10000 == 0:
+                target_net.load_state_dict(net.state_dict())
+            if (total_steps) % 10000 == 0:
+            #   print(runsum / 10000) 
 
-        # reward + predicted for next step * gamma 
-        if total_steps > n_save:
-            _, _, to_print = gather_rollout(params, net, env, obs, epsilon, prnt=True)
-            df = df.append(to_print, ignore_index = True)
-            save_model(net, optimizer, "checkpoints/" + str(total_steps) + ".ckpt")
-            n_save += 250000
-            df.to_csv('checkpoints/reward_'+str(n_save)+'.csv')
+                runsum = 0
+            if (total_steps % 10000 == 0 and epsilon > 0.01):
+                epsilon -= .01
+
+            # reward + predicted for next step * gamma 
+            if total_steps > n_save:
+                _, _, to_print = gather_rollout(params, net, env, obs, epsilon, prnt=True)
+                df = df.append(to_print, ignore_index = True)
+                save_model(net, optimizer, "new_checkpoints5/" + str(total_steps) + ".ckpt")
+                n_save += 250000
+                df.to_csv('new_checkpoints5/reward_'+str(n_save)+'.csv')
 
     env.close()
 
@@ -76,6 +82,7 @@ def gather_rollout(params, net, env, obs, epsilon, prnt = False):
     t = time.time()
     for _ in range(1):
         obs = torch.tensor(obs)
+        # obs = obs.clone().detach()
         logps = net(obs)
         # epsilon argmax
         generate = random.random()
@@ -86,7 +93,6 @@ def gather_rollout(params, net, env, obs, epsilon, prnt = False):
        # print(actions)
         #print(logps.shape)
         
-        
         if (generate < 1 - epsilon):
             actions = torch.argmax(logps, dim = 1) 
         else: 
@@ -94,14 +100,15 @@ def gather_rollout(params, net, env, obs, epsilon, prnt = False):
 
         # print(actions)
         obs, rewards, dones, _ = env.step(actions.numpy())
+       
         
-
+        
         for i, done in enumerate(dones):
             ep_rewards[i] += rewards[i]
         
-        rewards = torch.tensor(rewards).float().unsqueeze(1)
+        rewards = torch.tensor(rewards).float()
         # if (generate < 1 - epsilon):
-        #    print(rewards)
+        # print(rewards.shape)
         steps.append((rewards, actions, logps))
         obs = torch.tensor(obs)
       
@@ -141,18 +148,6 @@ def process_rollout(params, steps):
     # return data as batched Tensors, Variables
     return map(lambda x: torch.cat(x, 0), zip(*out))
 
-def get_targets(self, rewards, gamma):
-    '''
-    def get_targets(self, rewards, next_states, dones):
-        # TODO: Get the next Q function targets, as given by the Bellman optimality equation for Q functions.
-        maxQs = self.get_max_q(next_states)
-        dones = torch.unsqueeze(dones, dim = 1)
-        maxQs = torch.unsqueeze(maxQs, dim = 1)
-        targets = rewards + self.gamma * (maxQs * (1 - dones))
-   
-        return targets 
-    '''
-
 
 def update_network(params, net, target_net, optimizer, buffer):
     # calculate action probabilities
@@ -162,14 +157,26 @@ def update_network(params, net, target_net, optimizer, buffer):
     # print(qVals.shape)
     actions = sample[1].unsqueeze(1)
     qVals = torch.gather(qVals, dim = 2, index = actions)
-
+  #   print(qVals)
     # getting targetvals
     targetVals = target_net(sample[3])
+ #  print(targetVals)
     # if needed for targetVals 
-    targetVals = torch.gather(targetVals, dim = 2, index = actions)
+    # print("sample[2] shape: ")
+    # print(sample[2])
+    # print(sample[2].shape)
+    # print(torch.gather(targetVals, dim = 2, index = actions).shape)
+    targetVals = torch.gather(targetVals, dim = 2, index = actions) + sample[2].unsqueeze(dim = 1)
+
 
     optimizer.zero_grad()
-    loss = torch.nn.MSELoss()(qVals, targetVals+sample[2])
+    #print("qVals")
+    #print(qVals.shape) #currently torch.Size([100, 1, 4])
+    #print("targetVals")
+    #print(targetVals.shape) #currently torch.Size([100, 4, 4])
+    # reward + gamma * targetvalues
+    loss = torch.nn.MSELoss()(qVals, targetVals)
+   # print(loss)
     
     
     # gradient descent update 

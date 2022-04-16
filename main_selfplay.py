@@ -14,8 +14,8 @@ options = dict(
     render=True,
     player1='ai',
     player2='ai',
-    char1='peach',
-    char2='falcon',
+    char1='fox',
+    char2='fox',
     stage='battlefield',
 )
 if platform.system() == 'Windows':
@@ -27,6 +27,16 @@ obs = env.reset()
 atexit.register(env.close)
 
 r = 0
+
+if __name__ == "__main__":
+    env = GoHighEnvVec(args.num_workers, args.total_steps, options)
+    print("Action space " + str(env.action_space.n))
+    net = Actor(env.observation_space.n, env.action_space.n)
+    target_net = Actor(env.observation_space.n, env.action_space.n)
+    optimizer = optim.Adam(net.parameters(), lr=args.lr)
+
+    train(args, net, target_net, optimizer, env)
+    
 while True:
     action = tuple([random.randint(0, env.action_space.n - 1) for _ in range(2)])
     obs, reward, done, infos = env.step(action)
@@ -36,4 +46,5 @@ while True:
         r = 0
     if done:
         break
+
     

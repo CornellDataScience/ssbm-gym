@@ -42,7 +42,7 @@ class DolphinAPI(Default):
     self.pids = []
     self.players = {}
     # self.levels = {}
-    # self.characters = {}
+    # self.characters = {}s
     for i in range(2):
       j = i + 1
       player = getattr(self.dolphin, 'player%d' % j)
@@ -123,6 +123,9 @@ class DolphinAPI(Default):
       self.sm.handle(self.state, *message)
   
   def step(self, controllers):
+    # print(len(self.pads))
+    # print(len(self.pids))
+    # print(len(controllers))
     for pid, pad in zip(self.pids, self.pads):
       assert(self.players[pid] == 'ai')
       pad.send_controller(controllers[pid])

@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 
-# currently is from the a2c example, need to modify to fit DQN
 class Actor(nn.Module):
     def __init__(self, obs_dim, action_dim, hidden_dim = 256):
         super(Actor, self).__init__()
@@ -13,8 +12,7 @@ class Actor(nn.Module):
     def forward(self, x):
         x = self.fc(x)
         # x, val = self.value(x, return_features=True)
-
-        # return qvals here
+        #qVals
         qVal = self.policy(x)
         return qVal
 

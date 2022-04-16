@@ -46,10 +46,13 @@ class GoHighEnv(BaseEnv):
             if not isDying(self.prev_obs.players[self.pid]) and \
                isDying(self.obs.players[self.pid]):
                 r -= 1.0
+            if not isDying(self.prev_obs.players[opponent_pid]) and \
+               isDying(self.obs.players[opponent_pid]):
+                r += 1.0
             
             # We give a reward of -0.01 for every percent taken and +0.01 for damage dealt. 
             # The max() ensures that not reward is given when a character dies
-            r += -0.01 * max(0, self.obs.players[self.pid].percent - self.prev_obs.players[self.pid].percent) + 0.01 * self.obs.players[opponent_pid].percent
+            r += -0.01 * max(0, self.obs.players[self.pid].percent - self.prev_obs.players[self.pid].percent) + 0.01 * (self.obs.players[opponent_pid].percent - self.prev_obs.players[opponent_pid].percent)
 
         # r += self.obs.players[0].y / 50 / 60
         return r
@@ -67,31 +70,50 @@ class GoHighEnv(BaseEnv):
         return self.embed_obs(self.obs), reward, done, infos
 
 
+class SelfPlayEnv(GoHighEnv):
+    def __init__(self, **kwargs):
+        GoHighEnv.__init__(self, **kwargs)
+
+    def act(self, action):
+        return self.action_space.from_index(action)
+
+    def step(self, actions):
+        if self.obs is not None:
+            self.prev_obs = deepcopy(self.obs)
+
+        actions = [self.act(int(actions[pid])) for pid in [self.pid, 1-self.pid]]
+        obs = self.api.step(actions)
+        self.obs = obs
+        reward = self.compute_reward()
+        done = self.is_terminal()
+        infos = dict({'frame': self.obs.frame})
+
+        return self.embed_obs(obs), reward, done, infos
 
 class MinimalEmbedPlayer():
     def __init__(self):
         self.n = 4
 
     def __call__(self, player_state):
-        # percent = player_state.percent/100.0
-        # facing = player_state.facing
+        percent = player_state.percent/100.0
+        facing = player_state.facing
         x = player_state.x/10.0
         y = player_state.y/10.0
-        # invulnerable = 1.0 if player_state.invulnerable else 0
-        # hitlag_frames_left = player_state.hitlag_frames_left/10.0
-        # hitstun_frames_left = player_state.hitstun_frames_left/10.0
-        # shield_size = player_state.shield_size/100.0
-        # in_air = 1.0 if player_state.in_air else 0.0
+        invulnerable = 1.0 if player_state.invulnerable else 0
+        hitlag_frames_left = player_state.hitlag_frames_left/10.0
+        hitstun_frames_left = player_state.hitstun_frames_left/10.0
+        shield_size = player_state.shield_size/100.0
+        in_air = 1.0 if player_state.in_air else 0.0
 
         return [
-                # percent,
-                # facing,
+                percent,
+                facing,
                 x, y,
-                # invulnerable,
-                # hitlag_frames_left,
-                # hitstun_frames_left,
-                # shield_size,
-                # in_air
+                invulnerable,
+                hitlag_frames_left,
+                hitstun_frames_left,
+                shield_size,
+                in_air
             ]
 
 
