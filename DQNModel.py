@@ -13,7 +13,7 @@ class Actor(nn.Module):
             nn.ReLU(True),
             nn.Linear(hidden_dim, hidden_dim),
             nn.ReLU(True),
-            nn.Linear(hidden_dim, action_dim)
+            nn.Linear(hidden_dim, action_dim))
         
 
     def forward(self, x):
