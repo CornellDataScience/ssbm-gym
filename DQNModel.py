@@ -4,15 +4,19 @@ import torch.nn as nn
 class Actor(nn.Module):
     def __init__(self, obs_dim, action_dim, hidden_dim = 256):
         super(Actor, self).__init__()
-        self.fc = nn.Linear(obs_dim, hidden_dim)
         # self.value = ResNet(hidden_dim, 1, 2, output_dim=1)
-        self.policy = nn.Linear(hidden_dim, action_dim)
+        self.policy = nn.Sequential(nn.Linear(obs_dim, hidden_dim),
+            nn.ReLU(True),
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.ReLU(True),
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.ReLU(True),
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.ReLU(True),
+            nn.Linear(hidden_dim, action_dim)
         
 
     def forward(self, x):
-        x = self.fc(x)
-        # x, val = self.value(x, return_features=True)
-        #qVals
         qVal = self.policy(x)
         return qVal
 

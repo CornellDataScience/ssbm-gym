@@ -56,7 +56,7 @@ def train(params, net, target_net, optimizer, env):
             loss = update_network(params, net, target_net, optimizer, buffer)
             runsum += loss
 
-            if (total_steps+1)% 10000 == 0:
+            if (total_steps+1)% 100 == 0:
                 target_net.load_state_dict(net.state_dict())
             if (total_steps) % 10000 == 0:
             #   print(runsum / 10000) 
@@ -69,9 +69,9 @@ def train(params, net, target_net, optimizer, env):
             if total_steps > n_save:
                 _, _, to_print = gather_rollout(params, net, env, obs, epsilon, prnt=True)
                 df = df.append(to_print, ignore_index = True)
-                save_model(net, optimizer, "new_checkpoints5/" + str(total_steps) + ".ckpt")
+                save_model(net, optimizer, "new_checkpoints6/" + str(total_steps) + ".ckpt")
                 n_save += 250000
-                df.to_csv('new_checkpoints5/reward_'+str(n_save)+'.csv')
+                df.to_csv('new_checkpoints6/reward_'+str(n_save)+'.csv')
 
     env.close()
 

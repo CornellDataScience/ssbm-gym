@@ -1,5 +1,6 @@
 from ssbm_gym.ssbm_env import BaseEnv, isDying
 from copy import deepcopy
+from ssbm_gym import embed
 
 opponent_pid = 1
 
@@ -18,9 +19,11 @@ class GoHighEnv(BaseEnv):
     def __init__(self, **kwargs):
         BaseEnv.__init__(self, **kwargs)
         self._embed_obs = MinimalEmbedGame()
+        # self._embed_obs = embed.EmbedGame()
 
     @property
     def action_space(self):
+        """ [self.action_space] sets self._action_space to be MinimalActionSpace() from ssbm_gym.spaces then returns it """
         if self._action_space is not None:
             return self._action_space
         else:
@@ -30,6 +33,7 @@ class GoHighEnv(BaseEnv):
 
     @property
     def observation_space(self):
+        """ currently, observation calls MinimalEmbedGame() """
         if self._observation_space is not None:
             return self._observation_space
         else:
@@ -40,24 +44,26 @@ class GoHighEnv(BaseEnv):
         return self._embed_obs(obs)
 
     def compute_reward(self):
+        """ [env.compute_reward] """
         r = 0.0
         if self.prev_obs is not None:
-            # This is necessary because the character might be dying during multiple frames
+            # This is necesarry because the character might be dying during multiple frames
             if not isDying(self.prev_obs.players[self.pid]) and \
                isDying(self.obs.players[self.pid]):
                 r -= 1.0
+            
             if not isDying(self.prev_obs.players[opponent_pid]) and \
                isDying(self.obs.players[opponent_pid]):
                 r += 1.0
-            
-            # We give a reward of -0.01 for every percent taken and +0.01 for damage dealt. 
-            # The max() ensures that not reward is given when a character dies
+
+        #     # We give a reward of -0.01 for every percent taken. The max() ensures that not reward is given when a character dies
             r += -0.01 * max(0, self.obs.players[self.pid].percent - self.prev_obs.players[self.pid].percent) + 0.01 * (self.obs.players[opponent_pid].percent - self.prev_obs.players[opponent_pid].percent)
 
         # r += self.obs.players[0].y / 50 / 60
         return r
 
     def step(self, action):
+        """ [step action] performs [action] then returns the embedded observation, reward, whether_is_terminal, and a dict of frames """
         if self.obs is not None:
             self.prev_obs = deepcopy(self.obs)
         
@@ -70,29 +76,10 @@ class GoHighEnv(BaseEnv):
         return self.embed_obs(self.obs), reward, done, infos
 
 
-class SelfPlayEnv(GoHighEnv):
-    def __init__(self, **kwargs):
-        GoHighEnv.__init__(self, **kwargs)
-
-    def act(self, action):
-        return self.action_space.from_index(action)
-
-    def step(self, actions):
-        if self.obs is not None:
-            self.prev_obs = deepcopy(self.obs)
-
-        actions = [self.act(int(actions[pid])) for pid in [self.pid, 1-self.pid]]
-        obs = self.api.step(actions)
-        self.obs = obs
-        reward = self.compute_reward()
-        done = self.is_terminal()
-        infos = dict({'frame': self.obs.frame})
-
-        return self.embed_obs(obs), reward, done, infos
 
 class MinimalEmbedPlayer():
     def __init__(self):
-        self.n = 4
+        self.n = 18
 
     def __call__(self, player_state):
         percent = player_state.percent/100.0
@@ -126,7 +113,7 @@ class MinimalEmbedGame():
         player0 = self.embed_player(game_state.players[0])
         player1 = self.embed_player(game_state.players[1])
 
-        return player0  + player1  # concatenates lists
+        return player0 + player1  # concatenates lists
 
 
 import multiprocessing
@@ -200,7 +187,7 @@ class SubprocVecEnv():
             process.start()
             self.processes.append(process)
             work_remote.close()
-        
+
         self.remotes[0].send(('get_spaces', None))
         self.observation_space, self.action_space = self.remotes[0].recv()
 
