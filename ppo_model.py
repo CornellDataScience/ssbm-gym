@@ -17,7 +17,6 @@ class Actor(nn.Module):
             nn.Linear(hidden_dim, hidden_dim),
             nn.ReLU(True),
             nn.Linear(hidden_dim, action_dim))
-        # self.policy = nn.Linear(hidden_dim, action_dim)
 
     def forward(self, x):
         """ given obs, returns action_probability, estimated_value. Actions are from x |> embedding |> value_network |> policy_network. Estimated_value from x |> embedding |> value_network. """
