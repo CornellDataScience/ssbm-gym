@@ -109,6 +109,5 @@ dolphin-exe/*
 ISOs/*
 !*/.gitkeep
 
-# logs
-checkpoints/*
-
+# Training data
+/checkpoints
