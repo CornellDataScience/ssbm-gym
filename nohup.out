@@ -19,3 +19,12 @@ Traceback (most recent call last):
   File "/home/smash_ai/anaconda3/envs/smash/lib/python3.7/site-packages/torch/nn/functional.py", line 1847, in linear
     return torch._C._nn.linear(input, weight, bias)
 RuntimeError: mat1 and mat2 shapes cannot be multiplied (4x18 and 4x256)
+/home/smash_ai/DQN/train.py:35: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  actions = torch.tensor(actions)
+/home/smash_ai/DQN/train.py:84: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  obs = torch.tensor(obs)
+/home/smash_ai/DQN/train.py:33: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  obs = torch.tensor(obs)
+Action space 9
+Resetting envs
+Envs resetted

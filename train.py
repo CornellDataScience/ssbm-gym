@@ -69,9 +69,9 @@ def train(params, net, target_net, optimizer, env):
             if total_steps > n_save:
                 _, _, to_print = gather_rollout(params, net, env, obs, epsilon, prnt=True)
                 df = df.append(to_print, ignore_index = True)
-                save_model(net, optimizer, "new_checkpoints6/" + str(total_steps) + ".ckpt")
+                save_model(net, optimizer, "new_checkpoints7/" + str(total_steps) + ".ckpt")
                 n_save += 250000
-                df.to_csv('new_checkpoints6/reward_'+str(n_save)+'.csv')
+                df.to_csv('new_checkpoints7/reward_'+str(n_save)+'.csv')
 
     env.close()
 
