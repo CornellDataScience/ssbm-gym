@@ -28,7 +28,7 @@ options = dict(
     player2='cpu',
     char1='fox',
     char2='fox',
-    cpu2=9,
+    cpu2=3,
     stage='final_destination',
 )
 
