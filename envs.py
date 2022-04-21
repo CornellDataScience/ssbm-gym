@@ -59,13 +59,8 @@ class GoHighEnv(BaseEnv):
                # If the opponent dies...
                 r += 1.0
 
-<<<<<<< HEAD
-        # We give a reward of -0.01 for every percent taken. The max() ensures that not reward is given when a character dies
-            r += -0.01 * max(0, self.obs.players[self.pid].percent - self.prev_obs.players[self.pid].percent) + 0.01 * max (0, self.obs.players[opponent_pid].percent - self.prev_obs.players[opponent_pid].percent)
-=======
         #     # We give a reward of -0.01 for every percent taken. The max() ensures that not reward is given when a character dies
             r += -0.01 * max(0, self.obs.players[self.pid].percent - self.prev_obs.players[self.pid].percent) + 0.01 * max(0, self.obs.players[opponent_pid].percent - self.prev_obs.players[opponent_pid].percent)
->>>>>>> f6e05eebbd1107d915fb38920e8b850d6bd00950
 
         # r += self.obs.players[0].y / 50 / 60
         return r
