@@ -14,7 +14,7 @@ def oneHot(x, n):
 class EmbedPlayer():
     def __init__(self, flat=True):
         # Johann and Kaitlyn hardcoded this according to the data stored in __call__
-        self.n = 9
+        self.n = 11
         self.flat = flat
 
     def __repr__(self):
@@ -40,6 +40,8 @@ class EmbedPlayer():
         facing = player_state.facing
         x = player_state.x/10.0
         y = player_state.y/10.0
+        action_state = oneHot(player_state.action_state, numActions)
+        action_frame = player_state.action_frame/50.0
         invulnerable = 1.0 if player_state.invulnerable else 0
         hitlag_frames_left = player_state.hitlag_frames_left/10.0
         hitstun_frames_left = player_state.hitstun_frames_left/10.0
@@ -50,6 +52,8 @@ class EmbedPlayer():
                 percent,
                 facing,
                 x, y,
+                action_state,
+                action_frame,
                 invulnerable,
                 hitlag_frames_left,
                 hitstun_frames_left,
