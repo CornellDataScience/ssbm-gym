@@ -5,7 +5,11 @@ import torch.optim as optim
 from ppo_model import Actor
 from envs import GoHighEnvVec
 from ssbm_gym.ssbm_env import EnvVec, SSBMEnv
+<<<<<<< HEAD
 from train import train, pretrain
+=======
+from train import train
+>>>>>>> a105928f2d97bec97cb4264a608e95c9fced1880
 
 parser = argparse.ArgumentParser(description='A2C (Advantage Actor-Critic)')
 parser.add_argument('--no-cuda', action='store_true', help='use to disable available CUDA')
@@ -35,7 +39,11 @@ options = dict(
 
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     pretrain_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
+=======
+    env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
+>>>>>>> a105928f2d97bec97cb4264a608e95c9fced1880
 
     net = Actor(pretrain_env.observation_space.n, pretrain_env.action_space.n)
     optimizer = optim.Adam(net.parameters(), lr=args.lr)
