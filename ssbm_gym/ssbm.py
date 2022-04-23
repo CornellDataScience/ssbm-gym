@@ -269,6 +269,9 @@ custom_controllers = itertools.chain(
 custom_controllers = [SimpleController.init(*args) for args in custom_controllers]
 custom_controllers.append(repeat_controller)
 
+grab = SimpleController.init(button=SimpleButton.Z)
+jb = SimpleController.init(button=SimpleButton.A)
+
 # allows fox, sheik, samus, etc to short hop with act_every=3
 short_hop = SimpleController.init(button=SimpleButton.Y, duration=2)
 short_hop_chain = [short_hop, SimpleController.neutral]
@@ -281,37 +284,15 @@ sh2_chain = [
   SimpleController.init(button=SimpleButton.Y),
 ]
 
-#general purpose wavedashing
-wd_left_long = [
-  SimpleController.init(button=SimpleButton.Y, duration=3),
-  SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-7/8 * math.pi))
-]
-wd_right_long = [
-  SimpleController.init(button=SimpleButton.Y, duration=3),
-  SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-1/8 * math.pi))
-]
-wd_left_med = [
-  SimpleController.init(button=SimpleButton.Y, duration=3),
-  SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-3/4 * math.pi))
-]
-wd_right_med = [
-  SimpleController.init(button=SimpleButton.Y, duration=3),
-  SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-1/4 * math.pi))
-]
-wd_left_med = [
-  SimpleController.init(button=SimpleButton.Y, duration=3),
-  SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-3/4 * math.pi))
-]
-wd_right_med = [
-  SimpleController.init(button=SimpleButton.Y, duration=3),
-  SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-1/4 * math.pi))
-]
-
 # wd_left_long = SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-7/8 * math.pi))
 # wd_right_long = SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-1/8 * math.pi))
 # wd_left_short = SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-7/8 * math.pi))
 # wd_right_short = SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-1/8 * math.pi))
-wd_both = [wd_left_long, wd_right_long, wd_left_short, wd_right_short, wd_left_short, wd_right_short], 
+#general purpose wavedashing
+wd_all = [[
+  SimpleController.init(button=SimpleButton.Y, duration=3),
+  SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-i/16 * math.pi))
+] for i in range(1,16) if i != 4] 
 
 #full hop aerials
 
@@ -324,14 +305,15 @@ actionTypes = dict(
   # short_hop = ActionSet(custom_controllers + [short_hop]),
   # custom_sh_jc = ActionSet(custom_controllers + [short_hop_chain, jc_chain]),
   # fox_wd_test = ActionSet([SimpleController.neutral] * 10 + [fox_wd_chain_left]),
-  custom_sh2_wd = ActionSet(custom_controllers + [sh2_chain] + wd_both),
-  wd_attack = ActionSet(wd_both, custom_controllers),
+  custom_sh2_wd = ActionSet(custom_controllers + [sh2_chain] + wd_all),
+  wd_attack = ActionSet(wd_all, custom_controllers),
+  wd_grab = ActionSet(wd_all + [grab]),
   sh_aerials = ActionSet([short_hop] + custom_controllers), #short hop aerials
   sh_aerials = ActionSet([full_hop] + custom_controllers), #full hop aerials
-  throws = ActionSet([SimpleButton.Z] + cardinal_controllers),
-  throws_pummel_1 = ActionSet([SimpleButton.Z] + [SimpleButton.A] + cardinal_controllers),
-  throws_pummel_2 = ActionSet([SimpleButton.Z] + [SimpleButton.A] * 2 + cardinal_controllers),
-  throws_pummel_3 = ActionSet([SimpleButton.Z] + [SimpleButton.A] * 2 + cardinal_controllers),
+  throws = ActionSet([grab] + cardinal_controllers),
+  throws_pummel_1 = ActionSet([grab] + [jb] + cardinal_controllers),
+  throws_pummel_2 = ActionSet([grab] + [jb] * 2 + cardinal_controllers),
+  throws_pummel_3 = ActionSet([grab] + [jb] * 3 + cardinal_controllers),
 )
 
 @pretty_struct
