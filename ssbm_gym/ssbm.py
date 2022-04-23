@@ -273,23 +273,33 @@ custom_controllers.append(repeat_controller)
 short_hop = SimpleController.init(button=SimpleButton.Y, duration=2)
 short_hop_chain = [short_hop, SimpleController.neutral]
 
-# this is technically no longer needed because of sh2
-jc_chain = [SimpleController.init(button=SimpleButton.Y, duration=1), SimpleController.init(button=SimpleButton.Z)]
-
 # better sh that also allows jc grab and upsmash at act_every 3
 sh2_chain = [
   SimpleController.init(duration=2),
   SimpleController.init(button=SimpleButton.Y),
 ]
 
-fox_wd_chain_left = [
+#general purpose wavedashing
+wd_chain_left_long = [
   SimpleController.init(button=SimpleButton.Y, duration=3),
   SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-7/8 * math.pi))
 ]
+wd_chain_right_long = [
+  SimpleController.init(button=SimpleButton.Y, duration=3),
+  SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-1/8 * math.pi))
+]
+wd_chain_left_short = [
+  SimpleController.init(button=SimpleButton.Y, duration=3),
+  SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-3/4 * math.pi))
+]
+wd_chain_right_short = [
+  SimpleController.init(button=SimpleButton.Y, duration=3),
+  SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-1/4 * math.pi))
+]
 
-wd_left = SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-7/8 * math.pi))
-wd_right = SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-1/8 * math.pi))
-wd_both = [wd_left, wd_right]
+# wd_left_long = SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-7/8 * math.pi))
+# wd_right_long = SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-1/8 * math.pi))
+# wd_both = [wd_left_long, wd_right_long]
 
 actionTypes = dict(
   old = ActionSet(old_controllers),
