@@ -110,4 +110,4 @@ ISOs/*
 !*/.gitkeep
 
 # Training data
-/checkpoints
+checkpoints/*
