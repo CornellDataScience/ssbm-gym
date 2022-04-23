@@ -36,6 +36,7 @@ options = dict(
 if __name__ == "__main__":
     #env =  GoHighEnvVec(args.num_workers, args.total_steps, options)
     env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
+    print("Observation space " + str(env.observation_space.n))
     print("Action space " + str(env.action_space.n))
     net = Actor(env.observation_space.n, env.action_space.n)
     target_net = Actor(env.observation_space.n, env.action_space.n)
