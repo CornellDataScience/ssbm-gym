@@ -61,7 +61,12 @@ class GoHighEnv(BaseEnv):
 
         #     # We give a reward of -0.01 for every percent taken. The max() ensures that not reward is given when a character dies
             r += -0.01 * max(0, self.obs.players[self.pid].percent - self.prev_obs.players[self.pid].percent) + 0.01 * max(0, self.obs.players[opponent_pid].percent - self.prev_obs.players[opponent_pid].percent)
-            print(r)
+            #print(r)
+            # print(self.obs.players[self.pid].percent)
+            # print(self.prev_obs.players[self.pid].percent)
+            # print(self.obs.players[opponent_pid].percent)
+            # print(self.prev_obs.players[opponent_pid].percent)
+            # print(r)
         # r += self.obs.players[0].y / 50 / 60
         return r
 
@@ -75,7 +80,12 @@ class GoHighEnv(BaseEnv):
         reward = self.compute_reward()
         done = self.is_terminal()
         infos = dict({'frame': self.obs.frame})
-
+        # print("hi")
+        # print(self.obs.players[self.pid].percent)
+        # print(self.prev_obs.players[self.pid].percent)
+        # print(self.obs.players[opponent_pid].percent)
+        # print(self.prev_obs.players[opponent_pid].percent)
+        # print(reward)
         return self.embed_obs(self.obs), reward, done, infos
 
 
