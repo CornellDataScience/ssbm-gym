@@ -16,8 +16,8 @@ def pretrain(params, net, optimizer, env):
     start_time = time.time()
     latest_ckpt = 0
 
-    # while total_steps < 10,000,000: (hardcoded pretrain amount)
-    while total_steps < 10000000:
+    # while total_steps < 100,000,000: (hardcoded pretrain amount)
+    while total_steps < 100000000:
         print("Total steps:", total_steps)
 
         # Gathering rollouts: for 600 steps, run the network in the environment without updating network

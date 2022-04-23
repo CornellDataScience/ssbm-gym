@@ -4,12 +4,8 @@ import torch.optim as optim
 
 from a2c_model import Actor
 from envs import GoHighEnvVec
-<<<<<<< HEAD
-from train import train, pretrain
-=======
 from ssbm_gym.ssbm_env import EnvVec, SSBMEnv
 from train import train
->>>>>>> a436fa5a76ae6441c88dbe8da993fb923de2223e
 
 parser = argparse.ArgumentParser(description='A2C (Advantage Actor-Critic)')
 parser.add_argument('--no-cuda', action='store_true', help='use to disable available CUDA')
@@ -38,11 +34,7 @@ options = dict(
 
 
 if __name__ == "__main__":
-<<<<<<< HEAD
-    pretrain_env = GoHighEnvVec(args.num_workers, args.total_steps, options)
-=======
-    env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
->>>>>>> a436fa5a76ae6441c88dbe8da993fb923de2223e
+    pretrain_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
 
     net = Actor(pretrain_env.observation_space.n, pretrain_env.action_space.n)
     optimizer = optim.Adam(net.parameters(), lr=args.lr)
@@ -50,6 +42,6 @@ if __name__ == "__main__":
     n_steps = pretrain(args, net, optimizer, pretrain_env)
 
     options['player2'] = 'cpu'
-    training_env = GoHighEnvVec(args.num_workers, args.total_steps, options)
+    training_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
 
     train(args, net, optimizer, training_env, n_steps)
