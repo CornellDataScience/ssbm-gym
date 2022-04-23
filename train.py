@@ -1,16 +1,61 @@
 import torch
 import torch.nn as nn
+from torch import optim
 from torch.distributions import Categorical
 from statistics import mean, stdev
 import time
 import pandas as pd
 import numpy as np
+from ppo_model import Actor
 
-def train(params, net, optimizer, env):
+def pretrain(params, net, optimizer, env):
     df = pd.DataFrame(columns = ["time", "reward_mean", "reward_std"])
     obs = env.reset()
     total_steps = 0
-    n_save = 50000
+    n_save = 250000
+    start_time = time.time()
+    latest_ckpt = 0
+
+    # while total_steps < 10,000,000: (hardcoded pretrain amount)
+    while total_steps < 10000000:
+        print("Total steps:", total_steps)
+
+        # Gathering rollouts: for 600 steps, run the network in the environment without updating network
+        steps, obs, _ = gather_rollout(params, net, env, obs)
+        total_steps += params.num_workers * len(steps)
+        final_obs = torch.tensor(obs)
+        _, final_values = net(final_obs)
+
+        # Append final values to steps without explicitly updating the resulting rewards, actions, logps
+        steps.append((None, None, None, final_values))
+        
+        # Processing rollouts, get advantages
+        actions, logps, values, returns, advantages = process_rollout(params, steps)
+
+        # Update network with process rollout results 
+        # gradient ascent on advantage * policy gradient
+        update_network(params, net, optimizer, actions, logps, values, returns, advantages)
+
+        if total_steps > n_save:
+            _, _, to_print = gather_rollout(params, net, env, obs, prnt=True)
+            to_print["time"] = to_print["time"] - start_time
+            df = df.append(to_print, ignore_index = True)
+            save_model(net, optimizer, "checkpoints/" + str(total_steps) + ".ckpt")
+            latest_ckpt = total_steps
+            n_save += 250000
+            df.to_csv('checkpoints/reward_'+str(n_save)+'.csv')
+
+    env.close()
+    
+    print("Pretraining Done")
+
+    return latest_ckpt
+
+def train(params, net, optimizer, env, n_steps):
+    df = pd.DataFrame(columns = ["time", "reward_mean", "reward_std"])
+    obs = env.reset()
+    total_steps = n_steps
+    n_save = 250000
     start_time = time.time()
 
     # while total_steps < params.total_steps:
@@ -121,6 +166,15 @@ def update_network(params, net, optimizer, actions, logps, values, returns, adva
 
 def save_model(net, optimizer, PATH):
     torch.save({
-            'model': net,
-            'optimizer': optimizer,
+            'model_state_dict': net.state_dict(),
+            'optimizer_state_dict': optimizer.state_dict(),
             }, PATH)
+
+def load_model(PATH, net_arg_1, net_arg_2, optim_lr):
+    model = Actor(net_arg_1, net_arg_2)
+    opt = optim.Adam(model.parameters(), optim_lr)
+
+    ckpt = torch.load(PATH)
+    model.load_state_dict(ckpt['model_state_dict'])
+    opt.load_state_dict(ckpt['optimizer_state_dict'])
+    return model, opt
