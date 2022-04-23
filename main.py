@@ -4,6 +4,7 @@ import torch.optim as optim
 
 from ppo_model import Actor
 from envs import GoHighEnvVec
+from ssbm_gym.ssbm_env import EnvVec, SSBMEnv
 from train import train, pretrain
 
 parser = argparse.ArgumentParser(description='A2C (Advantage Actor-Critic)')
@@ -25,7 +26,7 @@ args = parser.parse_args()
 options = dict(
     render=False,
     player1='ai',
-    player2='cpu',
+    player2='human',
     char1='fox',
     char2='fox',
     cpu2=3,
@@ -34,7 +35,7 @@ options = dict(
 
 
 if __name__ == "__main__":
-    pretrain_env = GoHighEnvVec(args.num_workers, args.total_steps, options)
+    pretrain_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
 
     net = Actor(pretrain_env.observation_space.n, pretrain_env.action_space.n)
     optimizer = optim.Adam(net.parameters(), lr=args.lr)
@@ -42,6 +43,6 @@ if __name__ == "__main__":
     n_steps = pretrain(args, net, optimizer, pretrain_env)
 
     options['player2'] = 'cpu'
-    training_env = GoHighEnvVec(args.num_workers, args.total_steps, options)
+    train_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
 
-    train(args, net, optimizer, training_env, n_steps)
+    train(args, net, optimizer, train_env, n_steps)

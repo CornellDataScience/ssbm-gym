@@ -1,23 +1,21 @@
 import torch
 import torch.nn as nn
-from torch import optim
 from torch.distributions import Categorical
 from statistics import mean, stdev
 import time
 import pandas as pd
 import numpy as np
-from ppo_model import Actor
 
 def pretrain(params, net, optimizer, env):
     df = pd.DataFrame(columns = ["time", "reward_mean", "reward_std"])
     obs = env.reset()
     total_steps = 0
-    n_save = 250000
+    n_save = 0
     start_time = time.time()
     latest_ckpt = 0
 
-    # while total_steps < 10,000,000: (hardcoded pretrain amount)
-    while total_steps < 10000000:
+    # while total_steps < params.total_steps:
+    while total_steps < 100000000:
         print("Total steps:", total_steps)
 
         # Gathering rollouts: for 600 steps, run the network in the environment without updating network
@@ -26,11 +24,15 @@ def pretrain(params, net, optimizer, env):
         final_obs = torch.tensor(obs)
         _, final_values = net(final_obs)
 
+        print("rollout gathered")
+
         # Append final values to steps without explicitly updating the resulting rewards, actions, logps
         steps.append((None, None, None, final_values))
         
         # Processing rollouts, get advantages
         actions, logps, values, returns, advantages = process_rollout(params, steps)
+
+        print("rollout processed")
 
         # Update network with process rollout results 
         # gradient ascent on advantage * policy gradient
@@ -39,15 +41,16 @@ def pretrain(params, net, optimizer, env):
         if total_steps > n_save:
             _, _, to_print = gather_rollout(params, net, env, obs, prnt=True)
             to_print["time"] = to_print["time"] - start_time
+            print(to_print)
             df = df.append(to_print, ignore_index = True)
             save_model(net, optimizer, "checkpoints/" + str(total_steps) + ".ckpt")
             latest_ckpt = total_steps
             n_save += 250000
             df.to_csv('checkpoints/reward_'+str(n_save)+'.csv')
 
+    print("pretrain complete")
+
     env.close()
-    
-    print("Pretraining Done")
 
     return latest_ckpt
 
@@ -88,7 +91,6 @@ def train(params, net, optimizer, env, n_steps):
             df.to_csv('checkpoints/reward_'+str(n_save)+'.csv')
 
     env.close()
-
 
 def gather_rollout(params, net, env, obs, prnt = False):
     """ Obs |> net -> action, values. Action |> env.step -> (reward, taken action (sampled from action_probs), action_probs, values ), obs"""

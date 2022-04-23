@@ -7,15 +7,19 @@ class Actor(nn.Module):
         """initializes embedding, value network (ResNet, state -> value), and policy network (state -> action) """
         super(Actor, self).__init__()
         self.fc = nn.Linear(obs_dim * 2, hidden_dim)
-        self.value = ResNet(hidden_dim, 1, 2, output_dim=1)
+        self.value = ResNet(hidden_dim, 256, 5, output_dim=1)
         self.policy = nn.Sequential(nn.Linear(hidden_dim, hidden_dim),
             nn.ReLU(True),
+            nn.Dropout(0.2),
             nn.Linear(hidden_dim, hidden_dim),
             nn.ReLU(True),
+            nn.Dropout(0.2),
             nn.Linear(hidden_dim, hidden_dim),
             nn.ReLU(True),
+            nn.Dropout(0.2),
             nn.Linear(hidden_dim, hidden_dim),
             nn.ReLU(True),
+            nn.Dropout(0.2),
             nn.Linear(hidden_dim, action_dim))
 
     def forward(self, x):
