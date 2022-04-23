@@ -4,6 +4,7 @@ import torch.optim as optim
 
 from DQNModel import Actor
 from envs import GoHighEnvVec
+from ssbm_gym.ssbm_env import EnvVec, SSBMEnv
 from train import train
 
 parser = argparse.ArgumentParser(description='DQN')
@@ -33,7 +34,8 @@ options = dict(
 
 
 if __name__ == "__main__":
-    env =  GoHighEnvVec(args.num_workers, args.total_steps, options)
+    #env =  GoHighEnvVec(args.num_workers, args.total_steps, options)
+    env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
     print("Action space " + str(env.action_space.n))
     net = Actor(env.observation_space.n, env.action_space.n)
     target_net = Actor(env.observation_space.n, env.action_space.n)
