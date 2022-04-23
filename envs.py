@@ -50,10 +50,13 @@ class GoHighEnv(BaseEnv):
             # This is necesarry because the character might be dying during multiple frames
             if not isDying(self.prev_obs.players[self.pid]) and \
                isDying(self.obs.players[self.pid]):
+               # If I die...
+
                 r -= 1.0
             
             if not isDying(self.prev_obs.players[opponent_pid]) and \
                isDying(self.obs.players[opponent_pid]):
+               # If the opponent dies...
                 r += 1.0
 
         #     # We give a reward of -0.01 for every percent taken. The max() ensures that not reward is given when a character dies
