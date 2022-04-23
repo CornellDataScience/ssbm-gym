@@ -4,7 +4,7 @@ import torch.optim as optim
 
 from a2c_model import Actor
 from envs import GoHighEnvVec
-from train import train
+from train import train, pretrain
 
 parser = argparse.ArgumentParser(description='A2C (Advantage Actor-Critic)')
 parser.add_argument('--no-cuda', action='store_true', help='use to disable available CUDA')
@@ -24,7 +24,7 @@ args = parser.parse_args()
 options = dict(
     render=False,
     player1='ai',
-    player2='cpu',
+    player2='human',
     char1='fox',
     char2='fox',
     cpu2=3,
@@ -33,9 +33,14 @@ options = dict(
 
 
 if __name__ == "__main__":
-    env = GoHighEnvVec(args.num_workers, args.total_steps, options)
+    pretrain_env = GoHighEnvVec(args.num_workers, args.total_steps, options)
 
-    net = Actor(env.observation_space.n, env.action_space.n)
+    net = Actor(pretrain_env.observation_space.n, pretrain_env.action_space.n)
     optimizer = optim.Adam(net.parameters(), lr=args.lr)
 
-    train(args, net, optimizer, env)
+    n_steps = pretrain(args, net, optimizer, pretrain_env)
+
+    options['player2'] = 'cpu'
+    training_env = GoHighEnvVec(args.num_workers, args.total_steps, options)
+
+    train(args, net, optimizer, training_env, n_steps)
