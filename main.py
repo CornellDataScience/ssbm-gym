@@ -4,6 +4,7 @@ import torch.optim as optim
 
 from ppo_model import Actor
 from envs import GoHighEnvVec
+from ssbm_gym.ssbm_env import EnvVec, SSBMEnv
 from train import train
 
 parser = argparse.ArgumentParser(description='A2C (Advantage Actor-Critic)')
@@ -34,7 +35,7 @@ options = dict(
 
 
 if __name__ == "__main__":
-    env = GoHighEnvVec(args.num_workers, args.total_steps, options)
+    env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
 
     net = Actor(env.observation_space.n, env.action_space.n)
     optimizer = optim.Adam(net.parameters(), lr=args.lr)
