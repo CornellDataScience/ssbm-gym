@@ -261,10 +261,10 @@ cardinal_controllers = [SimpleController.init(*args) for args in itertools.produ
 tilt_sticks = [(0.4, 0.5), (0.6, 0.5), (0.5, 0.4), (0.5, 0.6)]
 
 custom_controllers = itertools.chain(
-  itertools.product([SimpleButton.A, SimpleButton.B], cardinal_sticks),
-  itertools.product([SimpleButton.A], tilt_sticks),
-  itertools.product([SimpleButton.NONE, SimpleButton.L], diagonal_sticks),
-  itertools.product([SimpleButton.Z, SimpleButton.Y], [neutral_stick]),
+  itertools.product([SimpleButton.A, SimpleButton.B], cardinal_sticks), #smashes and specials
+  itertools.product([SimpleButton.A], tilt_sticks), #tilts
+  itertools.product([SimpleButton.NONE, SimpleButton.L], diagonal_sticks), #shield
+  itertools.product([SimpleButton.Z, SimpleButton.Y], [neutral_stick]), #zair
 )
 custom_controllers = [SimpleController.init(*args) for args in custom_controllers]
 custom_controllers.append(repeat_controller)
@@ -273,6 +273,8 @@ custom_controllers.append(repeat_controller)
 short_hop = SimpleController.init(button=SimpleButton.Y, duration=2)
 short_hop_chain = [short_hop, SimpleController.neutral]
 
+full_hop = SimpleController.init(button=SimpleButton.Y, duration=4)
+
 # better sh that also allows jc grab and upsmash at act_every 3
 sh2_chain = [
   SimpleController.init(duration=2),
@@ -280,37 +282,56 @@ sh2_chain = [
 ]
 
 #general purpose wavedashing
-wd_chain_left_long = [
+wd_left_long = [
   SimpleController.init(button=SimpleButton.Y, duration=3),
   SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-7/8 * math.pi))
 ]
-wd_chain_right_long = [
+wd_right_long = [
   SimpleController.init(button=SimpleButton.Y, duration=3),
   SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-1/8 * math.pi))
 ]
-wd_chain_left_short = [
+wd_left_med = [
   SimpleController.init(button=SimpleButton.Y, duration=3),
   SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-3/4 * math.pi))
 ]
-wd_chain_right_short = [
+wd_right_med = [
+  SimpleController.init(button=SimpleButton.Y, duration=3),
+  SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-1/4 * math.pi))
+]
+wd_left_med = [
+  SimpleController.init(button=SimpleButton.Y, duration=3),
+  SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-3/4 * math.pi))
+]
+wd_right_med = [
   SimpleController.init(button=SimpleButton.Y, duration=3),
   SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-1/4 * math.pi))
 ]
 
 # wd_left_long = SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-7/8 * math.pi))
 # wd_right_long = SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-1/8 * math.pi))
-# wd_both = [wd_left_long, wd_right_long]
+# wd_left_short = SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-7/8 * math.pi))
+# wd_right_short = SimpleController.init(button=SimpleButton.L, stick=Stick.polar(-1/8 * math.pi))
+wd_both = [wd_left_long, wd_right_long, wd_left_short, wd_right_short, wd_left_short, wd_right_short], 
+
+#full hop aerials
 
 actionTypes = dict(
   old = ActionSet(old_controllers),
   cardinal = ActionSet(cardinal_controllers),
   diagonal = ActionSet(diagonal_controllers),
   custom = ActionSet(custom_controllers),
-  short_hop_test = ActionSet([SimpleController.neutral] * 10 + [short_hop_chain]),
+  # short_hop_test = ActionSet([SimpleController.neutral] * 10 + [short_hop_chain]),
   # short_hop = ActionSet(custom_controllers + [short_hop]),
-  custom_sh_jc = ActionSet(custom_controllers + [short_hop_chain, jc_chain]),
-  fox_wd_test = ActionSet([SimpleController.neutral] * 10 + [fox_wd_chain_left]),
+  # custom_sh_jc = ActionSet(custom_controllers + [short_hop_chain, jc_chain]),
+  # fox_wd_test = ActionSet([SimpleController.neutral] * 10 + [fox_wd_chain_left]),
   custom_sh2_wd = ActionSet(custom_controllers + [sh2_chain] + wd_both),
+  wd_attack = ActionSet(wd_both, custom_controllers),
+  sh_aerials = ActionSet([short_hop] + custom_controllers), #short hop aerials
+  sh_aerials = ActionSet([full_hop] + custom_controllers), #full hop aerials
+  throws = ActionSet([SimpleButton.Z] + cardinal_controllers),
+  throws_pummel_1 = ActionSet([SimpleButton.Z] + [SimpleButton.A] + cardinal_controllers),
+  throws_pummel_2 = ActionSet([SimpleButton.Z] + [SimpleButton.A] * 2 + cardinal_controllers),
+  throws_pummel_3 = ActionSet([SimpleButton.Z] + [SimpleButton.A] * 2 + cardinal_controllers),
 )
 
 @pretty_struct
