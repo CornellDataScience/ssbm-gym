@@ -6,7 +6,7 @@ from DQNModel import Actor
 from envs import GoHighEnvVec
 from train import train
 
-parser = argparse.ArgumentParser(description='A2C (Advantage Actor-Critic)')
+parser = argparse.ArgumentParser(description='DQN')
 parser.add_argument('--no-cuda', action='store_true', help='use to disable available CUDA')
 parser.add_argument('--num-workers', type=int, default=4, help='number of parallel workers')
 parser.add_argument('--rollout-steps', type=int, default=600, help='steps per rollout')
@@ -33,10 +33,9 @@ options = dict(
 
 
 if __name__ == "__main__":
-    env = GoHighEnvVec(args.num_workers, args.total_steps, options)
+    env =  GoHighEnvVec(args.num_workers, args.total_steps, options)
     print("Action space " + str(env.action_space.n))
     net = Actor(env.observation_space.n, env.action_space.n)
     target_net = Actor(env.observation_space.n, env.action_space.n)
     optimizer = optim.Adam(net.parameters(), lr=args.lr)
-
     train(args, net, target_net, optimizer, env)

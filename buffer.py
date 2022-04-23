@@ -37,7 +37,6 @@ class ReplayBuffer(object):
         sampled = zip(*sampling)
         t_sampled = Transition(*sampled)
         
-    
         states = torch.stack(t_sampled[0])
         actions = torch.stack(t_sampled[1])
         rewards = torch.stack(t_sampled[2])

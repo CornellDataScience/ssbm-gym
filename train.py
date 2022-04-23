@@ -22,17 +22,20 @@ def train(params, net, target_net, optimizer, env):
     n_save = 50000
     epsilon = 0.99
     runsum = 0
-    while total_steps < params.total_steps:
+    while True:
         # print("Total steps:", total_steps)
         # print("Gathering rollouts")
         steps, new_obs, _ = gather_rollout(params, net, env, obs, epsilon)
         rewards, actions, logps = steps[0]
+        print(rewards)
         #print("after")
         #print(rewards.shape)
         # rewards = torch.tensor([rewards])
+        # obs.clone().detach().requires_grad_(True)
         obs = torch.tensor(obs)
         #obs = obs.clone().detach()
         actions = torch.tensor(actions)
+        #actions.clone().detach().requires_grad_(True)
         # print(actions.shape)
         #actions = actions.clone().detach()
         # sourceTensor.clone().detach()
@@ -62,16 +65,16 @@ def train(params, net, target_net, optimizer, env):
             #   print(runsum / 10000) 
 
                 runsum = 0
-            if (total_steps % 10000 == 0 and epsilon > 0.01):
-                epsilon -= .01
+            # (total_steps % 10000 == 0 and epsilon > 0.01):
+               # epsilon -= .01
 
             # reward + predicted for next step * gamma 
             if total_steps > n_save:
                 _, _, to_print = gather_rollout(params, net, env, obs, epsilon, prnt=True)
                 df = df.append(to_print, ignore_index = True)
-                save_model(net, optimizer, "new_checkpoints7/" + str(total_steps) + ".ckpt")
+                save_model(net, optimizer, "new_checkpoints8/" + str(total_steps) + ".ckpt")
                 n_save += 250000
-                df.to_csv('new_checkpoints7/reward_'+str(n_save)+'.csv')
+                df.to_csv('new_checkpoints8/reward_'+str(n_save)+'.csv')
 
     env.close()
 
@@ -80,8 +83,9 @@ def gather_rollout(params, net, env, obs, epsilon, prnt = False):
     steps = []
     ep_rewards = [0.] * params.num_workers
     t = time.time()
-    for _ in range(1):
+    for _ in range(params.rollout_steps):
         obs = torch.tensor(obs)
+        # obs.clone().detach().requires_grad_(True)
         # obs = obs.clone().detach()
         logps = net(obs)
         # epsilon argmax
@@ -99,14 +103,17 @@ def gather_rollout(params, net, env, obs, epsilon, prnt = False):
             actions = torch.randint(0, 9, size = (4,))
 
         # print(actions)
+        #print(actions)
         obs, rewards, dones, _ = env.step(actions.numpy())
-       
         
+        #print(rewards)
+        # print(rewards)
         
         for i, done in enumerate(dones):
             ep_rewards[i] += rewards[i]
         
         rewards = torch.tensor(rewards).float()
+        # print(ep_rewards)
         # if (generate < 1 - epsilon):
         # print(rewards.shape)
         steps.append((rewards, actions, logps))
@@ -114,7 +121,8 @@ def gather_rollout(params, net, env, obs, epsilon, prnt = False):
       
 
     if prnt:
-        to_print = {"time": round(time.time() - t, 3), "reward_mean": round(mean(ep_rewards), 3), "reward_std":round(stdev(ep_rewards), 3)}
+        to_print = {"time": time.time(), "reward_mean": round(mean(ep_rewards), 3), "reward_std":round(stdev(ep_rewards), 3)}
+        print (round(mean(ep_rewards), 3))
         return steps, obs, to_print
         
     return steps, obs, None
