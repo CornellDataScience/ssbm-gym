@@ -7,8 +7,7 @@ import pandas as pd
 import random
 from buffer import ReplayBuffer
 
-
-def train(params, net, target_net, optimizer, env):
+def pretrain(params, net, target_net, optimizer, env):
   
     target_net.load_state_dict(net.state_dict())
     target_net.eval()
@@ -17,18 +16,17 @@ def train(params, net, target_net, optimizer, env):
     obs = env.reset()
     print("Envs resetted")
     total_steps = 0
+    n_steps = 0
     buffer = ReplayBuffer(maxsize=1000000)
     # n_save = 50000
-    n_save = 50000
-    epsilon = 0.7
+    n_save = -1000
+    epsilon = 0.99
     runsum = 0
-    while True:
+    while total_steps < 1000:
         # print("Total steps:", total_steps)
         # print("Gathering rollouts")
         steps, new_obs, _ = gather_rollout(params, net, env, obs, epsilon)
         rewards, actions, logps = steps[0]
-        print(rewards)
-        print(actions)
         #print("after")
         #print(rewards.shape)
         # rewards = torch.tensor([rewards])
@@ -67,9 +65,82 @@ def train(params, net, target_net, optimizer, env):
         #   print(runsum / 10000) 
 
             runsum = 0
-        # (total_steps % 10000 == 0 and epsilon > 0.01):
-            # epsilon -= .01
+        if (total_steps % 10000 == 0 and epsilon > 0.1):
+            epsilon -= .01
+        obs = new_obs
+        # reward + predicted for next step * gamma 
+        if total_steps > n_save:
+            _, _, to_print = gather_rollout(params, net, env, obs, epsilon, prnt=True)
+            df = df.append(to_print, ignore_index = True)
+            save_model(net, optimizer, "new_checkpoints9/" + str(total_steps) + ".ckpt")
+            n_save += 250000
+            df.to_csv('new_checkpoints9/reward_'+str(n_save)+'.csv')
+            n_steps = total_steps
 
+    env.close()
+
+    return buffer, n_steps
+
+def train(params, net, target_net, optimizer, env, pt_buffer, n_steps):
+  
+    target_net.load_state_dict(net.state_dict())
+    target_net.eval()
+    df = pd.DataFrame(columns = ["time", "reward_mean", "reward_std"])
+    print("Resetting envs")
+    obs = env.reset()
+    print("Envs resetted")
+    total_steps = n_steps
+    buffer = pt_buffer
+    # n_save = 50000
+    n_save = 50000
+    epsilon = 0.99
+    runsum = 0
+    while True:
+        # print("Total steps:", total_steps)
+        # print("Gathering rollouts")
+        steps, new_obs, _ = gather_rollout(params, net, env, obs, epsilon)
+        rewards, actions, logps = steps[0]
+        #print("after")
+        #print(rewards.shape)
+        # rewards = torch.tensor([rewards])
+        # obs.clone().detach().requires_grad_(True)
+        obs = torch.tensor(obs)
+        #obs = obs.clone().detach()
+        actions = torch.tensor(actions)
+        #actions.clone().detach().requires_grad_(True)
+        # print(actions.shape)
+        #actions = actions.clone().detach()
+        # sourceTensor.clone().detach()
+       # rewards = torch.tensor(rewards)
+        buffer.add_experience(obs, actions, rewards, new_obs)
+        total_steps += params.num_workers * len(steps)
+       # if len(buffer) >= 100:
+            #print("hello")
+        # print("Processing rollouts")
+        # make a replay buffer
+        # actions, logps, returns, advantages = process_rollout(params, steps)
+
+        # convert things to tensors if needed
+        
+        
+        
+        # one step
+        # add step to replay buffer
+        # sample from buffer
+        # use sample to update
+        # print("Updating network")
+        loss = update_network(params, net, target_net, optimizer, buffer)
+        runsum += loss
+
+        if (total_steps+1)% 100 == 0:
+            target_net.load_state_dict(net.state_dict())
+        if (total_steps) % 10000 == 0:
+        #   print(runsum / 10000) 
+
+            runsum = 0
+        if (total_steps % 10000 == 0 and epsilon > 0.1):
+            epsilon -= .01
+        obs = new_obs
         # reward + predicted for next step * gamma 
         if total_steps > n_save:
             _, _, to_print = gather_rollout(params, net, env, obs, epsilon, prnt=True)
@@ -102,7 +173,7 @@ def gather_rollout(params, net, env, obs, epsilon, prnt = False):
         if (generate < 1 - epsilon):
             actions = torch.argmax(logps, dim = 1) 
         else: 
-            actions = torch.randint(0, 9, size = (4,))
+            actions = torch.randint(0, 54, size = (4,))
             #look here for 4
 
         # print(actions)

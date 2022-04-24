@@ -97,7 +97,8 @@ class SSBMEnv(BaseEnv):
                 r += 1.0
 
             r += 0.01 * max(0, self.obs.players[self.pid].percent - self.prev_obs.players[self.pid].percent) 
-
+            
+            # print(reward)
         return r
 
 

@@ -5,7 +5,7 @@ import torch.optim as optim
 from DQNModel import Actor
 from envs import GoHighEnvVec
 from ssbm_gym.ssbm_env import EnvVec, SSBMEnv
-from train import train
+from train import train, pretrain
 
 parser = argparse.ArgumentParser(description='DQN')
 parser.add_argument('--no-cuda', action='store_true', help='use to disable available CUDA')
@@ -28,7 +28,7 @@ options = dict(
     player2='human',
     char1='fox',
     char2='fox',
-    cpu2=9,
+    cpu2=3,
     stage='final_destination',
 )
 
@@ -41,4 +41,7 @@ if __name__ == "__main__":
     net = Actor(env.observation_space.n, env.action_space.n)
     target_net = Actor(env.observation_space.n, env.action_space.n)
     optimizer = optim.Adam(net.parameters(), lr=args.lr)
-    train(args, net, target_net, optimizer, env)
+    buf, n_st = pretrain(args, net, target_net, optimizer, env)
+    options['player2'] = 'cpu'
+    training_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
+    train(args, net, target_net, optimizer, training_env, buf, n_st)
