@@ -19,10 +19,10 @@ def pretrain(params, net, target_net, optimizer, env):
     n_steps = 0
     buffer = ReplayBuffer(maxsize=1000000)
     # n_save = 50000
-    n_save = -1000
+    n_save = 250000
     epsilon = 0.99
     runsum = 0
-    while total_steps < 1000:
+    while total_steps < 100000000:
         # print("Total steps:", total_steps)
         # print("Gathering rollouts")
         steps, new_obs, _ = gather_rollout(params, net, env, obs, epsilon)
