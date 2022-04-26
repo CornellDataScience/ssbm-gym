@@ -111,3 +111,4 @@ ISOs/*
 
 # Training Data
 checkpoints/*
+*.ckpt
