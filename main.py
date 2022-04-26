@@ -34,9 +34,14 @@ options = dict(
 
 
 if __name__ == "__main__":
-    env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
+    pretrain_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
 
-    net = Actor(env.observation_space.n, env.action_space.n)
+    net = Actor(pretrain_env.observation_space.n, pretrain_env.action_space.n)
     optimizer = optim.Adam(net.parameters(), lr=args.lr)
 
-    train(args, net, optimizer, env)
+    n_steps = pretrain(args, net, optimizer, pretrain_env)
+
+    options['player2'] = 'cpu'
+    training_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
+
+    train(args, net, optimizer, training_env, n_steps)
