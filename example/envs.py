@@ -32,7 +32,7 @@ class GoHighEnv(BaseEnv):
         r += self.obs.players[0].y / 50 / 60  # The higher the character, the highest the reward!
         
         if self.prev_obs is not None:
-            # This is necesarry because the character might be dying during multiple frames
+            # This is necessary because the character might be dying during multiple frames
             if not isDying(self.prev_obs.players[self.pid]) and \
                isDying(self.obs.players[self.pid]):
                 r -= 1.0  # We still don't want it to die though.
