@@ -5,7 +5,7 @@ import torch.optim as optim
 from StateNet import StateNet
 from ppo_model import Actor
 from envs import GoHighEnvVec
-from ssbm_gym.ssbm_env import EnvVec, SSBMEnv
+from ssbm_gym.ssbm_env import EnvVec, SSBMEnv, HierEnv
 import train
 import train_state
 
@@ -40,7 +40,10 @@ options = dict(
 
 
 if __name__ == "__main__":
-    pretrain_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
+    if args.hierarchical:
+        pretrain_env = EnvVec(HierEnv, args.num_workers, args.total_steps, options)
+    else:
+        pretrain_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
 
     if args.state_prediction:
         #double the input size
@@ -51,11 +54,6 @@ if __name__ == "__main__":
         optimizer_state = optim.Adam(state_net.parameters(), lr=args.lr)
 
         n_steps = train_state.pretrain(args, net, optimizer, pretrain_env, state_net, optimizer_state)
-
-        options['player2'] = 'cpu'
-        train_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
-
-        train_state.train(args, net, optimizer, train_env, n_steps, state_net, optimizer_state)
         
     else:
         net = Actor(pretrain_env.observation_space.n, pretrain_env.action_space.n)
@@ -63,7 +61,14 @@ if __name__ == "__main__":
 
         n_steps = train.pretrain(args, net, optimizer, pretrain_env)
 
-        options['player2'] = 'cpu'
+    options['player2'] = 'cpu'
+
+    if args.hierarchical:
+        train_env = EnvVec(HierEnv, args.num_workers, args.total_steps, options)
+    else:
         train_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
 
+    if args.state_prediction:
+        train_state.train(args, net, optimizer, train_env, n_steps, state_net, optimizer_state)
+    else:
         train.train(args, net, optimizer, train_env, n_steps)

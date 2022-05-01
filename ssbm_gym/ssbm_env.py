@@ -100,6 +100,18 @@ class SSBMEnv(BaseEnv):
 
         return r
 
+    class HierEnv(SSBMEnv):
+        def __init__(self, **kwargs):
+            super().__init__(self, **kwargs)
+
+        @property
+        def action_space(self):
+            if self._action_space is not None:
+                return self._action_space
+            else:
+                from .spaces import HierarchialActionSpace
+                self._action_space = HierarchialActionSpace()
+                return self._action_space
 
 def isDying(player):
     # see https://docs.google.com/spreadsheets/d/1JX2w-r2fuvWuNgGb6D3Cs4wHQKLFegZe2jhbBuIhCG8/edit#gid=13
