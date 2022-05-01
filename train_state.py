@@ -25,8 +25,21 @@ def pretrain(params, net, optimizer, env, state_net, optimizer_state):
         # Gathering rollouts: for 600 steps, run the network in the environment without updating network
         steps, obs, _ = gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buffer, state_buffer)
         total_steps += params.num_workers * len(steps)
-        final_obs = torch.tensor(obs)
-        _, final_values = net(final_obs)
+        
+        obs = torch.tensor(obs)
+
+        old_obs = state_buffer[-1]
+        act = torch.unsqueeze(action_buffer[-1], 1)
+
+        input = torch.cat((act, old_obs), dim = 1)
+
+        #predicting future state
+        with torch.no_grad():
+            pred_obs = state_net(input)
+
+        obs_dbl = torch.cat((obs, pred_obs), dim=1)
+
+        _, final_values = net(obs_dbl)
 
         print("rollout gathered")
 
@@ -34,7 +47,7 @@ def pretrain(params, net, optimizer, env, state_net, optimizer_state):
         steps.append((None, None, None, final_values))
         
         # Processing rollouts, get advantages
-        actions, logps, values, returns, advantages = process_rollout(params, steps, state_net, optimizer_state, action_buffer, state_buffer)
+        actions, logps, values, returns, advantages = process_rollout(params, steps)
 
         print("rollout processed")
 
@@ -43,7 +56,7 @@ def pretrain(params, net, optimizer, env, state_net, optimizer_state):
         update_network(params, net, optimizer, actions, logps, values, returns, advantages)
 
         if total_steps > n_save:
-            _, _, to_print = gather_rollout(params, net, env, obs, prnt=True)
+            _, _, to_print = gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buffer, state_buffer, prnt=True)
             to_print["time"] = to_print["time"] - start_time
             print(to_print)
             df = df.append(to_print, ignore_index = True)
@@ -72,8 +85,21 @@ def train(params, net, optimizer, env, n_steps, state_net, optimizer_state):
         # Gathering rollouts: for 600 steps, run the network in the environment without updating network
         steps, obs, _ = gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buffer, state_buffer)
         total_steps += params.num_workers * len(steps)
-        final_obs = torch.tensor(obs)
-        _, final_values = net(final_obs)
+
+        fobs = torch.tensor(obs)
+
+        old_obs = state_buffer[-1]
+        act = torch.unsqueeze(action_buffer[-1], 1)
+
+        input = torch.cat((act, old_obs), dim = 1)
+
+        #predicting future state
+        with torch.no_grad():
+            pred_obs = state_net(input)
+
+        obs_dbl = torch.cat((obs, pred_obs), dim=1)
+
+        _, final_values = net(obs_dbl)
 
         # Append final values to steps without explicitly updating the resulting rewards, actions, logps
         steps.append((None, None, None, final_values))
@@ -106,14 +132,14 @@ def gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buf
         obs = torch.tensor(obs)
 
         if len(action_buffer) == params.state_offset:
-            obs = state_buffer[-1]
+            old_obs = state_buffer[-1]
             act = torch.unsqueeze(action_buffer[-1], 1)
 
-            input = torch.cat((act, obs), dim = 1)
+            input = torch.cat((act, old_obs), dim = 1)
 
             #predicting future state
-            with torch.nograd():
-                pred_obs = state_net(obs, action_buffer[-1])
+            with torch.no_grad():
+                pred_obs = state_net(input)
 
             obs_dbl = torch.cat((obs, pred_obs), dim=1)
             logps, values = net(obs_dbl)
@@ -199,8 +225,7 @@ def update_state_network(params, state_net, optimizer_state, action_buffer, stat
         input = torch.cat((act, obs), dim = 1)
 
         pred = state_net(input)
-        print(pred.shape)
-        print(state_buffer[0].shape)
+
         criterion = nn.MSELoss()
         loss = criterion(pred, state_buffer[0])
         loss.backward()
