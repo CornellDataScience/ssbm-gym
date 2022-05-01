@@ -111,17 +111,16 @@ def gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buf
             with torch.nograd():
                 pred_obs = state_net(obs, action_buffer[-1])
         else:
-            #might not work
-            obs = torch.cat((obs, obs), dim=1)
-            print(obs.shape)
-            logps, values = net(obs)
+            #when buffer isn't long enough to do forward pass on other network
+            obs_dbl = torch.cat((obs, obs), dim=1)
+            logps, values = net(obs_dbl)
 
         actions = Categorical(logits=logps).sample() # 1 for each worker
 
-        obs, rewards, dones, _ = env.step(actions.numpy())
-
         action_buffer.append(actions)
         state_buffer.append(obs)
+
+        obs, rewards, dones, _ = env.step(actions.numpy())
 
         update_state_network(params, state_net, optimizer_state, action_buffer, state_buffer)
 
@@ -186,8 +185,15 @@ def update_network(params, net, optimizer, actions, logps, values, returns, adva
     optimizer.zero_grad()
 
 def update_state_network(params, state_net, optimizer_state, action_buffer, state_buffer):
-    if len(action_buffer) == params.offset:
-        pred = state_net(action_buffer[-1] + state_buffer[-1])
+    if len(action_buffer) == params.state_offset:
+        obs = state_buffer[-1]
+        act = torch.unsqueeze(action_buffer[-1], 1)
+        print(obs.shape)
+        print(act.shape)
+
+        input = torch.cat((act, obs), dim = 1)
+
+        pred = state_net(input)
 
         loss = MSEloss(pred, state_buffer[0])
         loss.backward()

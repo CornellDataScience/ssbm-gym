@@ -6,11 +6,11 @@ class StateNet(nn.Module):
     """
     give current state and action predicts future state
     """
-    def __init__(self, obs_dim, action_dim, hidden_dim = 128):
+    def __init__(self, obs_dim, hidden_dim = 128):
         super(StateNet, self).__init__()
-        self.fc1 = nn.Linear(obs_dim * 2 + action_dim, hidden_dim)
+        self.fc1 = nn.Linear(obs_dim + 1, hidden_dim)
         self.fc2 = nn.Linear(hidden_dim, hidden_dim)
-        self.fc3 = nn.Linear(hidden_dim, obs_dim*2)
+        self.fc3 = nn.Linear(hidden_dim, obs_dim)
 
     def forward(self, x):
         x = F.relu(self.fc1(x))
