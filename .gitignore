@@ -1,3 +1,7 @@
+checkpoints/*
+checkpoints_backup/*
+state_loss.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

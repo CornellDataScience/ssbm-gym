@@ -267,7 +267,7 @@ custom_controllers = itertools.chain(
   itertools.product([SimpleButton.Z, SimpleButton.Y], [neutral_stick]),
 )
 custom_controllers = [SimpleController.init(*args) for args in custom_controllers]
-custom_controllers.append(repeat_controller)
+
 """
 # allows fox, sheik, samus, etc to short hop with act_every=3
 short_hop = SimpleController.init(button=SimpleButton.Y, duration=2)
