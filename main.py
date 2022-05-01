@@ -23,7 +23,7 @@ parser.add_argument('--entropy_coeff', type=float, default=0.01, help='entropy l
 parser.add_argument('--grad_norm_limit', type=float, default=40., help='gradient norm clipping threshold')
 parser.add_argument('--state_prediction', type=bool, default=False, help='adds state predition model')
 parser.add_argument('--state_offset', type=int, default=7, help='offset for state prediction, default 7')
-parser.add_argument('--hier', type=int, default=False, help='include hierarchical options in state')
+parser.add_argument('--hier', type=bool, default=False, help='include hierarchical options in state')
 
 
 args = parser.parse_args()
@@ -40,7 +40,7 @@ options = dict(
 
 
 if __name__ == "__main__":
-    if args.hierarchical:
+    if args.hier:
         pretrain_env = EnvVec(HierEnv, args.num_workers, args.total_steps, options)
     else:
         pretrain_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
@@ -63,7 +63,7 @@ if __name__ == "__main__":
 
     options['player2'] = 'cpu'
 
-    if args.hierarchical:
+    if args.hier:
         train_env = EnvVec(HierEnv, args.num_workers, args.total_steps, options)
     else:
         train_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
