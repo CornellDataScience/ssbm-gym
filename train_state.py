@@ -126,6 +126,7 @@ def gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buf
     """ Obs |> net -> action, values. Action |> env.step -> (reward, taken action (sampled from action_probs), action_probs, values ), obs"""
     steps = []
     ep_rewards = [0.] * params.num_workers
+    losses = []
 
     for _ in range(params.rollout_steps):
 
@@ -155,7 +156,9 @@ def gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buf
 
         obs, rewards, dones, _ = env.step(actions.numpy())
 
-        update_state_network(params, state_net, optimizer_state, action_buffer, state_buffer)
+        loss = update_state_network(params, state_net, optimizer_state, action_buffer, state_buffer)
+        if not(loss is None):
+            losses.append(loss)
 
         for i, done in enumerate(dones):
             ep_rewards[i] += rewards[i]
@@ -166,6 +169,10 @@ def gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buf
     if prnt:
         to_print = {"time": time.time(), "reward_mean": round(mean(ep_rewards), 3), "reward_std":round(stdev(ep_rewards), 3)}
         return steps, obs, to_print
+
+    #write loss
+    # pd.DataFrame(np.average(losses)).to_csv('state_loss.csv')
+    print(losses)
 
     return steps, obs, None
 
@@ -235,6 +242,7 @@ def update_state_network(params, state_net, optimizer_state, action_buffer, stat
 
         action_buffer = action_buffer[-1]
         state_buffer = state_buffer[-1]
+        return loss
 
 
 #need to be adjusted at some point
