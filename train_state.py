@@ -169,8 +169,6 @@ def gather_rollout(params, net, env, obs, state_net, optimizer_state,action_buff
         steps.append((rewards, actions, logps, values))
 
     out = np.average(losses)
-    print(losses)
-    print(len(action_buffer))
    
     pd.DataFrame([out]).to_csv('state_loss.csv', mode='a', header=False)
 
