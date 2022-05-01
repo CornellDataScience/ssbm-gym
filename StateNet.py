@@ -8,7 +8,7 @@ class StateNet(nn.Module):
     """
     def __init__(self, obs_dim, hidden_dim = 128):
         super(StateNet, self).__init__()
-        self.fc1 = nn.Linear(obs_dim + 1, hidden_dim)
+        self.fc1 = nn.Linear(obs_dim * 2 + 1, hidden_dim)
         self.fc2 = nn.Linear(hidden_dim, hidden_dim)
         self.fc3 = nn.Linear(hidden_dim, obs_dim)
 
