@@ -106,10 +106,17 @@ def gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buf
         obs = torch.tensor(obs)
 
         if len(action_buffer) == params.state_offset:
-            
+            obs = state_buffer[-1]
+            act = torch.unsqueeze(action_buffer[-1], 1)
+
+            input = torch.cat((act, obs), dim = 1)
+
             #predicting future state
             with torch.nograd():
                 pred_obs = state_net(obs, action_buffer[-1])
+
+            obs_dbl = torch.cat((obs, pred_obs), dim=1)
+            logps, values = net(obs_dbl)
         else:
             #when buffer isn't long enough to do forward pass on other network
             obs_dbl = torch.cat((obs, obs), dim=1)
@@ -188,8 +195,6 @@ def update_state_network(params, state_net, optimizer_state, action_buffer, stat
     if len(action_buffer) == params.state_offset:
         obs = state_buffer[-1]
         act = torch.unsqueeze(action_buffer[-1], 1)
-        print(obs.shape)
-        print(act.shape)
 
         input = torch.cat((act, obs), dim = 1)
 
