@@ -21,7 +21,7 @@ parser.add_argument('--epsilon', type=float, default=0.10, help='epsilon paramet
 parser.add_argument('--value_coeff', type=float, default=0.5, help='value loss coeffecient')
 parser.add_argument('--entropy_coeff', type=float, default=0.01, help='entropy loss coeffecient')
 parser.add_argument('--grad_norm_limit', type=float, default=40., help='gradient norm clipping threshold')
-parser.add_argument('--state_prediction', type=bool, default=False, help='adds state predition model')
+parser.add_argument('--state_pred', type=bool, default=False, help='adds state predition model')
 parser.add_argument('--state_offset', type=int, default=7, help='offset for state prediction, default 7')
 parser.add_argument('--hier', type=bool, default=False, help='include hierarchical options in state')
 
@@ -45,7 +45,7 @@ if __name__ == "__main__":
     else:
         pretrain_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
 
-    if args.state_prediction:
+    if args.state_pred:
         #double the input size
 
         net = Actor(pretrain_env.observation_space.n * 2, pretrain_env.action_space.n)
@@ -68,7 +68,7 @@ if __name__ == "__main__":
     else:
         train_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
 
-    if args.state_prediction:
+    if args.state_pred:
         train_state.train(args, net, optimizer, train_env, n_steps, state_net, optimizer_state)
     else:
         train.train(args, net, optimizer, train_env, n_steps)

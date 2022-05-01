@@ -54,7 +54,7 @@ class DiagonalActionSpace():
 
 class HierarchialActionSpace():
     def __init__(self):
-        self.actions = [a[0].real_controller for a in actionTypes['custom'].actions]
+        self.actions = [a[0].real_controller for a in actionTypes['diagonal'].actions]
         self.n = len(self.actions)
 
     def __repr__(self):
