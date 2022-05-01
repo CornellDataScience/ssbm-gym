@@ -43,6 +43,9 @@ if __name__ == "__main__":
 
     if args.state_prediction:
         #double the input size
+        print(pretrain_env.observation_space.n)
+        print(pretrain_env.action_space.n)
+
         net = Actor(pretrain_env.observation_space.n * 2, pretrain_env.action_space.n)
         state_net = StateNet(pretrain_env.observation_space.n + pretrain_env.action_space.n, pretrain_env.observation_space.n)
         optimizer = optim.Adam(net.parameters(), lr=args.lr)

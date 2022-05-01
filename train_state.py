@@ -112,7 +112,9 @@ def gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buf
                 pred_obs = state_net(obs, action_buffer[-1])
         else:
             #might not work
-            logps, values = net(obs + obs)
+            obs = torch.cat((obs, obs), dim=1)
+            print(obs.shape)
+            logps, values = net(obs)
 
         actions = Categorical(logits=logps).sample() # 1 for each worker
 
@@ -121,7 +123,7 @@ def gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buf
         action_buffer.append(actions)
         state_buffer.append(obs)
 
-        update_state_network(params, state_net, optimimer_state, action_buffer, state_buffer)
+        update_state_network(params, state_net, optimizer_state, action_buffer, state_buffer)
 
         for i, done in enumerate(dones):
             ep_rewards[i] += rewards[i]
@@ -183,7 +185,7 @@ def update_network(params, net, optimizer, actions, logps, values, returns, adva
     optimizer.step()
     optimizer.zero_grad()
 
-def update_state_network(params, state_net, optimimer_state, action_buffer, state_buffer):
+def update_state_network(params, state_net, optimizer_state, action_buffer, state_buffer):
     if len(action_buffer) == params.offset:
         pred = state_net(action_buffer[-1] + state_buffer[-1])
 
