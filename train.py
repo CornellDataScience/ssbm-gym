@@ -91,6 +91,7 @@ def train(params, net, optimizer, env, n_steps):
             df.to_csv('checkpoints/reward_'+str(n_save)+'.csv')
 
     env.close()
+    
 
 def gather_rollout(params, net, env, obs, prnt = False):
     """ Obs |> net -> action, values. Action |> env.step -> (reward, taken action (sampled from action_probs), action_probs, values ), obs"""
