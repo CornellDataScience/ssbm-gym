@@ -23,7 +23,7 @@ def pretrain(params, net, optimizer, env, state_net, optimizer_state):
         print("Total steps:", total_steps)
 
         # Gathering rollouts: for 600 steps, run the network in the environment without updating network
-        steps, obs, _ = gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buffer, state_buffer)
+        steps, obs, _,action_buffer, state_buffer = gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buffer, state_buffer)
         total_steps += params.num_workers * len(steps)
         
         obs = torch.tensor(obs)
@@ -56,7 +56,7 @@ def pretrain(params, net, optimizer, env, state_net, optimizer_state):
         update_network(params, net, optimizer, actions, logps, values, returns, advantages)
 
         if total_steps > n_save:
-            _, _, to_print = gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buffer, state_buffer, prnt=True)
+            _, _, to_print, action_buffer, state_buffer = gather_rollout(params, net, env, obs, state_net, optimizer_state,action_buffer, state_buffer, prnt=True)
             to_print["time"] = to_print["time"] - start_time
             print(to_print)
             df = df.append(to_print, ignore_index = True)
@@ -83,7 +83,7 @@ def train(params, net, optimizer, env, n_steps, state_net, optimizer_state):
         print("Total steps:", total_steps)
 
         # Gathering rollouts: for 600 steps, run the network in the environment without updating network
-        steps, obs, _ = gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buffer, state_buffer)
+        steps, obs, _, action_buffer, state_buffer = gather_rollout(params, net, env, obs, state_net, optimizer_state,action_buffer, state_buffer)
         total_steps += params.num_workers * len(steps)
 
         fobs = torch.tensor(obs)
@@ -112,7 +112,7 @@ def train(params, net, optimizer, env, n_steps, state_net, optimizer_state):
         update_network(params, net, optimizer, actions, logps, values, returns, advantages)
 
         if total_steps > n_save:
-            _, _, to_print = gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buffer, state_buffer, prnt=True)
+            _, _, to_print, action_buffer, state_buffer = gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buffer, state_buffer, prnt=True)
             to_print["time"] = to_print["time"] - start_time
             print(to_print)
             df = df.append(to_print, ignore_index = True)
@@ -122,7 +122,7 @@ def train(params, net, optimizer, env, n_steps, state_net, optimizer_state):
 
     env.close()
 
-def gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buffer, state_buffer, prnt = False):
+def gather_rollout(params, net, env, obs, state_net, optimizer_state,action_buffer, state_buffer, prnt = False):
     """ Obs |> net -> action, values. Action |> env.step -> (reward, taken action (sampled from action_probs), action_probs, values ), obs"""
     steps = []
     ep_rewards = [0.] * params.num_workers
@@ -156,8 +156,10 @@ def gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buf
 
         obs, rewards, dones, _ = env.step(actions.numpy())
 
-        loss = update_state_network(params, state_net, optimizer_state, action_buffer, state_buffer)
-        if not(loss is None):
+        if len(action_buffer) == params.state_offset:
+            loss = update_state_network(params, state_net, optimizer_state, action_buffer, state_buffer)
+            action_buffer = action_buffer[1:]
+            state_buffer = state_buffer[1:]
             losses.append(loss)
 
         for i, done in enumerate(dones):
@@ -166,15 +168,19 @@ def gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buf
         rewards = torch.tensor(rewards).float().unsqueeze(1)
         steps.append((rewards, actions, logps, values))
 
+    out = np.average(losses)
+    print(losses)
+    print(len(action_buffer))
+   
+    pd.DataFrame([out]).to_csv('state_loss.csv', mode='a', header=False)
+
     if prnt:
         to_print = {"time": time.time(), "reward_mean": round(mean(ep_rewards), 3), "reward_std":round(stdev(ep_rewards), 3)}
-        return steps, obs, to_print
+        return steps, obs, to_print, action_buffer, state_buffer
 
     #write loss
-    # pd.DataFrame(np.average(losses)).to_csv('state_loss.csv')
-    print(losses)
 
-    return steps, obs, None
+    return (steps, obs, None, action_buffer, state_buffer)
 
 
 def process_rollout(params, steps):
@@ -225,24 +231,25 @@ def update_network(params, net, optimizer, actions, logps, values, returns, adva
     optimizer.zero_grad()
 
 def update_state_network(params, state_net, optimizer_state, action_buffer, state_buffer):
-    if len(action_buffer) == params.state_offset:
-        obs = state_buffer[-1]
-        act = torch.unsqueeze(action_buffer[-1], 1)
+    optimizer_state.zero_grad()
+    obs = state_buffer[-1]
+    act = torch.unsqueeze(action_buffer[-1], 1)
 
-        input = torch.cat((act, obs), dim = 1)
+    input = torch.cat((act, obs), dim = 1)
 
-        pred = state_net(input)
+    pred = state_net(input)
 
-        criterion = nn.MSELoss()
-        loss = criterion(pred, state_buffer[0])
-        loss.backward()
+    pred = torch.nn.functional.normalize(pred)
+    y = torch.nn.functional.normalize(state_buffer[0])
 
-        optimizer_state.step()
-        optimizer_state.zero_grad()
+    criterion = nn.MSELoss()
+    loss = criterion(pred, y)
 
-        action_buffer = action_buffer[-1]
-        state_buffer = state_buffer[-1]
-        return loss
+    loss.backward()
+
+    optimizer_state.step()
+
+    return loss.detach().numpy()
 
 
 #need to be adjusted at some point
