@@ -10,7 +10,7 @@ class StateNet(nn.Module):
         super(StateNet, self).__init__()
         self.fc1 = nn.Linear(obs_dim * 2 + 1, hidden_dim)
         self.fc2 = nn.Linear(hidden_dim, hidden_dim)
-        self.fc3 = nn.Linear(hidden_dim, obs_dim)
+        self.fc3 = nn.Linear(hidden_dim, obs_dim * 2)
 
     def forward(self, x):
         x = F.relu(self.fc1(x))

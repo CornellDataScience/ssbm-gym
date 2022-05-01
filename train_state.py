@@ -199,12 +199,14 @@ def update_state_network(params, state_net, optimizer_state, action_buffer, stat
         input = torch.cat((act, obs), dim = 1)
 
         pred = state_net(input)
-
-        loss = MSEloss(pred, state_buffer[0])
+        print(pred.shape)
+        print(state_buffer[0].shape)
+        criterion = nn.MSELoss()
+        loss = criterion(pred, state_buffer[0])
         loss.backward()
 
-        optimizer.step()
-        optimizer.zero_grad()
+        optimizer_state.step()
+        optimizer_state.zero_grad()
 
         action_buffer = action_buffer[-1]
         state_buffer = state_buffer[-1]
