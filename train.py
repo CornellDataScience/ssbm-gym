@@ -43,7 +43,7 @@ def pretrain(params, net, optimizer, env):
             save_model(net, optimizer, "checkpoints/" + str(total_steps) + ".ckpt")
             latest_ckpt = total_steps
             n_save += 250000
-            df.to_csv('checkpoints/second_reward_'+str(n_save)+'.csv')
+            df.to_csv('checkpoints/reward.csv')
 
     env.close()
     
