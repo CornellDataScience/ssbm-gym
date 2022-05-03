@@ -14,7 +14,7 @@ def oneHot(x, n):
 class EmbedPlayer():
     def __init__(self, flat=True):
         # Johann and Kaitlyn hardcoded this
-        self.n = 9 + 383
+        self.n = 9 #+ 383
         self.flat = flat
 
     def __repr__(self):
@@ -46,8 +46,8 @@ class EmbedPlayer():
         hitstun_frames_left = player_state.hitstun_frames_left/10.0
         shield_size = player_state.shield_size/100.0
         in_air = 1.0 if player_state.in_air else 0.0
-        for idx, action_encoding in enumerate(oneHot(player_state.action_state, numActions)):
-            exec("action"+str(idx)+" = action_encoding")
+        # for idx, action_encoding in enumerate(oneHot(player_state.action_state, numActions)):
+        #     exec("action"+str(idx)+" = action_encoding")
 
         to_return = [
                 percent,
@@ -60,8 +60,8 @@ class EmbedPlayer():
                 in_air
             ]
 
-        for i in range(383): # up to 382
-            exec("to_return.append(action"+str(i)+")")
+        # for i in range(383): # up to 382
+        #     exec("to_return.append(action"+str(i)+")")
 
         return to_return
 

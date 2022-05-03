@@ -1,20 +1,22 @@
 import torch
 import torch.nn as nn
+import torch.optim as optim
 from torch.distributions import Categorical
 from statistics import mean, stdev
 import time
 import pandas as pd
 import numpy as np
+from a2c_model import Actor
 
 def pretrain(params, net, optimizer, env):
     df = pd.DataFrame(columns = ["time", "reward_mean", "reward_std"])
     obs = env.reset()
     total_steps = 0
-    n_save = 0
+    n_save = 250000
     start_time = time.time()
     latest_ckpt = 0
 
-    # while total_steps < params.total_steps:
+    # while total_steps < 100,000,000: (hardcoded pretrain amount)
     while total_steps < 100000000:
         print("Total steps:", total_steps)
 
@@ -24,15 +26,11 @@ def pretrain(params, net, optimizer, env):
         final_obs = torch.tensor(obs)
         _, final_values = net(final_obs)
 
-        print("rollout gathered")
-
         # Append final values to steps without explicitly updating the resulting rewards, actions, logps
         steps.append((None, None, None, final_values))
         
         # Processing rollouts, get advantages
         actions, logps, values, returns, advantages = process_rollout(params, steps)
-
-        print("rollout processed")
 
         # Update network with process rollout results 
         # gradient ascent on advantage * policy gradient
@@ -41,23 +39,22 @@ def pretrain(params, net, optimizer, env):
         if total_steps > n_save:
             _, _, to_print = gather_rollout(params, net, env, obs, prnt=True)
             to_print["time"] = to_print["time"] - start_time
-            print(to_print)
             df = df.append(to_print, ignore_index = True)
             save_model(net, optimizer, "checkpoints/" + str(total_steps) + ".ckpt")
             latest_ckpt = total_steps
             n_save += 250000
-            df.to_csv('checkpoints/reward_'+str(n_save)+'.csv')
-
-    print("pretrain complete")
+            df.to_csv('checkpoints/reward.csv')
 
     env.close()
+    
+    print("Pretraining Done")
 
     return latest_ckpt
 
-def train(params, net, optimizer, env, n_steps):
+def train(params, net, optimizer, env, step_num):
     df = pd.DataFrame(columns = ["time", "reward_mean", "reward_std"])
     obs = env.reset()
-    total_steps = n_steps
+    total_steps = step_num
     n_save = 250000
     start_time = time.time()
 
@@ -84,23 +81,23 @@ def train(params, net, optimizer, env, n_steps):
         if total_steps > n_save:
             _, _, to_print = gather_rollout(params, net, env, obs, prnt=True)
             to_print["time"] = to_print["time"] - start_time
-            print(to_print)
             df = df.append(to_print, ignore_index = True)
             save_model(net, optimizer, "checkpoints/" + str(total_steps) + ".ckpt")
             n_save += 250000
-            df.to_csv('checkpoints/reward_'+str(n_save)+'.csv')
+            df.to_csv('checkpoints/reward.csv')
 
     env.close()
+
 
 def gather_rollout(params, net, env, obs, prnt = False):
     """ Obs |> net -> action, values. Action |> env.step -> (reward, taken action (sampled from action_probs), action_probs, values ), obs"""
     steps = []
     ep_rewards = [0.] * params.num_workers
-
+    t = time.time()
     for _ in range(params.rollout_steps):
         obs = torch.tensor(obs)
         logps, values = net(obs)
-        actions = Categorical(logits=logps).sample() # 1 for each worker
+        actions = Categorical(logits=logps).sample()
 
         obs, rewards, dones, _ = env.step(actions.numpy())
 
@@ -113,7 +110,6 @@ def gather_rollout(params, net, env, obs, prnt = False):
     if prnt:
         to_print = {"time": time.time(), "reward_mean": round(mean(ep_rewards), 3), "reward_std":round(stdev(ep_rewards), 3)}
         return steps, obs, to_print
-
     return steps, obs, None
 
 
@@ -146,14 +142,7 @@ def update_network(params, net, optimizer, actions, logps, values, returns, adva
     # calculate action probabilities
     log_action_probs = logps.gather(1, actions.unsqueeze(-1))
     probs = logps.exp()
-    # PPO loss from https://openai.com/blog/openai-baselines-ppo/
-
-    ratios = torch.exp(logps[-1] - logps)
-    surr1 = ratios * advantages
-    surr2 = torch.clamp(ratios, 1 - params.epsilon, 1 + params.epsilon) * advantages
-
-    policy_loss = (-torch.min(surr1, surr2)).mean()
-    # policy_loss = (-log_action_probs * advantages).sum()
+    policy_loss = (-log_action_probs * advantages).sum()
     value_loss = (.5 * (values - returns) ** 2.).sum()
     entropy_loss = (logps * probs).sum()
 
