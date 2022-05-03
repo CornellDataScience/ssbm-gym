@@ -5,7 +5,7 @@ import torch.optim as optim
 from a2c_model import Actor
 from envs import GoHighEnvVec
 from ssbm_gym.ssbm_env import EnvVec, SSBMEnv
-from train import train
+from train import train, pretrain
 
 parser = argparse.ArgumentParser(description='A2C (Advantage Actor-Critic)')
 parser.add_argument('--no-cuda', action='store_true', help='use to disable available CUDA')
