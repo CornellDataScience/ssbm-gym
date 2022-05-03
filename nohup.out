@@ -35230,3 +35230,292 @@ Total steps:  File "main.py", line 8
     <<<<<<< HEAD
      ^
 SyntaxError: invalid syntax
+/home/smash_ai/ssbm-gym/train_state.py:133: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  obs = torch.tensor(obs)
+Total steps: 0
+rollout gathered
+rollout processed
+{'time': 62.5746955871582, 'reward_mean': -0.5, 'reward_std': 0.577}
+Total steps: 2400
+rollout gathered
+rollout processed
+Total steps: 4800
+rollout gathered
+rollout processed
+Total steps: 7200
+rollout gathered
+rollout processed
+Total steps: 9600
+rollout gathered
+rollout processed
+Total steps: 12000
+rollout gathered
+rollout processed
+Total steps: 14400
+rollout gathered
+rollout processed
+Total steps: 16800
+rollout gathered
+rollout processed
+Total steps: 19200
+rollout gathered
+rollout processed
+Total steps: 21600
+rollout gathered
+rollout processed
+Total steps: 24000
+rollout gathered
+rollout processed
+Total steps: 26400
+rollout gathered
+rollout processed
+Total steps: 28800
+rollout gathered
+rollout processed
+Total steps: 31200
+rollout gathered
+rollout processed
+Total steps: 33600
+rollout gathered
+rollout processed
+Total steps: 36000
+rollout gathered
+rollout processed
+Total steps: 38400
+rollout gathered
+rollout processed
+Total steps: 40800
+rollout gathered
+rollout processed
+Total steps: 43200
+rollout gathered
+rollout processed
+Total steps: 45600
+rollout gathered
+rollout processed
+Total steps: 48000
+rollout gathered
+rollout processed
+Total steps: 50400
+rollout gathered
+rollout processed
+Total steps: 52800
+rollout gathered
+rollout processed
+Total steps: 55200
+rollout gathered
+rollout processed
+Total steps: 57600
+rollout gathered
+rollout processed
+Total steps: 60000
+rollout gathered
+rollout processed
+Total steps: 62400
+rollout gathered
+rollout processed
+Total steps: 64800
+rollout gathered
+rollout processed
+Total steps: 67200
+rollout gathered
+rollout processed
+Total steps: 69600
+rollout gathered
+rollout processed
+Total steps: 72000
+rollout gathered
+rollout processed
+Total steps: 74400
+rollout gathered
+rollout processed
+Total steps: 76800
+rollout gathered
+rollout processed
+Total steps: 79200
+rollout gathered
+rollout processed
+Total steps: 81600
+rollout gathered
+rollout processed
+Total steps: 84000
+rollout gathered
+rollout processed
+Total steps: 86400
+rollout gathered
+rollout processed
+Total steps: 88800
+rollout gathered
+rollout processed
+Total steps: 91200
+rollout gathered
+rollout processed
+Total steps: 93600
+rollout gathered
+rollout processed
+Total steps: 96000
+rollout gathered
+rollout processed
+Total steps: 98400
+rollout gathered
+rollout processed
+Total steps: 100800
+rollout gathered
+rollout processed
+Total steps: 103200
+rollout gathered
+rollout processed
+Total steps: 105600
+rollout gathered
+rollout processed
+Total steps: 108000
+rollout gathered
+rollout processed
+Total steps: 110400
+rollout gathered
+rollout processed
+Total steps: 112800
+rollout gathered
+rollout processed
+Total steps: 115200
+rollout gathered
+rollout processed
+Total steps: 117600
+rollout gathered
+rollout processed
+Total steps: 120000
+rollout gathered
+rollout processed
+Total steps: 122400
+rollout gathered
+rollout processed
+Total steps: 124800
+rollout gathered
+rollout processed
+Total steps: 127200
+rollout gathered
+rollout processed
+Total steps: 129600
+rollout gathered
+rollout processed
+Total steps: 132000
+rollout gathered
+rollout processed
+Total steps: 134400
+rollout gathered
+rollout processed
+Total steps: 136800
+rollout gathered
+rollout processed
+Total steps: 139200
+rollout gathered
+rollout processed
+Total steps: 141600
+rollout gathered
+rollout processed
+Total steps: 144000
+rollout gathered
+rollout processed
+Total steps: 146400
+rollout gathered
+rollout processed
+Total steps: 148800
+rollout gathered
+rollout processed
+Total steps: 151200
+rollout gathered
+rollout processed
+Total steps: 153600
+rollout gathered
+rollout processed
+Total steps: 156000
+rollout gathered
+rollout processed
+Total steps: 158400
+rollout gathered
+rollout processed
+Total steps: 160800
+rollout gathered
+rollout processed
+Total steps: 163200
+rollout gathered
+rollout processed
+Total steps: 165600
+rollout gathered
+rollout processed
+Total steps: 168000
+rollout gathered
+rollout processed
+Total steps: 170400
+rollout gathered
+rollout processed
+Total steps: 172800
+rollout gathered
+rollout processed
+Total steps: 175200
+rollout gathered
+rollout processed
+Total steps: 177600
+rollout gathered
+rollout processed
+Total steps: 180000
+rollout gathered
+rollout processed
+Total steps: 182400
+rollout gathered
+rollout processed
+Total steps: 184800
+rollout gathered
+rollout processed
+Total steps: 187200
+rollout gathered
+rollout processed
+Total steps: 189600
+rollout gathered
+rollout processed
+Total steps: 192000
+rollout gathered
+rollout processed
+Total steps: 194400
+rollout gathered
+rollout processed
+Total steps: 196800
+rollout gathered
+rollout processed
+Total steps: 199200
+rollout gathered
+rollout processed
+Total steps: 201600
+rollout gathered
+rollout processed
+Total steps: 204000
+rollout gathered
+rollout processed
+Total steps: 206400
+rollout gathered
+rollout processed
+Total steps: 208800
+Traceback (most recent call last):
+  File "main.py", line 56, in <module>
+    n_steps = train_state.pretrain(args, net, optimizer, pretrain_env, state_net, optimizer_state)
+  File "/home/smash_ai/ssbm-gym/train_state.py", line 26, in pretrain
+    steps, obs, _,action_buffer, state_buffer = gather_rollout(params, net, env, obs, state_net, optimizer_state, action_buffer, state_buffer)
+  File "/home/smash_ai/ssbm-gym/train_state.py", line 152, in gather_rollout
+    actions = Categorical(logits=logps).sample() # 1 for each worker
+  File "/home/smash_ai/anaconda3/envs/smash/lib/python3.7/site-packages/torch/distributions/categorical.py", line 64, in __init__
+    super(Categorical, self).__init__(batch_shape, validate_args=validate_args)
+  File "/home/smash_ai/anaconda3/envs/smash/lib/python3.7/site-packages/torch/distributions/distribution.py", line 56, in __init__
+    f"Expected parameter {param} "
+ValueError: Expected parameter logits (Tensor of shape (4, 54)) of distribution Categorical(logits: torch.Size([4, 54])) to satisfy the constraint IndependentConstraint(Real(), 1), but found invalid values:
+tensor([[nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+         nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+         nan, nan, nan, nan, nan, nan],
+        [nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+         nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+         nan, nan, nan, nan, nan, nan],
+        [nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+         nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+         nan, nan, nan, nan, nan, nan],
+        [nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+         nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+         nan, nan, nan, nan, nan, nan]], grad_fn=<SubBackward0>)
