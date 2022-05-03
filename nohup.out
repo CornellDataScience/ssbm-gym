@@ -35230,3 +35230,3946 @@ Total steps:  File "main.py", line 8
     <<<<<<< HEAD
      ^
 SyntaxError: invalid syntax
+Total steps: 0
+rollout gathered
+rollout processed
+{'time': 55.28236794471741, 'reward_mean': 0.0, 'reward_std': 1.155}
+Total steps: 2400
+rollout gathered
+rollout processed
+Total steps: 4800
+rollout gathered
+rollout processed
+Total steps: 7200
+rollout gathered
+rollout processed
+Total steps: 9600
+rollout gathered
+rollout processed
+Total steps: 12000
+rollout gathered
+rollout processed
+Total steps: 14400
+rollout gathered
+rollout processed
+Total steps: 16800
+rollout gathered
+rollout processed
+Total steps: 19200
+rollout gathered
+rollout processed
+Total steps: 21600
+rollout gathered
+rollout processed
+Total steps: 24000
+rollout gathered
+rollout processed
+Total steps: 26400
+rollout gathered
+rollout processed
+Total steps: 28800
+rollout gathered
+rollout processed
+Total steps: 31200
+rollout gathered
+rollout processed
+Total steps: 33600
+rollout gathered
+rollout processed
+Total steps: 36000
+rollout gathered
+rollout processed
+Total steps: 38400
+rollout gathered
+rollout processed
+Total steps: 40800
+rollout gathered
+rollout processed
+Total steps: 43200
+rollout gathered
+rollout processed
+Total steps: 45600
+rollout gathered
+rollout processed
+Total steps: 48000
+rollout gathered
+rollout processed
+Total steps: 50400
+rollout gathered
+rollout processed
+Total steps: 52800
+rollout gathered
+rollout processed
+Total steps: 55200
+rollout gathered
+rollout processed
+Total steps: 57600
+rollout gathered
+rollout processed
+Total steps: 60000
+rollout gathered
+rollout processed
+Total steps: 62400
+rollout gathered
+rollout processed
+Total steps: 64800
+rollout gathered
+rollout processed
+Total steps: 67200
+rollout gathered
+rollout processed
+Total steps: 69600
+rollout gathered
+rollout processed
+Total steps: 72000
+rollout gathered
+rollout processed
+Total steps: 74400
+rollout gathered
+rollout processed
+Total steps: 76800
+rollout gathered
+rollout processed
+Total steps: 79200
+rollout gathered
+rollout processed
+Total steps: 81600
+rollout gathered
+rollout processed
+Total steps: 84000
+rollout gathered
+rollout processed
+Total steps: 86400
+rollout gathered
+rollout processed
+Total steps: 88800
+rollout gathered
+rollout processed
+Total steps: 91200
+rollout gathered
+rollout processed
+Total steps: 93600
+rollout gathered
+rollout processed
+Total steps: 96000
+rollout gathered
+rollout processed
+Total steps: 98400
+rollout gathered
+rollout processed
+Total steps: 100800
+rollout gathered
+rollout processed
+Total steps: 103200
+rollout gathered
+rollout processed
+Total steps: 105600
+rollout gathered
+rollout processed
+Total steps: 108000
+rollout gathered
+rollout processed
+Total steps: 110400
+rollout gathered
+rollout processed
+Total steps: 112800
+rollout gathered
+rollout processed
+Total steps: 115200
+rollout gathered
+rollout processed
+Total steps: 117600
+rollout gathered
+rollout processed
+Total steps: 120000
+rollout gathered
+rollout processed
+Total steps: 122400
+rollout gathered
+rollout processed
+Total steps: 124800
+rollout gathered
+rollout processed
+Total steps: 127200
+rollout gathered
+rollout processed
+Total steps: 129600
+rollout gathered
+rollout processed
+Total steps: 132000
+rollout gathered
+rollout processed
+Total steps: 134400
+rollout gathered
+rollout processed
+Total steps: 136800
+rollout gathered
+rollout processed
+Total steps: 139200
+rollout gathered
+rollout processed
+Total steps: 141600
+rollout gathered
+rollout processed
+Total steps: 144000
+rollout gathered
+rollout processed
+Total steps: 146400
+rollout gathered
+rollout processed
+Total steps: 148800
+rollout gathered
+rollout processed
+Total steps: 151200
+rollout gathered
+rollout processed
+Total steps: 153600
+rollout gathered
+rollout processed
+Total steps: 156000
+rollout gathered
+rollout processed
+Total steps: 158400
+rollout gathered
+rollout processed
+Total steps: 160800
+rollout gathered
+rollout processed
+Total steps: 163200
+rollout gathered
+rollout processed
+Total steps: 165600
+rollout gathered
+rollout processed
+Total steps: 168000
+rollout gathered
+rollout processed
+Total steps: 170400
+rollout gathered
+rollout processed
+Total steps: 172800
+rollout gathered
+rollout processed
+Total steps: 175200
+rollout gathered
+rollout processed
+Total steps: 177600
+rollout gathered
+rollout processed
+Total steps: 180000
+rollout gathered
+rollout processed
+Total steps: 182400
+rollout gathered
+rollout processed
+Total steps: 184800
+rollout gathered
+rollout processed
+Total steps: 187200
+rollout gathered
+rollout processed
+Total steps: 189600
+rollout gathered
+rollout processed
+Total steps: 192000
+rollout gathered
+rollout processed
+Total steps: 194400
+rollout gathered
+rollout processed
+Total steps: 196800
+rollout gathered
+rollout processed
+Total steps: 199200
+rollout gathered
+rollout processed
+Total steps: 201600
+rollout gathered
+rollout processed
+Total steps: 204000
+rollout gathered
+rollout processed
+Total steps: 206400
+rollout gathered
+rollout processed
+Total steps: 208800
+rollout gathered
+rollout processed
+Total steps: 211200
+rollout gathered
+rollout processed
+Total steps: 213600
+rollout gathered
+rollout processed
+Total steps: 216000
+rollout gathered
+rollout processed
+Total steps: 218400
+rollout gathered
+rollout processed
+Total steps: 220800
+rollout gathered
+rollout processed
+Total steps: 223200
+rollout gathered
+rollout processed
+Total steps: 225600
+rollout gathered
+rollout processed
+Total steps: 228000
+rollout gathered
+rollout processed
+Total steps: 230400
+rollout gathered
+rollout processed
+Total steps: 232800
+rollout gathered
+rollout processed
+Total steps: 235200
+rollout gathered
+rollout processed
+Total steps: 237600
+rollout gathered
+rollout processed
+Total steps: 240000
+rollout gathered
+rollout processed
+Total steps: 242400
+rollout gathered
+rollout processed
+Total steps: 244800
+rollout gathered
+rollout processed
+Total steps: 247200
+rollout gathered
+rollout processed
+Total steps: 249600
+rollout gathered
+rollout processed
+{'time': 3054.6252796649933, 'reward_mean': -0.75, 'reward_std': 0.5}
+Total steps: 252000
+rollout gathered
+rollout processed
+Total steps: 254400
+rollout gathered
+rollout processed
+Total steps: 256800
+rollout gathered
+rollout processed
+Total steps: 259200
+rollout gathered
+rollout processed
+Total steps: 261600
+rollout gathered
+rollout processed
+Total steps: 264000
+rollout gathered
+rollout processed
+Total steps: 266400
+rollout gathered
+rollout processed
+Total steps: 268800
+rollout gathered
+rollout processed
+Total steps: 271200
+rollout gathered
+rollout processed
+Total steps: 273600
+rollout gathered
+rollout processed
+Total steps: 276000
+rollout gathered
+rollout processed
+Total steps: 278400
+rollout gathered
+rollout processed
+Total steps: 280800
+rollout gathered
+rollout processed
+Total steps: 283200
+rollout gathered
+rollout processed
+Total steps: 285600
+rollout gathered
+rollout processed
+Total steps: 288000
+rollout gathered
+rollout processed
+Total steps: 290400
+rollout gathered
+rollout processed
+Total steps: 292800
+rollout gathered
+rollout processed
+Total steps: 295200
+rollout gathered
+rollout processed
+Total steps: 297600
+rollout gathered
+rollout processed
+Total steps: 300000
+rollout gathered
+rollout processed
+Total steps: 302400
+rollout gathered
+rollout processed
+Total steps: 304800
+rollout gathered
+rollout processed
+Total steps: 307200
+rollout gathered
+rollout processed
+Total steps: 309600
+rollout gathered
+rollout processed
+Total steps: 312000
+rollout gathered
+rollout processed
+Total steps: 314400
+rollout gathered
+rollout processed
+Total steps: 316800
+rollout gathered
+rollout processed
+Total steps: 319200
+rollout gathered
+rollout processed
+Total steps: 321600
+rollout gathered
+rollout processed
+Total steps: 324000
+rollout gathered
+rollout processed
+Total steps: 326400
+rollout gathered
+rollout processed
+Total steps: 328800
+rollout gathered
+rollout processed
+Total steps: 331200
+rollout gathered
+rollout processed
+Total steps: 333600
+rollout gathered
+rollout processed
+Total steps: 336000
+rollout gathered
+rollout processed
+Total steps: 338400
+rollout gathered
+rollout processed
+Total steps: 340800
+rollout gathered
+rollout processed
+Total steps: 343200
+rollout gathered
+rollout processed
+Total steps: 345600
+rollout gathered
+rollout processed
+Total steps: 348000
+rollout gathered
+rollout processed
+Total steps: 350400
+rollout gathered
+rollout processed
+Total steps: 352800
+rollout gathered
+rollout processed
+Total steps: 355200
+rollout gathered
+rollout processed
+Total steps: 357600
+rollout gathered
+rollout processed
+Total steps: 360000
+rollout gathered
+rollout processed
+Total steps: 362400
+rollout gathered
+rollout processed
+Total steps: 364800
+rollout gathered
+rollout processed
+Total steps: 367200
+rollout gathered
+rollout processed
+Total steps: 369600
+rollout gathered
+rollout processed
+Total steps: 372000
+rollout gathered
+rollout processed
+Total steps: 374400
+rollout gathered
+rollout processed
+Total steps: 376800
+rollout gathered
+rollout processed
+Total steps: 379200
+rollout gathered
+rollout processed
+Total steps: 381600
+rollout gathered
+rollout processed
+Total steps: 384000
+rollout gathered
+rollout processed
+Total steps: 386400
+rollout gathered
+rollout processed
+Total steps: 388800
+rollout gathered
+rollout processed
+Total steps: 391200
+rollout gathered
+rollout processed
+Total steps: 393600
+rollout gathered
+rollout processed
+Total steps: 396000
+rollout gathered
+rollout processed
+Total steps: 398400
+rollout gathered
+rollout processed
+Total steps: 400800
+rollout gathered
+rollout processed
+Total steps: 403200
+rollout gathered
+rollout processed
+Total steps: 405600
+rollout gathered
+rollout processed
+Total steps: 408000
+rollout gathered
+rollout processed
+Total steps: 410400
+rollout gathered
+rollout processed
+Total steps: 412800
+rollout gathered
+rollout processed
+Total steps: 415200
+rollout gathered
+rollout processed
+Total steps: 417600
+rollout gathered
+rollout processed
+Total steps: 420000
+rollout gathered
+rollout processed
+Total steps: 422400
+rollout gathered
+rollout processed
+Total steps: 424800
+rollout gathered
+rollout processed
+Total steps: 427200
+rollout gathered
+rollout processed
+Total steps: 429600
+rollout gathered
+rollout processed
+Total steps: 432000
+rollout gathered
+rollout processed
+Total steps: 434400
+rollout gathered
+rollout processed
+Total steps: 436800
+rollout gathered
+rollout processed
+Total steps: 439200
+rollout gathered
+rollout processed
+Total steps: 441600
+rollout gathered
+rollout processed
+Total steps: 444000
+rollout gathered
+rollout processed
+Total steps: 446400
+rollout gathered
+rollout processed
+Total steps: 448800
+rollout gathered
+rollout processed
+Total steps: 451200
+rollout gathered
+rollout processed
+Total steps: 453600
+rollout gathered
+rollout processed
+Total steps: 456000
+rollout gathered
+rollout processed
+Total steps: 458400
+rollout gathered
+rollout processed
+Total steps: 460800
+rollout gathered
+rollout processed
+Total steps: 463200
+rollout gathered
+rollout processed
+Total steps: 465600
+rollout gathered
+rollout processed
+Total steps: 468000
+rollout gathered
+rollout processed
+Total steps: 470400
+rollout gathered
+rollout processed
+Total steps: 472800
+rollout gathered
+rollout processed
+Total steps: 475200
+rollout gathered
+rollout processed
+Total steps: 477600
+rollout gathered
+rollout processed
+Total steps: 480000
+rollout gathered
+rollout processed
+Total steps: 482400
+rollout gathered
+rollout processed
+Total steps: 484800
+rollout gathered
+rollout processed
+Total steps: 487200
+rollout gathered
+rollout processed
+Total steps: 489600
+rollout gathered
+rollout processed
+Total steps: 492000
+rollout gathered
+rollout processed
+Total steps: 494400
+rollout gathered
+rollout processed
+Total steps: 496800
+rollout gathered
+rollout processed
+Total steps: 499200
+rollout gathered
+rollout processed
+{'time': 6060.2384378910065, 'reward_mean': -0.75, 'reward_std': 0.5}
+Total steps: 501600
+rollout gathered
+rollout processed
+Total steps: 504000
+rollout gathered
+rollout processed
+Total steps: 506400
+rollout gathered
+rollout processed
+Total steps: 508800
+rollout gathered
+rollout processed
+Total steps: 511200
+rollout gathered
+rollout processed
+Total steps: 513600
+rollout gathered
+rollout processed
+Total steps: 516000
+rollout gathered
+rollout processed
+Total steps: 518400
+rollout gathered
+rollout processed
+Total steps: 520800
+rollout gathered
+rollout processed
+Total steps: 523200
+rollout gathered
+rollout processed
+Total steps: 525600
+rollout gathered
+rollout processed
+Total steps: 528000
+rollout gathered
+rollout processed
+Total steps: 530400
+rollout gathered
+rollout processed
+Total steps: 532800
+rollout gathered
+rollout processed
+Total steps: 535200
+rollout gathered
+rollout processed
+Total steps: 537600
+rollout gathered
+rollout processed
+Total steps: 540000
+rollout gathered
+rollout processed
+Total steps: 542400
+rollout gathered
+rollout processed
+Total steps: 544800
+rollout gathered
+rollout processed
+Total steps: 547200
+rollout gathered
+rollout processed
+Total steps: 549600
+rollout gathered
+rollout processed
+Total steps: 552000
+rollout gathered
+rollout processed
+Total steps: 554400
+rollout gathered
+rollout processed
+Total steps: 556800
+rollout gathered
+rollout processed
+Total steps: 559200
+rollout gathered
+rollout processed
+Total steps: 561600
+rollout gathered
+rollout processed
+Total steps: 564000
+rollout gathered
+rollout processed
+Total steps: 566400
+rollout gathered
+rollout processed
+Total steps: 568800
+rollout gathered
+rollout processed
+Total steps: 571200
+rollout gathered
+rollout processed
+Total steps: 573600
+rollout gathered
+rollout processed
+Total steps: 576000
+rollout gathered
+rollout processed
+Total steps: 578400
+rollout gathered
+rollout processed
+Total steps: 580800
+rollout gathered
+rollout processed
+Total steps: 583200
+rollout gathered
+rollout processed
+Total steps: 585600
+rollout gathered
+rollout processed
+Total steps: 588000
+rollout gathered
+rollout processed
+Total steps: 590400
+rollout gathered
+rollout processed
+Total steps: 592800
+rollout gathered
+rollout processed
+Total steps: 595200
+rollout gathered
+rollout processed
+Total steps: 597600
+rollout gathered
+rollout processed
+Total steps: 600000
+rollout gathered
+rollout processed
+Total steps: 602400
+rollout gathered
+rollout processed
+Total steps: 604800
+rollout gathered
+rollout processed
+Total steps: 607200
+rollout gathered
+rollout processed
+Total steps: 609600
+rollout gathered
+rollout processed
+Total steps: 612000
+rollout gathered
+rollout processed
+Total steps: 614400
+rollout gathered
+rollout processed
+Total steps: 616800
+rollout gathered
+rollout processed
+Total steps: 619200
+rollout gathered
+rollout processed
+Total steps: 621600
+rollout gathered
+rollout processed
+Total steps: 624000
+rollout gathered
+rollout processed
+Total steps: 626400
+rollout gathered
+rollout processed
+Total steps: 628800
+rollout gathered
+rollout processed
+Total steps: 631200
+rollout gathered
+rollout processed
+Total steps: 633600
+rollout gathered
+rollout processed
+Total steps: 636000
+rollout gathered
+rollout processed
+Total steps: 638400
+rollout gathered
+rollout processed
+Total steps: 640800
+rollout gathered
+rollout processed
+Total steps: 643200
+rollout gathered
+rollout processed
+Total steps: 645600
+rollout gathered
+rollout processed
+Total steps: 648000
+rollout gathered
+rollout processed
+Total steps: 650400
+rollout gathered
+rollout processed
+Total steps: 652800
+rollout gathered
+rollout processed
+Total steps: 655200
+rollout gathered
+rollout processed
+Total steps: 657600
+rollout gathered
+rollout processed
+Total steps: 660000
+rollout gathered
+rollout processed
+Total steps: 662400
+rollout gathered
+rollout processed
+Total steps: 664800
+rollout gathered
+rollout processed
+Total steps: 667200
+rollout gathered
+rollout processed
+Total steps: 669600
+rollout gathered
+rollout processed
+Total steps: 672000
+rollout gathered
+rollout processed
+Total steps: 674400
+rollout gathered
+rollout processed
+Total steps: 676800
+rollout gathered
+rollout processed
+Total steps: 679200
+rollout gathered
+rollout processed
+Total steps: 681600
+rollout gathered
+rollout processed
+Total steps: 684000
+rollout gathered
+rollout processed
+Total steps: 686400
+rollout gathered
+rollout processed
+Total steps: 688800
+rollout gathered
+rollout processed
+Total steps: 691200
+rollout gathered
+rollout processed
+Total steps: 693600
+rollout gathered
+rollout processed
+Total steps: 696000
+rollout gathered
+rollout processed
+Total steps: 698400
+rollout gathered
+rollout processed
+Total steps: 700800
+rollout gathered
+rollout processed
+Total steps: 703200
+rollout gathered
+rollout processed
+Total steps: 705600
+rollout gathered
+rollout processed
+Total steps: 708000
+rollout gathered
+rollout processed
+Total steps: 710400
+rollout gathered
+rollout processed
+Total steps: 712800
+rollout gathered
+rollout processed
+Total steps: 715200
+rollout gathered
+rollout processed
+Total steps: 717600
+rollout gathered
+rollout processed
+Total steps: 720000
+rollout gathered
+rollout processed
+Total steps: 722400
+rollout gathered
+rollout processed
+Total steps: 724800
+rollout gathered
+rollout processed
+Total steps: 727200
+rollout gathered
+rollout processed
+Total steps: 729600
+rollout gathered
+rollout processed
+Total steps: 732000
+rollout gathered
+rollout processed
+Total steps: 734400
+rollout gathered
+rollout processed
+Total steps: 736800
+rollout gathered
+rollout processed
+Total steps: 739200
+rollout gathered
+rollout processed
+Total steps: 741600
+rollout gathered
+rollout processed
+Total steps: 744000
+rollout gathered
+rollout processed
+Total steps: 746400
+rollout gathered
+rollout processed
+Total steps: 748800
+rollout gathered
+rollout processed
+{'time': 9047.714794874191, 'reward_mean': -1.25, 'reward_std': 0.5}
+Total steps: 751200
+rollout gathered
+rollout processed
+Total steps: 753600
+rollout gathered
+rollout processed
+Total steps: 756000
+rollout gathered
+rollout processed
+Total steps: 758400
+rollout gathered
+rollout processed
+Total steps: 760800
+rollout gathered
+rollout processed
+Total steps: 763200
+rollout gathered
+rollout processed
+Total steps: 765600
+rollout gathered
+rollout processed
+Total steps: 768000
+rollout gathered
+rollout processed
+Total steps: 770400
+rollout gathered
+rollout processed
+Total steps: 772800
+rollout gathered
+rollout processed
+Total steps: 775200
+rollout gathered
+rollout processed
+Total steps: 777600
+rollout gathered
+rollout processed
+Total steps: 780000
+rollout gathered
+rollout processed
+Total steps: 782400
+rollout gathered
+rollout processed
+Total steps: 784800
+rollout gathered
+rollout processed
+Total steps: 787200
+rollout gathered
+rollout processed
+Total steps: 789600
+rollout gathered
+rollout processed
+Total steps: 792000
+rollout gathered
+rollout processed
+Total steps: 794400
+rollout gathered
+rollout processed
+Total steps: 796800
+rollout gathered
+rollout processed
+Total steps: 799200
+rollout gathered
+rollout processed
+Total steps: 801600
+rollout gathered
+rollout processed
+Total steps: 804000
+rollout gathered
+rollout processed
+Total steps: 806400
+rollout gathered
+rollout processed
+Total steps: 808800
+rollout gathered
+rollout processed
+Total steps: 811200
+rollout gathered
+rollout processed
+Total steps: 813600
+rollout gathered
+rollout processed
+Total steps: 816000
+rollout gathered
+rollout processed
+Total steps: 818400
+rollout gathered
+rollout processed
+Total steps: 820800
+rollout gathered
+rollout processed
+Total steps: 823200
+rollout gathered
+rollout processed
+Total steps: 825600
+rollout gathered
+rollout processed
+Total steps: 828000
+rollout gathered
+rollout processed
+Total steps: 830400
+rollout gathered
+rollout processed
+Total steps: 832800
+rollout gathered
+rollout processed
+Total steps: 835200
+rollout gathered
+rollout processed
+Total steps: 837600
+rollout gathered
+rollout processed
+Total steps: 840000
+rollout gathered
+rollout processed
+Total steps: 842400
+rollout gathered
+rollout processed
+Total steps: 844800
+rollout gathered
+rollout processed
+Total steps: 847200
+rollout gathered
+rollout processed
+Total steps: 849600
+rollout gathered
+rollout processed
+Total steps: 852000
+rollout gathered
+rollout processed
+Total steps: 854400
+rollout gathered
+rollout processed
+Total steps: 856800
+rollout gathered
+rollout processed
+Total steps: 859200
+rollout gathered
+rollout processed
+Total steps: 861600
+rollout gathered
+rollout processed
+Total steps: 864000
+rollout gathered
+rollout processed
+Total steps: 866400
+rollout gathered
+rollout processed
+Total steps: 868800
+rollout gathered
+rollout processed
+Total steps: 871200
+rollout gathered
+rollout processed
+Total steps: 873600
+rollout gathered
+rollout processed
+Total steps: 876000
+rollout gathered
+rollout processed
+Total steps: 878400
+rollout gathered
+rollout processed
+Total steps: 880800
+rollout gathered
+rollout processed
+Total steps: 883200
+rollout gathered
+rollout processed
+Total steps: 885600
+rollout gathered
+rollout processed
+Total steps: 888000
+rollout gathered
+rollout processed
+Total steps: 890400
+rollout gathered
+rollout processed
+Total steps: 892800
+rollout gathered
+rollout processed
+Total steps: 895200
+rollout gathered
+rollout processed
+Total steps: 897600
+rollout gathered
+rollout processed
+Total steps: 900000
+rollout gathered
+rollout processed
+Total steps: 902400
+rollout gathered
+rollout processed
+Total steps: 904800
+rollout gathered
+rollout processed
+Total steps: 907200
+rollout gathered
+rollout processed
+Total steps: 909600
+rollout gathered
+rollout processed
+Total steps: 912000
+rollout gathered
+rollout processed
+Total steps: 914400
+rollout gathered
+rollout processed
+Total steps: 916800
+rollout gathered
+rollout processed
+Total steps: 919200
+rollout gathered
+rollout processed
+Total steps: 921600
+rollout gathered
+rollout processed
+Total steps: 924000
+rollout gathered
+rollout processed
+Total steps: 926400
+rollout gathered
+rollout processed
+Total steps: 928800
+rollout gathered
+rollout processed
+Total steps: 931200
+rollout gathered
+rollout processed
+Total steps: 933600
+rollout gathered
+rollout processed
+Total steps: 936000
+rollout gathered
+rollout processed
+Total steps: 938400
+rollout gathered
+rollout processed
+Total steps: 940800
+rollout gathered
+rollout processed
+Total steps: 943200
+rollout gathered
+rollout processed
+Total steps: 945600
+rollout gathered
+rollout processed
+Total steps: 948000
+rollout gathered
+rollout processed
+Total steps: 950400
+rollout gathered
+rollout processed
+Total steps: 952800
+rollout gathered
+rollout processed
+Total steps: 955200
+rollout gathered
+rollout processed
+Total steps: 957600
+rollout gathered
+rollout processed
+Total steps: 960000
+rollout gathered
+rollout processed
+Total steps: 962400
+rollout gathered
+rollout processed
+Total steps: 964800
+rollout gathered
+rollout processed
+Total steps: 967200
+rollout gathered
+rollout processed
+Total steps: 969600
+rollout gathered
+rollout processed
+Total steps: 972000
+rollout gathered
+rollout processed
+Total steps: 974400
+rollout gathered
+rollout processed
+Total steps: 976800
+rollout gathered
+rollout processed
+Total steps: 979200
+rollout gathered
+rollout processed
+Total steps: 981600
+rollout gathered
+rollout processed
+Total steps: 984000
+rollout gathered
+rollout processed
+Total steps: 986400
+rollout gathered
+rollout processed
+Total steps: 988800
+rollout gathered
+rollout processed
+Total steps: 991200
+rollout gathered
+rollout processed
+Total steps: 993600
+rollout gathered
+rollout processed
+Total steps: 996000
+rollout gathered
+rollout processed
+Total steps: 998400
+rollout gathered
+rollout processed
+{'time': 12045.206372499466, 'reward_mean': -0.5, 'reward_std': 0.577}
+Total steps: 1000800
+rollout gathered
+rollout processed
+Total steps: 1003200
+rollout gathered
+rollout processed
+Total steps: 1005600
+rollout gathered
+rollout processed
+Total steps: 1008000
+rollout gathered
+rollout processed
+Total steps: 1010400
+rollout gathered
+rollout processed
+Total steps: 1012800
+rollout gathered
+rollout processed
+Total steps: 1015200
+rollout gathered
+rollout processed
+Total steps: 1017600
+rollout gathered
+rollout processed
+Total steps: 1020000
+rollout gathered
+rollout processed
+Total steps: 1022400
+rollout gathered
+rollout processed
+Total steps: 1024800
+rollout gathered
+rollout processed
+Total steps: 1027200
+rollout gathered
+rollout processed
+Total steps: 1029600
+rollout gathered
+rollout processed
+Total steps: 1032000
+rollout gathered
+rollout processed
+Total steps: 1034400
+rollout gathered
+rollout processed
+Total steps: 1036800
+rollout gathered
+rollout processed
+Total steps: 1039200
+rollout gathered
+rollout processed
+Total steps: 1041600
+rollout gathered
+rollout processed
+Total steps: 1044000
+rollout gathered
+rollout processed
+Total steps: 1046400
+rollout gathered
+rollout processed
+Total steps: 1048800
+rollout gathered
+rollout processed
+Total steps: 1051200
+rollout gathered
+rollout processed
+Total steps: 1053600
+rollout gathered
+rollout processed
+Total steps: 1056000
+rollout gathered
+rollout processed
+Total steps: 1058400
+rollout gathered
+rollout processed
+Total steps: 1060800
+rollout gathered
+rollout processed
+Total steps: 1063200
+rollout gathered
+rollout processed
+Total steps: 1065600
+rollout gathered
+rollout processed
+Total steps: 1068000
+rollout gathered
+rollout processed
+Total steps: 1070400
+rollout gathered
+rollout processed
+Total steps: 1072800
+rollout gathered
+rollout processed
+Total steps: 1075200
+rollout gathered
+rollout processed
+Total steps: 1077600
+rollout gathered
+rollout processed
+Total steps: 1080000
+rollout gathered
+rollout processed
+Total steps: 1082400
+rollout gathered
+rollout processed
+Total steps: 1084800
+rollout gathered
+rollout processed
+Total steps: 1087200
+rollout gathered
+rollout processed
+Total steps: 1089600
+rollout gathered
+rollout processed
+Total steps: 1092000
+rollout gathered
+rollout processed
+Total steps: 1094400
+rollout gathered
+rollout processed
+Total steps: 1096800
+rollout gathered
+rollout processed
+Total steps: 1099200
+rollout gathered
+rollout processed
+Total steps: 1101600
+rollout gathered
+rollout processed
+Total steps: 1104000
+rollout gathered
+rollout processed
+Total steps: 1106400
+rollout gathered
+rollout processed
+Total steps: 1108800
+rollout gathered
+rollout processed
+Total steps: 1111200
+rollout gathered
+rollout processed
+Total steps: 1113600
+rollout gathered
+rollout processed
+Total steps: 1116000
+rollout gathered
+rollout processed
+Total steps: 1118400
+rollout gathered
+rollout processed
+Total steps: 1120800
+rollout gathered
+rollout processed
+Total steps: 1123200
+rollout gathered
+rollout processed
+Total steps: 1125600
+rollout gathered
+rollout processed
+Total steps: 1128000
+rollout gathered
+rollout processed
+Total steps: 1130400
+rollout gathered
+rollout processed
+Total steps: 1132800
+rollout gathered
+rollout processed
+Total steps: 1135200
+rollout gathered
+rollout processed
+Total steps: 1137600
+rollout gathered
+rollout processed
+Total steps: 1140000
+rollout gathered
+rollout processed
+Total steps: 1142400
+rollout gathered
+rollout processed
+Total steps: 1144800
+rollout gathered
+rollout processed
+Total steps: 1147200
+rollout gathered
+rollout processed
+Total steps: 1149600
+rollout gathered
+rollout processed
+Total steps: 1152000
+rollout gathered
+rollout processed
+Total steps: 1154400
+rollout gathered
+rollout processed
+Total steps: 1156800
+rollout gathered
+rollout processed
+Total steps: 1159200
+rollout gathered
+rollout processed
+Total steps: 1161600
+rollout gathered
+rollout processed
+Total steps: 1164000
+rollout gathered
+rollout processed
+Total steps: 1166400
+rollout gathered
+rollout processed
+Total steps: 1168800
+rollout gathered
+rollout processed
+Total steps: 1171200
+rollout gathered
+rollout processed
+Total steps: 1173600
+rollout gathered
+rollout processed
+Total steps: 1176000
+rollout gathered
+rollout processed
+Total steps: 1178400
+rollout gathered
+rollout processed
+Total steps: 1180800
+rollout gathered
+rollout processed
+Total steps: 1183200
+rollout gathered
+rollout processed
+Total steps: 1185600
+rollout gathered
+rollout processed
+Total steps: 1188000
+rollout gathered
+rollout processed
+Total steps: 1190400
+rollout gathered
+rollout processed
+Total steps: 1192800
+rollout gathered
+rollout processed
+Total steps: 1195200
+rollout gathered
+rollout processed
+Total steps: 1197600
+rollout gathered
+rollout processed
+Total steps: 1200000
+rollout gathered
+rollout processed
+Total steps: 1202400
+rollout gathered
+rollout processed
+Total steps: 1204800
+rollout gathered
+rollout processed
+Total steps: 1207200
+rollout gathered
+rollout processed
+Total steps: 1209600
+rollout gathered
+rollout processed
+Total steps: 1212000
+rollout gathered
+rollout processed
+Total steps: 1214400
+rollout gathered
+rollout processed
+Total steps: 1216800
+rollout gathered
+rollout processed
+Total steps: 1219200
+rollout gathered
+rollout processed
+Total steps: 1221600
+rollout gathered
+rollout processed
+Total steps: 1224000
+rollout gathered
+rollout processed
+Total steps: 1226400
+rollout gathered
+rollout processed
+Total steps: 1228800
+rollout gathered
+rollout processed
+Total steps: 1231200
+rollout gathered
+rollout processed
+Total steps: 1233600
+rollout gathered
+rollout processed
+Total steps: 1236000
+rollout gathered
+rollout processed
+Total steps: 1238400
+rollout gathered
+rollout processed
+Total steps: 1240800
+rollout gathered
+rollout processed
+Total steps: 1243200
+rollout gathered
+rollout processed
+Total steps: 1245600
+rollout gathered
+rollout processed
+Total steps: 1248000
+rollout gathered
+rollout processed
+{'time': 18489.094299316406, 'reward_mean': 0.0, 'reward_std': 0.816}
+Total steps: 1250400
+rollout gathered
+rollout processed
+Total steps: 1252800
+rollout gathered
+rollout processed
+Total steps: 1255200
+rollout gathered
+rollout processed
+Total steps: 1257600
+rollout gathered
+rollout processed
+Total steps: 1260000
+rollout gathered
+rollout processed
+Total steps: 1262400
+rollout gathered
+rollout processed
+Total steps: 1264800
+rollout gathered
+rollout processed
+Total steps: 1267200
+rollout gathered
+rollout processed
+Total steps: 1269600
+rollout gathered
+rollout processed
+Total steps: 1272000
+rollout gathered
+rollout processed
+Total steps: 1274400
+rollout gathered
+rollout processed
+Total steps: 1276800
+rollout gathered
+rollout processed
+Total steps: 1279200
+rollout gathered
+rollout processed
+Total steps: 1281600
+rollout gathered
+rollout processed
+Total steps: 1284000
+rollout gathered
+rollout processed
+Total steps: 1286400
+rollout gathered
+rollout processed
+Total steps: 1288800
+rollout gathered
+rollout processed
+Total steps: 1291200
+rollout gathered
+rollout processed
+Total steps: 1293600
+rollout gathered
+rollout processed
+Total steps: 1296000
+rollout gathered
+rollout processed
+Total steps: 1298400
+rollout gathered
+rollout processed
+Total steps: 1300800
+rollout gathered
+rollout processed
+Total steps: 1303200
+rollout gathered
+rollout processed
+Total steps: 1305600
+rollout gathered
+rollout processed
+Total steps: 1308000
+rollout gathered
+rollout processed
+Total steps: 1310400
+rollout gathered
+rollout processed
+Total steps: 1312800
+rollout gathered
+rollout processed
+Total steps: 1315200
+rollout gathered
+rollout processed
+Total steps: 1317600
+rollout gathered
+rollout processed
+Total steps: 1320000
+rollout gathered
+rollout processed
+Total steps: 1322400
+rollout gathered
+rollout processed
+Total steps: 1324800
+rollout gathered
+rollout processed
+Total steps: 1327200
+rollout gathered
+rollout processed
+Total steps: 1329600
+rollout gathered
+rollout processed
+Total steps: 1332000
+rollout gathered
+rollout processed
+Total steps: 1334400
+rollout gathered
+rollout processed
+Total steps: 1336800
+rollout gathered
+rollout processed
+Total steps: 1339200
+rollout gathered
+rollout processed
+Total steps: 1341600
+rollout gathered
+rollout processed
+Total steps: 1344000
+rollout gathered
+rollout processed
+Total steps: 1346400
+rollout gathered
+rollout processed
+Total steps: 1348800
+rollout gathered
+rollout processed
+Total steps: 1351200
+rollout gathered
+rollout processed
+Total steps: 1353600
+rollout gathered
+rollout processed
+Total steps: 1356000
+rollout gathered
+rollout processed
+Total steps: 1358400
+rollout gathered
+rollout processed
+Total steps: 1360800
+rollout gathered
+rollout processed
+Total steps: 1363200
+rollout gathered
+rollout processed
+Total steps: 1365600
+rollout gathered
+rollout processed
+Total steps: 1368000
+rollout gathered
+rollout processed
+Total steps: 1370400
+rollout gathered
+rollout processed
+Total steps: 1372800
+rollout gathered
+rollout processed
+Total steps: 1375200
+rollout gathered
+rollout processed
+Total steps: 1377600
+rollout gathered
+rollout processed
+Total steps: 1380000
+rollout gathered
+rollout processed
+Total steps: 1382400
+rollout gathered
+rollout processed
+Total steps: 1384800
+rollout gathered
+rollout processed
+Total steps: 1387200
+rollout gathered
+rollout processed
+Total steps: 1389600
+rollout gathered
+rollout processed
+Total steps: 1392000
+rollout gathered
+rollout processed
+Total steps: 1394400
+rollout gathered
+rollout processed
+Total steps: 1396800
+rollout gathered
+rollout processed
+Total steps: 1399200
+rollout gathered
+rollout processed
+Total steps: 1401600
+rollout gathered
+rollout processed
+Total steps: 1404000
+rollout gathered
+rollout processed
+Total steps: 1406400
+rollout gathered
+rollout processed
+Total steps: 1408800
+rollout gathered
+rollout processed
+Total steps: 1411200
+rollout gathered
+rollout processed
+Total steps: 1413600
+rollout gathered
+rollout processed
+Total steps: 1416000
+rollout gathered
+rollout processed
+Total steps: 1418400
+rollout gathered
+rollout processed
+Total steps: 1420800
+rollout gathered
+rollout processed
+Total steps: 1423200
+rollout gathered
+rollout processed
+Total steps: 1425600
+rollout gathered
+rollout processed
+Total steps: 1428000
+rollout gathered
+rollout processed
+Total steps: 1430400
+rollout gathered
+rollout processed
+Total steps: 1432800
+rollout gathered
+rollout processed
+Total steps: 1435200
+rollout gathered
+rollout processed
+Total steps: 1437600
+rollout gathered
+rollout processed
+Total steps: 1440000
+rollout gathered
+rollout processed
+Total steps: 1442400
+rollout gathered
+rollout processed
+Total steps: 1444800
+rollout gathered
+rollout processed
+Total steps: 1447200
+rollout gathered
+rollout processed
+Total steps: 1449600
+rollout gathered
+rollout processed
+Total steps: 1452000
+rollout gathered
+rollout processed
+Total steps: 1454400
+rollout gathered
+rollout processed
+Total steps: 1456800
+rollout gathered
+rollout processed
+Total steps: 1459200
+rollout gathered
+rollout processed
+Total steps: 1461600
+rollout gathered
+rollout processed
+Total steps: 1464000
+rollout gathered
+rollout processed
+Total steps: 1466400
+rollout gathered
+rollout processed
+Total steps: 1468800
+rollout gathered
+rollout processed
+Total steps: 1471200
+rollout gathered
+rollout processed
+Total steps: 1473600
+rollout gathered
+rollout processed
+Total steps: 1476000
+rollout gathered
+rollout processed
+Total steps: 1478400
+rollout gathered
+rollout processed
+Total steps: 1480800
+rollout gathered
+rollout processed
+Total steps: 1483200
+rollout gathered
+rollout processed
+Total steps: 1485600
+rollout gathered
+rollout processed
+Total steps: 1488000
+rollout gathered
+rollout processed
+Total steps: 1490400
+rollout gathered
+rollout processed
+Total steps: 1492800
+rollout gathered
+rollout processed
+Total steps: 1495200
+rollout gathered
+rollout processed
+Total steps: 1497600
+rollout gathered
+rollout processed
+Total steps: 1500000
+rollout gathered
+rollout processed
+{'time': 27181.022510290146, 'reward_mean': -0.75, 'reward_std': 0.957}
+Total steps: 1502400
+rollout gathered
+rollout processed
+Total steps: 1504800
+rollout gathered
+rollout processed
+Total steps: 1507200
+rollout gathered
+rollout processed
+Total steps: 1509600
+rollout gathered
+rollout processed
+Total steps: 1512000
+rollout gathered
+rollout processed
+Total steps: 1514400
+rollout gathered
+rollout processed
+Total steps: 1516800
+rollout gathered
+rollout processed
+Total steps: 1519200
+rollout gathered
+rollout processed
+Total steps: 1521600
+rollout gathered
+rollout processed
+Total steps: 1524000
+rollout gathered
+rollout processed
+Total steps: 1526400
+rollout gathered
+rollout processed
+Total steps: 1528800
+rollout gathered
+rollout processed
+Total steps: 1531200
+rollout gathered
+rollout processed
+Total steps: 1533600
+rollout gathered
+rollout processed
+Total steps: 1536000
+rollout gathered
+rollout processed
+Total steps: 1538400
+rollout gathered
+rollout processed
+Total steps: 1540800
+rollout gathered
+rollout processed
+Total steps: 1543200
+rollout gathered
+rollout processed
+Total steps: 1545600
+rollout gathered
+rollout processed
+Total steps: 1548000
+rollout gathered
+rollout processed
+Total steps: 1550400
+rollout gathered
+rollout processed
+Total steps: 1552800
+rollout gathered
+rollout processed
+Total steps: 1555200
+rollout gathered
+rollout processed
+Total steps: 1557600
+rollout gathered
+rollout processed
+Total steps: 1560000
+rollout gathered
+rollout processed
+Total steps: 1562400
+rollout gathered
+rollout processed
+Total steps: 1564800
+rollout gathered
+rollout processed
+Total steps: 1567200
+rollout gathered
+rollout processed
+Total steps: 1569600
+rollout gathered
+rollout processed
+Total steps: 1572000
+rollout gathered
+rollout processed
+Total steps: 1574400
+rollout gathered
+rollout processed
+Total steps: 1576800
+rollout gathered
+rollout processed
+Total steps: 1579200
+rollout gathered
+rollout processed
+Total steps: 1581600
+rollout gathered
+rollout processed
+Total steps: 1584000
+rollout gathered
+rollout processed
+Total steps: 1586400
+rollout gathered
+rollout processed
+Total steps: 1588800
+rollout gathered
+rollout processed
+Total steps: 1591200
+rollout gathered
+rollout processed
+Total steps: 1593600
+rollout gathered
+rollout processed
+Total steps: 1596000
+rollout gathered
+rollout processed
+Total steps: 1598400
+rollout gathered
+rollout processed
+Total steps: 1600800
+rollout gathered
+rollout processed
+Total steps: 1603200
+rollout gathered
+rollout processed
+Total steps: 1605600
+rollout gathered
+rollout processed
+Total steps: 1608000
+rollout gathered
+rollout processed
+Total steps: 1610400
+rollout gathered
+rollout processed
+Total steps: 1612800
+rollout gathered
+rollout processed
+Total steps: 1615200
+rollout gathered
+rollout processed
+Total steps: 1617600
+rollout gathered
+rollout processed
+Total steps: 1620000
+rollout gathered
+rollout processed
+Total steps: 1622400
+rollout gathered
+rollout processed
+Total steps: 1624800
+rollout gathered
+rollout processed
+Total steps: 1627200
+rollout gathered
+rollout processed
+Total steps: 1629600
+rollout gathered
+rollout processed
+Total steps: 1632000
+rollout gathered
+rollout processed
+Total steps: 1634400
+rollout gathered
+rollout processed
+Total steps: 1636800
+rollout gathered
+rollout processed
+Total steps: 1639200
+rollout gathered
+rollout processed
+Total steps: 1641600
+rollout gathered
+rollout processed
+Total steps: 1644000
+rollout gathered
+rollout processed
+Total steps: 1646400
+rollout gathered
+rollout processed
+Total steps: 1648800
+rollout gathered
+rollout processed
+Total steps: 1651200
+rollout gathered
+rollout processed
+Total steps: 1653600
+rollout gathered
+rollout processed
+Total steps: 1656000
+rollout gathered
+rollout processed
+Total steps: 1658400
+rollout gathered
+rollout processed
+Total steps: 1660800
+rollout gathered
+rollout processed
+Total steps: 1663200
+rollout gathered
+rollout processed
+Total steps: 1665600
+rollout gathered
+rollout processed
+Total steps: 1668000
+rollout gathered
+rollout processed
+Total steps: 1670400
+rollout gathered
+rollout processed
+Total steps: 1672800
+rollout gathered
+rollout processed
+Total steps: 1675200
+rollout gathered
+rollout processed
+Total steps: 1677600
+rollout gathered
+rollout processed
+Total steps: 1680000
+rollout gathered
+rollout processed
+Total steps: 1682400
+rollout gathered
+rollout processed
+Total steps: 1684800
+rollout gathered
+rollout processed
+Total steps: 1687200
+rollout gathered
+rollout processed
+Total steps: 1689600
+rollout gathered
+rollout processed
+Total steps: 1692000
+rollout gathered
+rollout processed
+Total steps: 1694400
+rollout gathered
+rollout processed
+Total steps: 1696800
+rollout gathered
+rollout processed
+Total steps: 1699200
+rollout gathered
+rollout processed
+Total steps: 1701600
+rollout gathered
+rollout processed
+Total steps: 1704000
+rollout gathered
+rollout processed
+Total steps: 1706400
+rollout gathered
+rollout processed
+Total steps: 1708800
+rollout gathered
+rollout processed
+Total steps: 1711200
+rollout gathered
+rollout processed
+Total steps: 1713600
+rollout gathered
+rollout processed
+Total steps: 1716000
+rollout gathered
+rollout processed
+Total steps: 1718400
+rollout gathered
+rollout processed
+Total steps: 1720800
+rollout gathered
+rollout processed
+Total steps: 1723200
+rollout gathered
+rollout processed
+Total steps: 1725600
+rollout gathered
+rollout processed
+Total steps: 1728000
+rollout gathered
+rollout processed
+Total steps: 1730400
+rollout gathered
+rollout processed
+Total steps: 1732800
+rollout gathered
+rollout processed
+Total steps: 1735200
+rollout gathered
+rollout processed
+Total steps: 1737600
+rollout gathered
+rollout processed
+Total steps: 1740000
+rollout gathered
+rollout processed
+Total steps: 1742400
+rollout gathered
+rollout processed
+Total steps: 1744800
+rollout gathered
+rollout processed
+Total steps: 1747200
+rollout gathered
+rollout processed
+Total steps: 1749600
+rollout gathered
+rollout processed
+{'time': 36549.43687129021, 'reward_mean': -0.75, 'reward_std': 0.5}
+Total steps: 1752000
+rollout gathered
+rollout processed
+Total steps: 1754400
+rollout gathered
+rollout processed
+Total steps: 1756800
+rollout gathered
+rollout processed
+Total steps: 1759200
+rollout gathered
+rollout processed
+Total steps: 1761600
+rollout gathered
+rollout processed
+Total steps: 1764000
+rollout gathered
+rollout processed
+Total steps: 1766400
+rollout gathered
+rollout processed
+Total steps: 1768800
+rollout gathered
+rollout processed
+Total steps: 1771200
+rollout gathered
+rollout processed
+Total steps: 1773600
+rollout gathered
+rollout processed
+Total steps: 1776000
+rollout gathered
+rollout processed
+Total steps: 1778400
+rollout gathered
+rollout processed
+Total steps: 1780800
+rollout gathered
+rollout processed
+Total steps: 1783200
+rollout gathered
+rollout processed
+Total steps: 1785600
+rollout gathered
+rollout processed
+Total steps: 1788000
+rollout gathered
+rollout processed
+Total steps: 1790400
+rollout gathered
+rollout processed
+Total steps: 1792800
+rollout gathered
+rollout processed
+Total steps: 1795200
+rollout gathered
+rollout processed
+Total steps: 1797600
+rollout gathered
+rollout processed
+Total steps: 1800000
+rollout gathered
+rollout processed
+Total steps: 1802400
+rollout gathered
+rollout processed
+Total steps: 1804800
+rollout gathered
+rollout processed
+Total steps: 1807200
+rollout gathered
+rollout processed
+Total steps: 1809600
+rollout gathered
+rollout processed
+Total steps: 1812000
+rollout gathered
+rollout processed
+Total steps: 1814400
+rollout gathered
+rollout processed
+Total steps: 1816800
+rollout gathered
+rollout processed
+Total steps: 1819200
+rollout gathered
+rollout processed
+Total steps: 1821600
+rollout gathered
+rollout processed
+Total steps: 1824000
+rollout gathered
+rollout processed
+Total steps: 1826400
+rollout gathered
+rollout processed
+Total steps: 1828800
+rollout gathered
+rollout processed
+Total steps: 1831200
+rollout gathered
+rollout processed
+Total steps: 1833600
+rollout gathered
+rollout processed
+Total steps: 1836000
+rollout gathered
+rollout processed
+Total steps: 1838400
+rollout gathered
+rollout processed
+Total steps: 1840800
+rollout gathered
+rollout processed
+Total steps: 1843200
+rollout gathered
+rollout processed
+Total steps: 1845600
+rollout gathered
+rollout processed
+Total steps: 1848000
+rollout gathered
+rollout processed
+Total steps: 1850400
+rollout gathered
+rollout processed
+Total steps: 1852800
+rollout gathered
+rollout processed
+Total steps: 1855200
+rollout gathered
+rollout processed
+Total steps: 1857600
+rollout gathered
+rollout processed
+Total steps: 1860000
+rollout gathered
+rollout processed
+Total steps: 1862400
+rollout gathered
+rollout processed
+Total steps: 1864800
+rollout gathered
+rollout processed
+Total steps: 1867200
+rollout gathered
+rollout processed
+Total steps: 1869600
+rollout gathered
+rollout processed
+Total steps: 1872000
+rollout gathered
+rollout processed
+Total steps: 1874400
+rollout gathered
+rollout processed
+Total steps: 1876800
+rollout gathered
+rollout processed
+Total steps: 1879200
+rollout gathered
+rollout processed
+Total steps: 1881600
+rollout gathered
+rollout processed
+Total steps: 1884000
+rollout gathered
+rollout processed
+Total steps: 1886400
+rollout gathered
+rollout processed
+Total steps: 1888800
+rollout gathered
+rollout processed
+Total steps: 1891200
+rollout gathered
+rollout processed
+Total steps: 1893600
+rollout gathered
+rollout processed
+Total steps: 1896000
+rollout gathered
+rollout processed
+Total steps: 1898400
+rollout gathered
+rollout processed
+Total steps: 1900800
+rollout gathered
+rollout processed
+Total steps: 1903200
+rollout gathered
+rollout processed
+Total steps: 1905600
+rollout gathered
+rollout processed
+Total steps: 1908000
+rollout gathered
+rollout processed
+Total steps: 1910400
+rollout gathered
+rollout processed
+Total steps: 1912800
+rollout gathered
+rollout processed
+Total steps: 1915200
+rollout gathered
+rollout processed
+Total steps: 1917600
+rollout gathered
+rollout processed
+Total steps: 1920000
+rollout gathered
+rollout processed
+Total steps: 1922400
+rollout gathered
+rollout processed
+Total steps: 1924800
+rollout gathered
+rollout processed
+Total steps: 1927200
+rollout gathered
+rollout processed
+Total steps: 1929600
+rollout gathered
+rollout processed
+Total steps: 1932000
+rollout gathered
+rollout processed
+Total steps: 1934400
+rollout gathered
+rollout processed
+Total steps: 1936800
+rollout gathered
+rollout processed
+Total steps: 1939200
+rollout gathered
+rollout processed
+Total steps: 1941600
+rollout gathered
+rollout processed
+Total steps: 1944000
+rollout gathered
+rollout processed
+Total steps: 1946400
+rollout gathered
+rollout processed
+Total steps: 1948800
+rollout gathered
+rollout processed
+Total steps: 1951200
+rollout gathered
+rollout processed
+Total steps: 1953600
+rollout gathered
+rollout processed
+Total steps: 1956000
+rollout gathered
+rollout processed
+Total steps: 1958400
+rollout gathered
+rollout processed
+Total steps: 1960800
+rollout gathered
+rollout processed
+Total steps: 1963200
+rollout gathered
+rollout processed
+Total steps: 1965600
+rollout gathered
+rollout processed
+Total steps: 1968000
+rollout gathered
+rollout processed
+Total steps: 1970400
+rollout gathered
+rollout processed
+Total steps: 1972800
+rollout gathered
+rollout processed
+Total steps: 1975200
+rollout gathered
+rollout processed
+Total steps: 1977600
+rollout gathered
+rollout processed
+Total steps: 1980000
+rollout gathered
+rollout processed
+Total steps: 1982400
+rollout gathered
+rollout processed
+Total steps: 1984800
+rollout gathered
+rollout processed
+Total steps: 1987200
+rollout gathered
+rollout processed
+Total steps: 1989600
+rollout gathered
+rollout processed
+Total steps: 1992000
+rollout gathered
+rollout processed
+Total steps: 1994400
+rollout gathered
+rollout processed
+Total steps: 1996800
+rollout gathered
+rollout processed
+Total steps: 1999200
+rollout gathered
+rollout processed
+{'time': 45952.01440811157, 'reward_mean': -0.75, 'reward_std': 0.957}
+Total steps: 2001600
+rollout gathered
+rollout processed
+Total steps: 2004000
+rollout gathered
+rollout processed
+Total steps: 2006400
+rollout gathered
+rollout processed
+Total steps: 2008800
+rollout gathered
+rollout processed
+Total steps: 2011200
+rollout gathered
+rollout processed
+Total steps: 2013600
+rollout gathered
+rollout processed
+Total steps: 2016000
+rollout gathered
+rollout processed
+Total steps: 2018400
+rollout gathered
+rollout processed
+Total steps: 2020800
+rollout gathered
+rollout processed
+Total steps: 2023200
+rollout gathered
+rollout processed
+Total steps: 2025600
+rollout gathered
+rollout processed
+Total steps: 2028000
+rollout gathered
+rollout processed
+Total steps: 2030400
+rollout gathered
+rollout processed
+Total steps: 2032800
+rollout gathered
+rollout processed
+Total steps: 2035200
+rollout gathered
+rollout processed
+Total steps: 2037600
+rollout gathered
+rollout processed
+Total steps: 2040000
+rollout gathered
+rollout processed
+Total steps: 2042400
+rollout gathered
+rollout processed
+Total steps: 2044800
+rollout gathered
+rollout processed
+Total steps: 2047200
+rollout gathered
+rollout processed
+Total steps: 2049600
+rollout gathered
+rollout processed
+Total steps: 2052000
+rollout gathered
+rollout processed
+Total steps: 2054400
+rollout gathered
+rollout processed
+Total steps: 2056800
+rollout gathered
+rollout processed
+Total steps: 2059200
+rollout gathered
+rollout processed
+Total steps: 2061600
+rollout gathered
+rollout processed
+Total steps: 2064000
+rollout gathered
+rollout processed
+Total steps: 2066400
+rollout gathered
+rollout processed
+Total steps: 2068800
+rollout gathered
+rollout processed
+Total steps: 2071200
+rollout gathered
+rollout processed
+Total steps: 2073600
+rollout gathered
+rollout processed
+Total steps: 2076000
+rollout gathered
+rollout processed
+Total steps: 2078400
+rollout gathered
+rollout processed
+Total steps: 2080800
+rollout gathered
+rollout processed
+Total steps: 2083200
+rollout gathered
+rollout processed
+Total steps: 2085600
+rollout gathered
+rollout processed
+Total steps: 2088000
+rollout gathered
+rollout processed
+Total steps: 2090400
+rollout gathered
+rollout processed
+Total steps: 2092800
+rollout gathered
+rollout processed
+Total steps: 2095200
+rollout gathered
+rollout processed
+Total steps: 2097600
+rollout gathered
+rollout processed
+Total steps: 2100000
+rollout gathered
+rollout processed
+Total steps: 2102400
+rollout gathered
+rollout processed
+Total steps: 2104800
+rollout gathered
+rollout processed
+Total steps: 2107200
+rollout gathered
+rollout processed
+Total steps: 2109600
+rollout gathered
+rollout processed
+Total steps: 2112000
+rollout gathered
+rollout processed
+Total steps: 2114400
+rollout gathered
+rollout processed
+Total steps: 2116800
+rollout gathered
+rollout processed
+Total steps: 2119200
+rollout gathered
+rollout processed
+Total steps: 2121600
+rollout gathered
+rollout processed
+Total steps: 2124000
+rollout gathered
+rollout processed
+Total steps: 2126400
+rollout gathered
+rollout processed
+Total steps: 2128800
+rollout gathered
+rollout processed
+Total steps: 2131200
+rollout gathered
+rollout processed
+Total steps: 2133600
+rollout gathered
+rollout processed
+Total steps: 2136000
+rollout gathered
+rollout processed
+Total steps: 2138400
+rollout gathered
+rollout processed
+Total steps: 2140800
+rollout gathered
+rollout processed
+Total steps: 2143200
+rollout gathered
+rollout processed
+Total steps: 2145600
+rollout gathered
+rollout processed
+Total steps: 2148000
+rollout gathered
+rollout processed
+Total steps: 2150400
+rollout gathered
+rollout processed
+Total steps: 2152800
+rollout gathered
+rollout processed
+Total steps: 2155200
+rollout gathered
+rollout processed
+Total steps: 2157600
+rollout gathered
+rollout processed
+Total steps: 2160000
+rollout gathered
+rollout processed
+Total steps: 2162400
+rollout gathered
+rollout processed
+Total steps: 2164800
+rollout gathered
+rollout processed
+Total steps: 2167200
+rollout gathered
+rollout processed
+Total steps: 2169600
+rollout gathered
+rollout processed
+Total steps: 2172000
+rollout gathered
+rollout processed
+Total steps: 2174400
+rollout gathered
+rollout processed
+Total steps: 2176800
+rollout gathered
+rollout processed
+Total steps: 2179200
+rollout gathered
+rollout processed
+Total steps: 2181600
+rollout gathered
+rollout processed
+Total steps: 2184000
+rollout gathered
+rollout processed
+Total steps: 2186400
+rollout gathered
+rollout processed
+Total steps: 2188800
+rollout gathered
+rollout processed
+Total steps: 2191200
+rollout gathered
+rollout processed
+Total steps: 2193600
+rollout gathered
+rollout processed
+Total steps: 2196000
+rollout gathered
+rollout processed
+Total steps: 2198400
+rollout gathered
+rollout processed
+Total steps: 2200800
+rollout gathered
+rollout processed
+Total steps: 2203200
+rollout gathered
+rollout processed
+Total steps: 2205600
+rollout gathered
+rollout processed
+Total steps: 2208000
+rollout gathered
+rollout processed
+Total steps: 2210400
+rollout gathered
+rollout processed
+Total steps: 2212800
+rollout gathered
+rollout processed
+Total steps: 2215200
+rollout gathered
+rollout processed
+Total steps: 2217600
+rollout gathered
+rollout processed
+Total steps: 2220000
+rollout gathered
+rollout processed
+Total steps: 2222400
+rollout gathered
+rollout processed
+Total steps: 2224800
+rollout gathered
+rollout processed
+Total steps: 2227200
+rollout gathered
+rollout processed
+Total steps: 2229600
+rollout gathered
+rollout processed
+Total steps: 2232000
+rollout gathered
+rollout processed
+Total steps: 2234400
+rollout gathered
+rollout processed
+Total steps: 2236800
+rollout gathered
+rollout processed
+Total steps: 2239200
+rollout gathered
+rollout processed
+Total steps: 2241600
+rollout gathered
+rollout processed
+Total steps: 2244000
+rollout gathered
+rollout processed
+Total steps: 2246400
+rollout gathered
+rollout processed
+Total steps: 2248800
+rollout gathered
+rollout processed
+{'time': 55295.34430599213, 'reward_mean': -0.5, 'reward_std': 0.577}
+Total steps: 2251200
+rollout gathered
+rollout processed
+Total steps: 2253600
+rollout gathered
+rollout processed
+Total steps: 2256000
+rollout gathered
+rollout processed
+Total steps: 2258400
+rollout gathered
+rollout processed
+Total steps: 2260800
+rollout gathered
+rollout processed
+Total steps: 2263200
+rollout gathered
+rollout processed
+Total steps: 2265600
+rollout gathered
+rollout processed
+Total steps: 2268000
+rollout gathered
+rollout processed
+Total steps: 2270400
+rollout gathered
+rollout processed
+Total steps: 2272800
+rollout gathered
+rollout processed
+Total steps: 2275200
+rollout gathered
+rollout processed
+Total steps: 2277600
+rollout gathered
+rollout processed
+Total steps: 2280000
+rollout gathered
+rollout processed
+Total steps: 2282400
+rollout gathered
+rollout processed
+Total steps: 2284800
+rollout gathered
+rollout processed
+Total steps: 2287200
+rollout gathered
+rollout processed
+Total steps: 2289600
+rollout gathered
+rollout processed
+Total steps: 2292000
+rollout gathered
+rollout processed
+Total steps: 2294400
+rollout gathered
+rollout processed
+Total steps: 2296800
+rollout gathered
+rollout processed
+Total steps: 2299200
+rollout gathered
+rollout processed
+Total steps: 2301600
+rollout gathered
+rollout processed
+Total steps: 2304000
+rollout gathered
+rollout processed
+Total steps: 2306400
+rollout gathered
+rollout processed
+Total steps: 2308800
+rollout gathered
+rollout processed
+Total steps: 2311200
+rollout gathered
+rollout processed
+Total steps: 2313600
+rollout gathered
+rollout processed
+Total steps: 2316000
+rollout gathered
+rollout processed
+Total steps: 2318400
+rollout gathered
+rollout processed
+Total steps: 2320800
+rollout gathered
+rollout processed
+Total steps: 2323200
+rollout gathered
+rollout processed
+Total steps: 2325600
+rollout gathered
+rollout processed
+Total steps: 2328000
+rollout gathered
+rollout processed
+Total steps: 2330400
+rollout gathered
+rollout processed
+Total steps: 2332800
+rollout gathered
+rollout processed
+Total steps: 2335200
+rollout gathered
+rollout processed
+Total steps: 2337600
+rollout gathered
+rollout processed
+Total steps: 2340000
+rollout gathered
+rollout processed
+Total steps: 2342400
+rollout gathered
+rollout processed
+Total steps: 2344800
+rollout gathered
+rollout processed
+Total steps: 2347200
+rollout gathered
+rollout processed
+Total steps: 2349600
+rollout gathered
+rollout processed
+Total steps: 2352000
+rollout gathered
+rollout processed
+Total steps: 2354400
+rollout gathered
+rollout processed
+Total steps: 2356800
+rollout gathered
+rollout processed
+Total steps: 2359200
+rollout gathered
+rollout processed
+Total steps: 2361600
+rollout gathered
+rollout processed
+Total steps: 2364000
+rollout gathered
+rollout processed
+Total steps: 2366400
+rollout gathered
+rollout processed
+Total steps: 2368800
+rollout gathered
+rollout processed
+Total steps: 2371200
+rollout gathered
+rollout processed
+Total steps: 2373600
+rollout gathered
+rollout processed
+Total steps: 2376000
+rollout gathered
+rollout processed
+Total steps: 2378400
+rollout gathered
+rollout processed
+Total steps: 2380800
+rollout gathered
+rollout processed
+Total steps: 2383200
+rollout gathered
+rollout processed
+Total steps: 2385600
+rollout gathered
+rollout processed
+Total steps: 2388000
+rollout gathered
+rollout processed
+Total steps: 2390400
+rollout gathered
+rollout processed
+Total steps: 2392800
+rollout gathered
+rollout processed
+Total steps: 2395200
+rollout gathered
+rollout processed
+Total steps: 2397600
+rollout gathered
+rollout processed
+Total steps: 2400000
+rollout gathered
+rollout processed
+Total steps: 2402400
+rollout gathered
+rollout processed
+Total steps: 2404800
+rollout gathered
+rollout processed
+Total steps: 2407200
+rollout gathered
+rollout processed
+Total steps: 2409600
+rollout gathered
+rollout processed
+Total steps: 2412000
+rollout gathered
+rollout processed
+Total steps: 2414400
+rollout gathered
+rollout processed
+Total steps: 2416800
+rollout gathered
+rollout processed
+Total steps: 2419200
+rollout gathered
+rollout processed
+Total steps: 2421600
+rollout gathered
+rollout processed
+Total steps: 2424000
+rollout gathered
+rollout processed
+Total steps: 2426400
+rollout gathered
+rollout processed
+Total steps: 2428800
+rollout gathered
+rollout processed
+Total steps: 2431200
+rollout gathered
+rollout processed
+Total steps: 2433600
+rollout gathered
+rollout processed
+Total steps: 2436000
+rollout gathered
+rollout processed
+Total steps: 2438400
+rollout gathered
+rollout processed
+Total steps: 2440800
+rollout gathered
+rollout processed
+Total steps: 2443200
+rollout gathered
+rollout processed
+Total steps: 2445600
+rollout gathered
+rollout processed
+Total steps: 2448000
+rollout gathered
+rollout processed
+Total steps: 2450400
+rollout gathered
+rollout processed
+Total steps: 2452800
+rollout gathered
+rollout processed
+Total steps: 2455200
+rollout gathered
+rollout processed
+Total steps: 2457600
+rollout gathered
+rollout processed
+Total steps: 2460000
+rollout gathered
+rollout processed
+Total steps: 2462400
+rollout gathered
+rollout processed
+Total steps: 2464800
+rollout gathered
+rollout processed
+Total steps: 2467200
+rollout gathered
+rollout processed
+Total steps: 2469600
+rollout gathered
+rollout processed
+Total steps: 2472000
+rollout gathered
+rollout processed
+Total steps: 2474400
+rollout gathered
+rollout processed
+Total steps: 2476800
+rollout gathered
+rollout processed
+Total steps: 2479200
+rollout gathered
+rollout processed
+Total steps: 2481600
+rollout gathered
+rollout processed
+Total steps: 2484000
+rollout gathered
+rollout processed
+Total steps: 2486400
+rollout gathered
+rollout processed
+Total steps: 2488800
+rollout gathered
+rollout processed
+Total steps: 2491200
+rollout gathered
+rollout processed
+Total steps: 2493600
+rollout gathered
+rollout processed
+Total steps: 2496000
+rollout gathered
+rollout processed
+Total steps: 2498400
+rollout gathered
+rollout processed
+{'time': 64336.98187017441, 'reward_mean': -0.5, 'reward_std': 1.291}
+Total steps: 2500800
+rollout gathered
+rollout processed
+Total steps: 2503200
+rollout gathered
+rollout processed
+Total steps: 2505600
+rollout gathered
+rollout processed
+Total steps: 2508000
+rollout gathered
+rollout processed
+Total steps: 2510400
+rollout gathered
+rollout processed
+Total steps: 2512800
+rollout gathered
+rollout processed
+Total steps: 2515200
+rollout gathered
+rollout processed
+Total steps: 2517600
+rollout gathered
+rollout processed
+Total steps: 2520000
+rollout gathered
+rollout processed
+Total steps: 2522400
+rollout gathered
+rollout processed
+Total steps: 2524800
+rollout gathered
+rollout processed
+Total steps: 2527200
+rollout gathered
+rollout processed
+Total steps: 2529600
+rollout gathered
+rollout processed
+Total steps: 2532000
+rollout gathered
+rollout processed
+Total steps: 2534400
+rollout gathered
+rollout processed
+Total steps: 2536800
+rollout gathered
+rollout processed
+Total steps: 2539200
+rollout gathered
+rollout processed
+Total steps: 2541600
+rollout gathered
+rollout processed
+Total steps: 2544000
+rollout gathered
+rollout processed
+Total steps: 2546400
+rollout gathered
+rollout processed
+Total steps: 2548800
+rollout gathered
+rollout processed
+Total steps: 2551200
+rollout gathered
+rollout processed
+Total steps: 2553600
+rollout gathered
+rollout processed
+Total steps: 2556000
+rollout gathered
+rollout processed
+Total steps: 2558400
+rollout gathered
+rollout processed
+Total steps: 2560800
+rollout gathered
+rollout processed
+Total steps: 2563200
+rollout gathered
+rollout processed
+Total steps: 2565600
+rollout gathered
+rollout processed
+Total steps: 2568000
+rollout gathered
+rollout processed
+Total steps: 2570400
+rollout gathered
+rollout processed
+Total steps: 2572800
+rollout gathered
+rollout processed
+Total steps: 2575200
+rollout gathered
+rollout processed
+Total steps: 2577600
+rollout gathered
+rollout processed
+Total steps: 2580000
+rollout gathered
+rollout processed
+Total steps: 2582400
+rollout gathered
+rollout processed
+Total steps: 2584800
+rollout gathered
+rollout processed
+Total steps: 2587200
+rollout gathered
+rollout processed
+Total steps: 2589600
+rollout gathered
+rollout processed
+Total steps: 2592000
+rollout gathered
+rollout processed
+Total steps: 2594400
+rollout gathered
+rollout processed
+Total steps: 2596800
+rollout gathered
+rollout processed
+Total steps: 2599200
+rollout gathered
+rollout processed
+Total steps: 2601600
+rollout gathered
+rollout processed
+Total steps: 2604000
+rollout gathered
+rollout processed
+Total steps: 2606400
+rollout gathered
+rollout processed
+Total steps: 2608800
+rollout gathered
+rollout processed
+Total steps: 2611200
+rollout gathered
+rollout processed
+Total steps: 2613600
+rollout gathered
+rollout processed
+Total steps: 2616000
+rollout gathered
+rollout processed
+Total steps: 2618400
+rollout gathered
+rollout processed
+Total steps: 2620800
+rollout gathered
+rollout processed
+Total steps: 2623200
+rollout gathered
+rollout processed
+Total steps: 2625600
+rollout gathered
+rollout processed
+Total steps: 2628000
+rollout gathered
+rollout processed
+Total steps: 2630400
+rollout gathered
+rollout processed
+Total steps: 2632800
+rollout gathered
+rollout processed
+Total steps: 2635200
+rollout gathered
+rollout processed
+Total steps: 2637600
+rollout gathered
+rollout processed
+Total steps: 2640000
+rollout gathered
+rollout processed
+Total steps: 2642400
+rollout gathered
+rollout processed
+Total steps: 2644800
+rollout gathered
+rollout processed
+Total steps: 2647200
+rollout gathered
+rollout processed
+Total steps: 2649600
+rollout gathered
+rollout processed
+Total steps: 2652000
+rollout gathered
+rollout processed
+Total steps: 2654400
+rollout gathered
+rollout processed
+Total steps: 2656800
+rollout gathered
+rollout processed
+Total steps: 2659200
+rollout gathered
+rollout processed
+Total steps: 2661600
+rollout gathered
+rollout processed
+Total steps: 2664000
+rollout gathered
+rollout processed
+Total steps: 2666400
+rollout gathered
+rollout processed
+Total steps: 2668800
+rollout gathered
+rollout processed
+Total steps: 2671200
+rollout gathered
+rollout processed
+Total steps: 2673600
+rollout gathered
+rollout processed
+Total steps: 2676000
+rollout gathered
+rollout processed
+Total steps: 2678400
+rollout gathered
+rollout processed
+Total steps: 2680800
+rollout gathered
+rollout processed
+Total steps: 2683200
+rollout gathered
+rollout processed
+Total steps: 2685600
+rollout gathered
+rollout processed
+Total steps: 2688000
+rollout gathered
+rollout processed
+Total steps: 2690400
+rollout gathered
+rollout processed
+Total steps: 2692800
+rollout gathered
+rollout processed
+Total steps: 2695200
+rollout gathered
+rollout processed
+Total steps: 2697600
+rollout gathered
+rollout processed
+Total steps: 2700000
+rollout gathered
+rollout processed
+Total steps: 2702400
+rollout gathered
+rollout processed
+Total steps: 2704800
+rollout gathered
+rollout processed
+Total steps: 2707200
+rollout gathered
+rollout processed
+Total steps: 2709600
+rollout gathered
+rollout processed
+Total steps: 2712000
+rollout gathered
+rollout processed
+Total steps: 2714400
+rollout gathered
+rollout processed
+Total steps: 2716800
+rollout gathered
+rollout processed
+Total steps: 2719200
+rollout gathered
+rollout processed
+Total steps: 2721600
+rollout gathered
+rollout processed
+Total steps: 2724000
+rollout gathered
+rollout processed
+Total steps: 2726400
+rollout gathered
+rollout processed
+Total steps: 2728800
+rollout gathered
+rollout processed
+Total steps: 2731200
+rollout gathered
+rollout processed
+Total steps: 2733600
+rollout gathered
+rollout processed
+Total steps: 2736000
+rollout gathered
+rollout processed
+Total steps: 2738400
+rollout gathered
+rollout processed
+Total steps: 2740800
+rollout gathered
+rollout processed
+Total steps: 2743200
+rollout gathered
+rollout processed
+Total steps: 2745600
+rollout gathered
+rollout processed
+Total steps: 2748000
+rollout gathered
+rollout processed
+{'time': 73653.37789702415, 'reward_mean': -1.25, 'reward_std': 0.5}
+Total steps: 2750400
+rollout gathered
+rollout processed
+Total steps: 2752800
+rollout gathered
+rollout processed
+Total steps: 2755200
+rollout gathered
+rollout processed
+Total steps: 2757600
+rollout gathered
+rollout processed
+Total steps: 2760000
+rollout gathered
+rollout processed
+Total steps: 2762400
+rollout gathered
+rollout processed
+Total steps: 2764800
+rollout gathered
+rollout processed
+Total steps: 2767200
+rollout gathered
+rollout processed
+Total steps: 2769600
+rollout gathered
+rollout processed
+Total steps: 2772000
+rollout gathered
+rollout processed
+Total steps: 2774400
+rollout gathered
+rollout processed
+Total steps: 2776800
+rollout gathered
+rollout processed
+Total steps: 2779200
+rollout gathered
+rollout processed
+Total steps: 2781600
+rollout gathered
+rollout processed
+Total steps: 2784000
+rollout gathered
+rollout processed
+Total steps: 2786400
+rollout gathered
+rollout processed
+Total steps: 2788800
+rollout gathered
+rollout processed
+Total steps: 2791200
+rollout gathered
+rollout processed
+Total steps: 2793600
+rollout gathered
+rollout processed
+Total steps: 2796000
+rollout gathered
+rollout processed
+Total steps: 2798400
+rollout gathered
+rollout processed
+Total steps: 2800800
+rollout gathered
+rollout processed
+Total steps: 2803200
+rollout gathered
+rollout processed
+Total steps: 2805600
+rollout gathered
+rollout processed
+Total steps: 2808000
+rollout gathered
+rollout processed
+Total steps: 2810400
+rollout gathered
+rollout processed
+Total steps: 2812800
+rollout gathered
+rollout processed
+Total steps: 2815200
+rollout gathered
+rollout processed
+Total steps: 2817600
+rollout gathered
+rollout processed
+Total steps: 2820000
+rollout gathered
+rollout processed
+Total steps: 2822400
+rollout gathered
+rollout processed
+Total steps: 2824800
+rollout gathered
+rollout processed
+Total steps: 2827200
+rollout gathered
+rollout processed
+Total steps: 2829600
+rollout gathered
+rollout processed
+Total steps: 2832000
+rollout gathered
+rollout processed
+Total steps: 2834400
+rollout gathered
+rollout processed
+Total steps: 2836800
+rollout gathered
+rollout processed
+Total steps: 2839200
+rollout gathered
+rollout processed
+Total steps: 2841600
+rollout gathered
+rollout processed
+Total steps: 2844000
+rollout gathered
+rollout processed
+Total steps: 2846400
+rollout gathered
+rollout processed
+Total steps: 2848800
+rollout gathered
+rollout processed
+Total steps: 2851200
+rollout gathered
+rollout processed
+Total steps: 2853600
+rollout gathered
+rollout processed
+Total steps: 2856000
+rollout gathered
+rollout processed
+Total steps: 2858400
+rollout gathered
+rollout processed
+Total steps: 2860800
+rollout gathered
+rollout processed
+Total steps: 2863200
+rollout gathered
+rollout processed
+Total steps: 2865600
+rollout gathered
+rollout processed
+Total steps: 2868000
+rollout gathered
+rollout processed
+Total steps: 2870400
+rollout gathered
+rollout processed
+Total steps: 2872800
+rollout gathered
+rollout processed
+Total steps: 2875200
+rollout gathered
+rollout processed
+Total steps: 2877600
+rollout gathered
+rollout processed
+Total steps: 2880000
+rollout gathered
+rollout processed
+Total steps: 2882400
+rollout gathered
+rollout processed
+Total steps: 2884800
+rollout gathered
+rollout processed
+Total steps: 2887200
+rollout gathered
+rollout processed
+Total steps: 2889600
+rollout gathered
+rollout processed
+Total steps: 2892000
+rollout gathered
+rollout processed
+Total steps: 2894400
+rollout gathered
+rollout processed
+Total steps: 2896800
+rollout gathered
+rollout processed
+Total steps: 2899200
+rollout gathered
+rollout processed
+Total steps: 2901600
+rollout gathered
+rollout processed
+Total steps: 2904000
+rollout gathered
+rollout processed
+Total steps: 2906400
+rollout gathered
+rollout processed
+Total steps: 2908800
+rollout gathered
+rollout processed
+Total steps: 2911200
+rollout gathered
+rollout processed
+Total steps: 2913600
+rollout gathered
+rollout processed
+Total steps: 2916000
+rollout gathered
+rollout processed
+Total steps: 2918400
+rollout gathered
+rollout processed
+Total steps: 2920800
+rollout gathered
+rollout processed
+Total steps: 2923200
+rollout gathered
+rollout processed
+Total steps: 2925600
+rollout gathered
+rollout processed
+Total steps: 2928000
+rollout gathered
+rollout processed
+Total steps: 2930400
+rollout gathered
+rollout processed
+Total steps: 2932800
+rollout gathered
+rollout processed
+Total steps: 2935200
+rollout gathered
+rollout processed
+Total steps: 2937600
+rollout gathered
+rollout processed
+Total steps: 2940000
+rollout gathered
+rollout processed
+Total steps: 2942400
+rollout gathered
+rollout processed
+Total steps: 2944800
+rollout gathered
+rollout processed
+Total steps: 2947200
+rollout gathered
+rollout processed
+Total steps: 2949600
+rollout gathered
+rollout processed
+Total steps: 2952000
+rollout gathered
+rollout processed
+Total steps: 2954400
+rollout gathered
+rollout processed
+Total steps: 2956800
+rollout gathered
+rollout processed
+Total steps: 2959200
+rollout gathered
+rollout processed
+Total steps: 2961600
+rollout gathered
+rollout processed
+Total steps: 2964000
+rollout gathered
+rollout processed
+Total steps: 2966400
+rollout gathered
+rollout processed
+Total steps: 2968800
+rollout gathered
+rollout processed
+Total steps: 2971200
+rollout gathered
+rollout processed
+Total steps: 2973600
+rollout gathered
+rollout processed
+Total steps: 2976000
+rollout gathered
+rollout processed
+Total steps: 2978400
+rollout gathered
+rollout processed
+Total steps: 2980800
+rollout gathered
+rollout processed
+Total steps: 2983200
+rollout gathered
+rollout processed
+Total steps: 2985600
+rollout gathered
+rollout processed
+Total steps: 2988000
+rollout gathered
+rollout processed
+Total steps: 2990400
+rollout gathered
+rollout processed
+Total steps: 2992800
+rollout gathered
+rollout processed
+Total steps: 2995200
+rollout gathered
+rollout processed
+Total steps: 2997600
+rollout gathered
+rollout processed
+Total steps: 3000000
+rollout gathered
+rollout processed
+{'time': 83047.27412319183, 'reward_mean': -0.75, 'reward_std': 0.957}
+Total steps: 3002400
+rollout gathered
+rollout processed
+Total steps: 3004800
+rollout gathered
+rollout processed
+Total steps: 3007200
+rollout gathered
+rollout processed
+Total steps: 3009600
+rollout gathered
+rollout processed
+Total steps: 3012000
+rollout gathered
+rollout processed
+Total steps: 3014400
+rollout gathered
+rollout processed
+Total steps: 3016800
+rollout gathered
+rollout processed
+Total steps: 3019200
+rollout gathered
+rollout processed
+Total steps: 3021600
+rollout gathered
+rollout processed
+Total steps: 3024000
+rollout gathered
+rollout processed
+Total steps: 3026400
+rollout gathered
+rollout processed
+Total steps: 3028800
+rollout gathered
+rollout processed
+Total steps: 3031200
+rollout gathered
+rollout processed
+Total steps: 3033600
+rollout gathered
+rollout processed
+Total steps: 3036000
+rollout gathered
+rollout processed
+Total steps: 3038400
+rollout gathered
+rollout processed
+Total steps: 3040800
+rollout gathered
+rollout processed
+Total steps: 3043200
+rollout gathered
+rollout processed
+Total steps: 3045600
+rollout gathered
+rollout processed
+Total steps: 3048000
+rollout gathered
+rollout processed
+Total steps: 3050400
+rollout gathered
+rollout processed
+Total steps: 3052800
+rollout gathered
+rollout processed
+Total steps: 3055200
+rollout gathered
+rollout processed
+Total steps: 3057600
+rollout gathered
+rollout processed
+Total steps: 3060000
+rollout gathered
+rollout processed
+Total steps: 3062400
+rollout gathered
+rollout processed
+Total steps: 3064800
+rollout gathered
+rollout processed
+Total steps: 3067200
+rollout gathered
+rollout processed
+Total steps: 3069600
+rollout gathered
+rollout processed
+Total steps: 3072000
+rollout gathered
+rollout processed
+Total steps: 3074400
+rollout gathered
+rollout processed
+Total steps: 3076800
+rollout gathered
+rollout processed
+Total steps: 3079200
+rollout gathered
+rollout processed
+Total steps: 3081600
+rollout gathered
+rollout processed
+Total steps: 3084000
+rollout gathered
+rollout processed
+Total steps: 3086400
+rollout gathered
+rollout processed
+Total steps: 3088800
+rollout gathered
+rollout processed
+Total steps: 3091200
+rollout gathered
+rollout processed
+Total steps: 3093600
+rollout gathered
+rollout processed
+Total steps: 3096000
+rollout gathered
+rollout processed
+Total steps: 3098400
+rollout gathered
+rollout processed
+Total steps: 3100800
+rollout gathered
+rollout processed
+Total steps: 3103200
+rollout gathered
+rollout processed
+Total steps: 3105600
+rollout gathered
+rollout processed
+Total steps: 3108000
+rollout gathered
+rollout processed
+Total steps: 3110400
+rollout gathered
+rollout processed
+Total steps: 3112800
+rollout gathered
+rollout processed
+Total steps: 3115200
+rollout gathered
+rollout processed
+Total steps: 3117600
+rollout gathered
+rollout processed
+Total steps: 3120000
+rollout gathered
+rollout processed
+Total steps: 3122400
+rollout gathered
+rollout processed
+Total steps: 3124800
+rollout gathered
+rollout processed
+Total steps: 3127200
+rollout gathered
+rollout processed
+Total steps: 3129600
+rollout gathered
+rollout processed
+Total steps: 3132000
+rollout gathered
+rollout processed
+Total steps: 3134400
+rollout gathered
+rollout processed
+Total steps: 3136800
+rollout gathered
+rollout processed
+Total steps: 3139200
+rollout gathered
+rollout processed
+Total steps: 3141600
+rollout gathered
+rollout processed
