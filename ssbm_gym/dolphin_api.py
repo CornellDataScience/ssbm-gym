@@ -31,13 +31,13 @@ class DolphinAPI(Default):
   _members = [
     ('dolphin', DolphinRunner),
   ]
-  
+
   def __init__(self, **kwargs):
     Default.__init__(self, **kwargs)
 
     #self.user = os.path.expanduser(self.user)
     self.user = self.dolphin.user
-    
+
     # set up players
     self.pids = []
     self.players = {}
@@ -54,7 +54,7 @@ class DolphinAPI(Default):
     # track players 1 and 2 (pids 0 and 1)
     self.sm = state_manager.StateManager([0, 1])
     self.write_locations()
-    
+
     # print('Creating MemoryWatcher.')
     if self.windows:
       self.mw = mw.MemoryWatcherZMQ(port=5555)
@@ -80,7 +80,7 @@ class DolphinAPI(Default):
       self.close()
       #self.dolphin_process.terminate()
     self.state = ssbm.GameMemory()
-    
+
     # print('Running dolphin.')
     self.dolphin_process = self.dolphin()
     atexit.register(self.dolphin_process.kill)
@@ -121,11 +121,12 @@ class DolphinAPI(Default):
     messages = self.mw.get_messages()
     for message in messages:
       self.sm.handle(self.state, *message)
-  
+
   def step(self, controllers):
     for pid, pad in zip(self.pids, self.pads):
+      print(controllers)
       assert(self.players[pid] == 'ai')
-      pad.send_controller(controllers[pid])
+      pad.send_controller(controllers[0])
     while self.state.frame == self.last_frame:
       try:
         self.mw.advance()
@@ -135,4 +136,3 @@ class DolphinAPI(Default):
 
     self.last_frame = self.state.frame
     return self.state
-

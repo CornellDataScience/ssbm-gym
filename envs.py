@@ -51,7 +51,7 @@ class GoHighEnv(BaseEnv):
             if not isDying(self.prev_obs.players[self.pid]) and \
                isDying(self.obs.players[self.pid]):
                 r -= 1.0
-            
+
             if not isDying(self.prev_obs.players[opponent_pid]) and \
                isDying(self.obs.players[opponent_pid]):
                 r += 1.0
@@ -66,7 +66,7 @@ class GoHighEnv(BaseEnv):
         """ [step action] performs [action] then returns the embedded observation, reward, whether_is_terminal, and a dict of frames """
         if self.obs is not None:
             self.prev_obs = deepcopy(self.obs)
-        
+
         obs = self.api.step([self.action_space.from_index(action)])
         self.obs = obs
         reward = self.compute_reward()
@@ -164,7 +164,7 @@ def _worker(remote, parent_remote, env_fn_wrapper):
             break
 
 
-class SubprocVecEnv(): 
+class SubprocVecEnv():
     def __init__(self, env_fns, start_method=None):
         self.num_envs = len(env_fns)
         self.waiting = False
