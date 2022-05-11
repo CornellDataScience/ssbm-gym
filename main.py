@@ -30,7 +30,7 @@ options = dict(
     char1='fox',
     char2='fox',
     cpu2=3,
-    stage='final_destination',
+    stage='Onett',
 )
 
 
@@ -46,3 +46,4 @@ if __name__ == "__main__":
     train_env = EnvVec(SSBMEnv, args.num_workers, args.total_steps, options)
 
     train(args, net, optimizer, train_env, n_steps)
+    

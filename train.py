@@ -6,7 +6,7 @@ from statistics import mean, stdev
 import time
 import pandas as pd
 import numpy as np
-from a2c_model import Actor
+from ppo_model import Actor
 
 def pretrain(params, net, optimizer, env):
     df = pd.DataFrame(columns = ["time", "reward_mean", "reward_std"])
@@ -17,7 +17,7 @@ def pretrain(params, net, optimizer, env):
     latest_ckpt = 0
 
     # while total_steps < 100,000,000: (hardcoded pretrain amount)
-    while total_steps < 100000000:
+    while total_steps < 10000000:
         print("Total steps:", total_steps)
 
         # Gathering rollouts: for 600 steps, run the network in the environment without updating network
@@ -160,12 +160,3 @@ def save_model(net, optimizer, PATH):
             'model_state_dict': net.state_dict(),
             'optimizer_state_dict': optimizer.state_dict(),
             }, PATH)
-
-def load_model(PATH, net_arg_1, net_arg_2, optim_lr):
-    model = Actor(net_arg_1, net_arg_2)
-    opt = optim.Adam(model.parameters(), optim_lr)
-
-    ckpt = torch.load(PATH)
-    model.load_state_dict(ckpt['model_state_dict'])
-    opt.load_state_dict(ckpt['optimizer_state_dict'])
-    return model, opt

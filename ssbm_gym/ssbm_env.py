@@ -65,8 +65,8 @@ class SSBMEnv(BaseEnv):
         if self._action_space is not None:
             return self._action_space
         else:
-            from .spaces import DiagonalActionSpace
-            self._action_space = DiagonalActionSpace()
+            from .spaces import MinimalActionSpace
+            self._action_space = MinimalActionSpace()
             return self._action_space
 
     @property

@@ -26,6 +26,7 @@ settings = (0, 24)
 
 staged = dict(
   final_destination = (0, 0),
+  Onett = (0, 4)
 )
 
 def locateCSSCursor(pid):
