@@ -5,23 +5,22 @@ from envs import GoHighEnv
 import atexit
 import platform
 
-checkpoint = torch.load(os.path.join("checkpoints", "agent.ckpt"))
+checkpoint = torch.load(os.path.join("checkpoints", "792302400.ckpt"))
 
 net = checkpoint["model"]
 
 options = dict(
     render=True,
-    player1='ai',
-    player2='human',
+    player1='human',
+    player2='ai',
     char1='fox',
-    char2='falco',
+    char2='fox',
     stage='battlefield',
 )
-if platform.system == 'Windows':
-    options["windows"] = True
+if platform.system() == 'Windows':
+    options['windows'] = True
 
-
-env = GoHighEnv(frame_limit=7200, options=options)
+env = GoHighEnv(frame_limit=1234732, options=options)
 atexit.register(env.close)
 
 obs = env.reset()

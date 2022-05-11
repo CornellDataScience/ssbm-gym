@@ -43,7 +43,7 @@ class Pad:
           import zmq
           context = zmq.Context()
           port = util.port(path)
-          
+
           with open(path, 'w') as f:
             f.write(str(port))
 
@@ -57,19 +57,19 @@ class Pad:
           except FileExistsError:
             pass
           self.pipe = open(path, 'w', buffering=1)
-        
+
         self.message = ""
 
     def __del__(self):
         """Closes the fifo."""
         if not self.tcp:
             self.pipe.close()
-    
+
     def write(self, command, buffering=False):
         self.message += command + '\n'
         if not buffering:
             self.flush()
-    
+
     def flush(self):
         if self.tcp:
             #print("sent message", self.message)
@@ -120,5 +120,5 @@ class Pad:
             field = 'stick_' + stick.name
             value = getattr(controller, field)
             self.tilt_stick(stick, value.x, value.y, True)
-        
+
         self.flush()
