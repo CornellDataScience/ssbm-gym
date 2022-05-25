@@ -108,3 +108,7 @@ venv.bak/
 dolphin-exe/*
 ISOs/*
 !*/.gitkeep
+
+# Training data
+checkpoints/*
+*.ckpt
